@@ -57,13 +57,6 @@ This repo is a **static site**. It can be hosted on:
 - DigitalOcean App Platform (recommended)  
 - Netlify, Vercel, GitHub Pages, or Cloudflare Pages  
 
-**Local testing:**
-```bash
-cd aifds-site
-python3 -m http.server 8000
-# Visit http://localhost:8000
-```
-
 ---
 
 ## Status
