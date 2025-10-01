@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>AI Feed Discovery Standard (AIFDS)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="AIFDS is an open JSON feed standard that makes business and product data AI-ready for LLMs." />
+  <link rel="canonical" href="https://aifds.org/" />
+  <meta name="robots" content="index,follow" />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="AI Feed Discovery Standard (AIFDS)" />
+  <meta property="og:description" content="Structured Feeds for the LLM Era." />
+  <meta property="og:url" content="https://aifds.org/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:creator" content="@DaveedValencia" />
+
+  <style>
+    :root {
+      --bg: #0b0c10;
+      --card: #111217;
+      --text: #e6e8ee;
+      --muted: #a7adbb;
+      --accent: #6ea8fe;
+      --accent-2: #9ad0ff;
+      --border: #20222b;
+      --radius: 14px;
+      --maxw: 1100px;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 24px; }
+    header { padding: 28px 0 10px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: 0.2px; }
+    .badge { font-size: 12px; color: var(--muted); }
+    nav a { margin-left: 16px; color: var(--text); opacity: 0.9; }
+    nav a:hover { opacity: 1; }
+
+    .hero { margin-top: 30px; padding: 48px; background: linear-gradient(180deg, #12131a 0%, #0f1016 100%); border: 1px solid var(--border); border-radius: var(--radius); text-align: center; }
+    .hero h1 { margin: 0 0 10px; font-size: clamp(32px, 5vw, 48px); line-height: 1.1; }
+    .hero p { margin: 0 auto; max-width: 760px; color: var(--muted); font-size: 18px; }
+    .cta { margin-top: 28px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn { display: inline-block; padding: 12px 18px; border-radius: 10px; border: 1px solid var(--border); background: #1a1b22; color: var(--text); font-weight: 600; }
+    .btn.primary { background: var(--accent); color: #0b0c10; border-color: transparent; }
+    .btn.secondary { background: #13141a; }
+    .btn:hover { filter: brightness(1.1); text-decoration: none; }
+
+    .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; margin-top: 28px; }
+    .card { grid-column: span 12; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px; }
+    .card h2 { margin: 4px 0 6px; font-size: 22px; }
+    .card p { color: var(--muted); margin: 0; }
+    .list { margin: 8px 0 0; padding-left: 18px; color: var(--muted); }
+    .muted { color: var(--muted); }
+
+    @media (min-width: 880px) {
+      .col-6 { grid-column: span 6; }
+      .col-4 { grid-column: span 4; }
+      .col-8 { grid-column: span 8; }
+    }
+
+    footer { margin: 48px 0 24px; padding-top: 16px; border-top: 1px solid var(--border); color: var(--muted); font-size: 14px; }
+    footer a { color: var(--accent-2); }
+    .footgrid { display: grid; gap: 10px; grid-template-columns: repeat(12, 1fr); }
+    .footgrid > div { grid-column: span 12; }
+    @media (min-width: 880px) { .footgrid > div { grid-column: span 4; } }
+    code { background: #0f1016; padding: 2px 6px; border: 1px solid var(--border); border-radius: 6px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <span>AIFDS</span>
+        <span class="badge">v1 (draft)</span>
+      </div>
+      <nav>
+        <a href="#problem">Problem</a>
+        <a href="#solution">Solution</a>
+        <a href="#feeds">Feeds</a>
+        <a href="https://github.com/DaveedValencia" rel="noopener" target="_blank">GitHub</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <h1>The Schema Standard for AI Discovery</h1>
+      <p>Make your business and product data machine-readable for the LLM era. Publish simple JSON feeds that LLMs and AI tools can trust and validate.</p>
+      <div class="cta">
+        <a class="btn primary" href="/docs/spec/v1/">Read the Spec</a>
+        <a class="btn secondary" href="/schemas/v1/">Schemas</a>
+        <a class="btn secondary" href="https://github.com/DaveedValencia" rel="noopener">Join on GitHub</a>
+      </div>
+    </section>
+
+    <section id="problem" class="grid">
+      <div class="card col-6">
+        <h2>The Problem</h2>
+        <p>LLMs ingest messy, HTML-heavy data via crawlers and private deals—causing hallucinations, wasted compute, and inaccurate brand representation.</p>
+      </div>
+      <div class="card col-6">
+        <h2>What’s Missing</h2>
+        <p>A public, open, machine-readable feed format that lets organizations publish canonical facts for AI consumption.</p>
+      </div>
+    </section>
+
+    <section id="solution" class="grid">
+      <div class="card col-8">
+        <h2>The Solution: AIFDS</h2>
+        <ul class="list">
+          <li>JSON schemas for core business, products, services, FAQs, and updates.</li>
+          <li>Simple discovery via <code>feed.example.com</code>.</li>
+          <li>Validation with JSON Schema; optional JWS signatures and JWKS for integrity.</li>
+          <li>Inspired by schema.org, designed for AI pipelines.</li>
+        </ul>
+      </div>
+      <div class="card col-4">
+        <h2>Status</h2>
+        <p><strong>v1</strong> is in draft. Schemas and examples are being stabilized before the 1.0 spec is locked.</p>
+      </div>
+    </section>
+
+    <section id="feeds" class="grid">
+      <div class="card col-4">
+        <h2>Core Feeds</h2>
+        <ul class="list">
+          <li><code>business.json</code> — organizational profile</li>
+          <li><code>products.json</code> — product catalog</li>
+          <li><code>services.json</code> — structured service data</li>
+          <li><code>faq.json</code> — canonical Q&amp;A</li>
+          <li><code>updates.jsonl</code> — append-only freshness feed</li>
+        </ul>
+      </div>
+      <div class="card col-8">
+        <h2>Discovery</h2>
+        <ul class="list">
+          <li>Serve feeds from <code>feed.yourdomain.com</code> (or <code>/feeds/</code> path).</li>
+          <li>Link in <code>&lt;head&gt;</code> with <code>rel="alternate"</code> and in the site footer.</li>
+        </ul>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footgrid">
+        <div>
+          <strong>AIFDS</strong><br />
+          <span class="muted">AI Feed Discovery Standard</span>
+        </div>
+        <div>
+          <span class="muted">Operated by</span> <a href="https://minnesota.ai" target="_blank">minnesota.ai</a>
+        </div>
+        <div>
+          <a href="/docs/spec/v1/">Spec</a> ·
+          <a href="/schemas/v1/">Schemas</a> ·
+          <a href="https://github.com/DaveedValencia" rel="noopener" target="_blank">GitHub</a> ·
+          <a href="https://x.com/DaveedValencia" rel="noopener" target="_blank">@DaveedValencia</a>
+        </div>
+      </div>
+      <div style="margin-top:10px" class="muted">© <span id="year"></span> AIFDS. All rights reserved.</div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

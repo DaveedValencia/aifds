@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aifds.org/schemas/v1/products.schema.json",
+  "title": "Products Feed",
+  "description": "Defines a product catalog feed for AIFDS.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "id": { "type": "string", "description": "Unique product ID" },
+      "name": { "type": "string" },
+      "description": { "type": "string" },
+      "url": { "type": "string", "format": "uri" },
+      "price": { "type": "number" },
+      "currency": { "type": "string", "minLength": 3, "maxLength": 3 }
+    },
+    "required": ["id", "name", "url", "price", "currency"]
+  }
+}

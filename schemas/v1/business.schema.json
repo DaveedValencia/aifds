@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aifds.org/schemas/v1/business.schema.json",
+  "title": "Business Feed",
+  "description": "Defines an organizational profile feed for AIFDS.",
+  "type": "object",
+  "properties": {
+    "name": { "type": "string", "description": "Organization name" },
+    "url": { "type": "string", "format": "uri", "description": "Homepage URL" },
+    "logo": { "type": "string", "format": "uri", "description": "Logo URL" },
+    "description": { "type": "string", "description": "Organization description" }
+  },
+  "required": ["name", "url"]
+}
