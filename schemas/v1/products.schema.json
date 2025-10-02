@@ -1,19 +1,55 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://aifds.org/schemas/v1/products.schema.json",
-  "title": "Products Feed",
-  "description": "Defines a product catalog feed for AIFDS.",
+  "title": "AIFDS Products (v1 pilot, single-variant only)",
   "type": "array",
+  "minItems": 1,
   "items": {
     "type": "object",
+    "additionalProperties": false,
     "properties": {
-      "id": { "type": "string", "description": "Unique product ID" },
-      "name": { "type": "string" },
+      "id": { "type": ["string", "number"] },
+      "title": { "type": "string", "minLength": 1 },
       "description": { "type": "string" },
-      "url": { "type": "string", "format": "uri" },
-      "price": { "type": "number" },
-      "currency": { "type": "string", "minLength": 3, "maxLength": 3 }
+      "vendor": { "type": "string" },
+      "product_type": { "type": "string" },
+      "status": { "type": "string", "enum": ["active", "draft", "archived"] },
+
+      "sku": { "type": "string" },
+      "barcode": { "type": "string" },
+
+      "price": { "type": "string", "pattern": "^[0-9]+(\\.[0-9]{2})?$" },
+      "compare_at_price": { "type": "string", "pattern": "^[0-9]+(\\.[0-9]{2})?$" },
+      "currency": { "type": "string", "minLength": 3, "maxLength": 3 },
+
+      "in_stock": { "type": "boolean" },
+
+      "image": { "type": "string", "format": "uri" },
+      "ingredients": {
+        "type": "array",
+        "items": { "type": "string" }
+      },
+
+      "gender": { "type": "string", "enum": ["male", "female", "unisex"] },
+      "age": { "type": "string", "enum": ["adult", "teen", "child", "all"] },
+
+      "product_url": { "type": "string", "format": "uri" },
+
+      "last_updated": { "type": "string", "format": "date-time" }
     },
-    "required": ["id", "name", "url", "price", "currency"]
+    "required": [
+      "id",
+      "title",
+      "description",
+      "vendor",
+      "product_type",
+      "status",
+      "price",
+      "currency",
+      "in_stock",
+      "image",
+      "product_url",
+      "last_updated"
+    ]
   }
 }
