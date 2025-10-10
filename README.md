@@ -1,4 +1,4 @@
-# AI Feed Discovery Standard (AIFDS)
+# AI Schema Discovery Standard (AIFDS)
 
 **Website:** [aifds.org](https://aifds.org)  
 **Spec Draft:** [https://aifds.org/docs/spec/v1/](https://aifds.org/docs/spec/v1/)  
@@ -7,7 +7,7 @@
 ---
 
 ## Overview
-The **AI Feed Discovery Standard (AIFDS)** is an open JSON schema standard that makes business and product data **AI-ready for Large Language Models (LLMs)** through validation-first workflows.
+The **AI Schema Discovery Standard (AIFDS)** is an open JSON schema standard that makes business and product data **AI-ready for Large Language Models (LLMs)** through validation-first workflows.
 
 Today, LLMs ingest messy, HTML-heavy content from crawlers and private data deals. This leads to:
 - Hallucinations and misinformation  

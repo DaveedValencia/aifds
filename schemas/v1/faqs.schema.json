@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://aifds.org/schemas/v1/faq.schema.json",
-  "title": "AIFDS FAQ Feed (v1)",
+  "title": "AIFDS FAQ Schema (v1)",
   "description": "Canonical, machine-readable FAQ entries for a brand or organization. File name: faq.json",
   "type": "array",
   "minItems": 1,
