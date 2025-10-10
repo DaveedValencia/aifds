@@ -7,7 +7,7 @@
 ---
 
 ## Overview
-The **AI Feed Discovery Standard (AIFDS)** is an open JSON-based feed format that makes business and product data **AI-ready for Large Language Models (LLMs)**.
+The **AI Feed Discovery Standard (AIFDS)** is an open JSON schema standard that makes business and product data **AI-ready for Large Language Models (LLMs)** through validation-first workflows.
 
 Today, LLMs ingest messy, HTML-heavy content from crawlers and private data deals. This leads to:
 - Hallucinations and misinformation  
@@ -18,20 +18,20 @@ AIFDS provides a clean, structured alternative — inspired by schema.org, but p
 
 ---
 
-## Core Feeds
+## Core Schemas
 - `business.json` — Organizational profile  
 - `products.json` — Product catalog  
 - `services.json` — Structured service data  
 - `faq.json` — Canonical Q&A  
-- `updates.jsonl` — Append-only freshness feed  
+- `updates.jsonl` — Append-only freshness log  
 
 ---
 
-## Discovery
-Feeds can be discovered via:
-- Subdomain: `feed.example.com`  
-- `<link rel="alternate" type="application/json">` in `<head>`  
-- Footer links for crawler hints  
+## Validation
+AIFDS prioritizes validation to keep AI experiences accurate:
+- Validate JSON payloads against the published schemas before distribution  
+- Share validation reports with partners, crawlers, and AI tooling vendors  
+- Distribute trusted data through your preferred channel (APIs, storage buckets, etc.)  
 
 ---
 
@@ -61,7 +61,7 @@ This repo is a **static site**. It can be hosted on:
 
 ## Status
 - **v1 Draft** — spec and schemas are in early draft stage.  
-- Validator tools and example feeds are in development.  
+- Validator tools and example payloads are in development.  
 
 ---
 

@@ -4,13 +4,13 @@
   <meta charset="utf-8" />
   <title>AI Feed Discovery Standard (AIFDS)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="AIFDS is an open JSON feed standard that makes business and product data AI-ready for LLMs." />
+  <meta name="description" content="AIFDS provides open JSON schemas and validation guidance so organizations can ship AI-ready data with confidence." />
   <link rel="canonical" href="https://aifds.org/" />
   <meta name="robots" content="index,follow" />
 
   <!-- Open Graph / Twitter -->
   <meta property="og:title" content="AI Feed Discovery Standard (AIFDS)" />
-  <meta property="og:description" content="Structured Feeds for the LLM Era." />
+  <meta property="og:description" content="Validation-first schemas for the LLM era." />
   <meta property="og:url" content="https://aifds.org/" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:creator" content="@DaveedValencia" />
@@ -78,14 +78,14 @@
       <nav>
         <a href="#problem">Problem</a>
         <a href="#solution">Solution</a>
-        <a href="#feeds">Feeds</a>
+        <a href="#schemas">Schemas</a>
         <a href="https://github.com/DaveedValencia" rel="noopener" target="_blank">GitHub</a>
       </nav>
     </header>
 
     <section class="hero">
       <h1>The Schema Standard for AI Discovery</h1>
-      <p>Make your business and product data machine-readable for the LLM era. Publish simple JSON feeds that LLMs and AI tools can trust and validate.</p>
+      <p>Make your business and product data machine-readable for the LLM era. Use the open AIFDS schemas to validate facts before they reach AI systems.</p>
       <div class="cta">
         <a class="btn primary" href="/docs/spec/v1/">Read the Spec</a>
         <a class="btn secondary" href="/schemas/v1/">Schemas</a>
@@ -100,7 +100,7 @@
       </div>
       <div class="card col-6">
         <h2>What’s Missing</h2>
-        <p>A public, open, machine-readable feed format that lets organizations publish canonical facts for AI consumption.</p>
+        <p>A public, open, machine-readable schema standard that lets organizations publish canonical facts for AI consumption.</p>
       </div>
     </section>
 
@@ -109,8 +109,8 @@
         <h2>The Solution: AIFDS</h2>
         <ul class="list">
           <li>JSON schemas for core business, products, services, FAQs, and updates.</li>
-          <li>Simple discovery via <code>feed.example.com</code>.</li>
-          <li>Validation with JSON Schema; optional JWS signatures and JWKS for integrity.</li>
+          <li>Validation-first workflow using JSON Schema and automated checks.</li>
+          <li>Optional JWS signatures and JWKS for integrity.</li>
           <li>Inspired by schema.org, designed for AI pipelines.</li>
         </ul>
       </div>
@@ -120,22 +120,23 @@
       </div>
     </section>
 
-    <section id="feeds" class="grid">
+    <section id="schemas" class="grid">
       <div class="card col-4">
-        <h2>Core Feeds</h2>
+        <h2>Core Schemas</h2>
         <ul class="list">
           <li><code>business.json</code> — organizational profile</li>
           <li><code>products.json</code> — product catalog</li>
           <li><code>services.json</code> — structured service data</li>
           <li><code>faqs.json</code> — canonical Q&amp;A</li>
-          <li><code>updates.jsonl</code> — append-only freshness feed</li>
+          <li><code>updates.jsonl</code> — append-only freshness log</li>
         </ul>
       </div>
       <div class="card col-8">
-        <h2>Discovery</h2>
+        <h2>Validation Workflow</h2>
         <ul class="list">
-          <li>Serve feeds from <code>feed.yourdomain.com</code> (or <code>/feeds/</code> path).</li>
-          <li>Link in <code>&lt;head&gt;</code> with <code>rel="alternate"</code> and in the site footer.</li>
+          <li>Use the published schemas during build-time to lint and validate payloads.</li>
+          <li>Provide JSON Schema validation results to internal teams and partners.</li>
+          <li>Deliver trusted AI-ready data through your preferred distribution channel.</li>
         </ul>
       </div>
     </section>
