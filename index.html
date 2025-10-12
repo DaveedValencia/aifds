@@ -4,13 +4,13 @@
   <meta charset="utf-8" />
   <title>AI Schema Discovery Standard (AIFDS)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="AIFDS provides open JSON schemas and validation guidance so organizations can ship AI-ready data with confidence." />
+  <meta name="description" content="AIFDS defines schema.org-aligned JSON schemas so commerce and service data stays AI-ready and verifiable." />
   <link rel="canonical" href="https://aifds.org/" />
   <meta name="robots" content="index,follow" />
 
   <!-- Open Graph / Twitter -->
   <meta property="og:title" content="AI Schema Discovery Standard (AIFDS)" />
-  <meta property="og:description" content="Validation-first schemas for the LLM era." />
+  <meta property="og:description" content="Schema.org-aligned JSON playbooks for commerce and service data." />
   <meta property="og:url" content="https://aifds.org/" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:creator" content="@DaveedValencia" />
@@ -76,68 +76,83 @@
         <span class="badge">v1 (draft)</span>
       </div>
       <nav>
-        <a href="#problem">Problem</a>
-        <a href="#solution">Solution</a>
-        <a href="#schemas">Schemas</a>
+        <a href="#approach">Approach</a>
+        <a href="#commerce">Commerce</a>
+        <a href="#services">Services</a>
+        <a href="#roadmap">Roadmap</a>
         <a href="https://github.com/DaveedValencia" rel="noopener" target="_blank">GitHub</a>
       </nav>
     </header>
 
     <section class="hero">
-      <h1>The Schema Standard for AI Discovery</h1>
-      <p>Make your business and product data machine-readable for the LLM era. Use the open AIFDS schemas to validate facts before they reach AI systems.</p>
+      <h1>Define AI-Ready Schemas for Commerce & Services</h1>
+      <p>We publish schema.org-aligned JSON playbooks so Shopify storefronts and service businesses can ship verified facts straight into AI systems.</p>
       <div class="cta">
-        <a class="btn primary" href="/docs/spec/v1/">Read the Spec</a>
-        <a class="btn secondary" href="/schemas/v1/">Schemas</a>
-        <a class="btn secondary" href="https://github.com/DaveedValencia" rel="noopener">Join on GitHub</a>
+        <a class="btn primary" href="#commerce">Commerce Track</a>
+        <a class="btn secondary" href="#services">Services Track</a>
+        <a class="btn secondary" href="/docs/spec/v1/">Read the Spec</a>
       </div>
     </section>
 
-    <section id="problem" class="grid">
+    <section id="approach" class="grid">
       <div class="card col-6">
-        <h2>The Problem</h2>
-        <p>LLMs ingest messy, HTML-heavy data via crawlers and private deals—causing hallucinations, wasted compute, and inaccurate brand representation.</p>
+        <h2>Why Schema-First</h2>
+        <p>AI crawlers still scrape HTML and marketing copy, producing hallucinations and eroding brand control. Canonical JSON reverses that drift by giving models structured, testable facts.</p>
       </div>
       <div class="card col-6">
-        <h2>What’s Missing</h2>
-        <p>A public, open, machine-readable schema standard that lets organizations publish canonical facts for AI consumption.</p>
-      </div>
-    </section>
-
-    <section id="solution" class="grid">
-      <div class="card col-8">
-        <h2>The Solution: AIFDS</h2>
+        <h2>What AIFDS Provides</h2>
         <ul class="list">
-          <li>JSON schemas for core business, products, services, FAQs, and updates.</li>
-          <li>Validation-first workflow using JSON Schema and automated checks.</li>
-          <li>Optional JWS signatures and JWKS for integrity.</li>
-          <li>Inspired by schema.org, designed for AI pipelines.</li>
+          <li>Opinionated JSON schema families built on schema.org best practices.</li>
+          <li>Validation guidance for publishing, versioning, and sharing machine-readable payloads.</li>
+          <li>Examples tuned for Shopify storefronts and service operators shipping trusted data.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="commerce" class="grid">
+      <div class="card col-6">
+        <h2>Commerce Track (Shopify-first)</h2>
+        <p>We are distilling the core surfaces that power ecommerce discovery — from PDP accuracy to merchandising experiences — into portable, validated JSON schemas.</p>
+      </div>
+      <div class="card col-6">
+        <h2>Artifacts in Draft</h2>
+        <ul class="list">
+          <li><code>product.json</code> — canonical SKU facts, availability, and merchandising tags.</li>
+          <li><code>homepage.json</code> — hero messaging, featured collections, and promotional states.</li>
+          <li><code>collections.json</code> — thematic groupings with filters, sort orders, and SEO handles.</li>
+          <li><code>blog.json</code> — editorial summaries, canonical URLs, and cross-linking metadata.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="services" class="grid">
+      <div class="card col-6">
+        <h2>Service Track</h2>
+        <p>Service operators need a shared language for offers, delivery proof, and ROI. The services track captures how agencies and studios communicate their value to AI surfaces.</p>
+      </div>
+      <div class="card col-6">
+        <h2>Draft Artifacts</h2>
+        <ul class="list">
+          <li><code>service-homepage.json</code> — positioning, proof points, testimonials, and CTAs.</li>
+          <li><code>services.json</code> — catalog of offerings, deliverables, pricing models, and SLAs.</li>
+          <li><code>contact.json</code> — intake workflows, preferred channels, and response windows.</li>
+          <li><code>pricing.json</code> — packaged rates, prerequisites, and discount logic.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="roadmap" class="grid">
+      <div class="card col-8">
+        <h2>What’s Next</h2>
+        <ul class="list">
+          <li>Publish reference payloads and validation checklists for each schema family.</li>
+          <li>Extend coverage to subscriptions, marketplaces, and post-purchase experiences.</li>
+          <li>Codify change management so partners can diff and verify updates in real time.</li>
         </ul>
       </div>
       <div class="card col-4">
-        <h2>Status</h2>
-        <p><strong>v1</strong> is in draft. Schemas and examples are being stabilized before the 1.0 spec is locked.</p>
-      </div>
-    </section>
-
-    <section id="schemas" class="grid">
-      <div class="card col-4">
-        <h2>Core Schemas</h2>
-        <ul class="list">
-          <li><code>business.json</code> — organizational profile</li>
-          <li><code>products.json</code> — product catalog</li>
-          <li><code>services.json</code> — structured service data</li>
-          <li><code>faqs.json</code> — canonical Q&amp;A</li>
-          <li><code>updates.jsonl</code> — append-only freshness log</li>
-        </ul>
-      </div>
-      <div class="card col-8">
-        <h2>Validation Workflow</h2>
-        <ul class="list">
-          <li>Use the published schemas during build-time to lint and validate payloads.</li>
-          <li>Provide JSON Schema validation results to internal teams and partners.</li>
-          <li>Deliver trusted AI-ready data through your preferred distribution channel.</li>
-        </ul>
+        <h2>Get Involved</h2>
+        <p>Contribute feedback, propose schema additions, or pilot the drafts with your storefront or studio. Reach out on GitHub or X — this standard grows with practitioners.</p>
       </div>
     </section>
 

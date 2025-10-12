@@ -1,0 +1,169 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aifds.org/schemas/v1/pricing.schema.json",
+  "title": "AIFDS Service Pricing (v1 draft)",
+  "description": "Offer catalog for service packages aligned with schema.org/OfferCatalog.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "@context": { "const": "https://schema.org" },
+    "@type": { "const": "OfferCatalog" },
+    "@id": {
+      "description": "Stable identifier or canonical URL for the pricing catalog.",
+      "type": "string",
+      "minLength": 1
+    },
+    "name": { "type": "string", "minLength": 1 },
+    "description": { "type": "string", "minLength": 1 },
+    "url": { "type": "string", "format": "uri" },
+    "inLanguage": {
+      "type": "string",
+      "pattern": "^[A-Za-z]{2,3}(-[A-Za-z0-9]{2,8})*$"
+    },
+    "itemListElement": {
+      "description": "Ordered list of service packages on offer.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "@type": { "const": "ListItem" },
+          "position": { "type": "integer", "minimum": 1 },
+          "name": { "type": "string", "minLength": 1 },
+          "item": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "@type": { "const": "Offer" },
+              "@id": {
+                "description": "Stable identifier for this pricing package.",
+                "type": "string",
+                "minLength": 1
+              },
+              "name": { "type": "string", "minLength": 1 },
+              "description": { "type": "string", "minLength": 1 },
+              "category": {
+                "description": "Pricing lane (e.g., retainer, project, advisory).",
+                "type": "string"
+              },
+              "isNegotiable": { "type": "boolean", "default": false },
+              "availabilityStarts": { "type": "string", "format": "date" },
+              "availabilityEnds": { "type": "string", "format": "date" },
+              "validFrom": { "type": "string", "format": "date" },
+              "validThrough": { "type": "string", "format": "date" },
+              "price": {
+                "type": "string",
+                "pattern": "^[0-9]+(\\.[0-9]{2})?$"
+              },
+              "priceCurrency": {
+                "type": "string",
+                "pattern": "^[A-Z]{3}$"
+              },
+              "priceSpecification": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "@type": { "enum": ["UnitPriceSpecification", "PriceSpecification"] },
+                  "price": {
+                    "type": "string",
+                    "pattern": "^[0-9]+(\\.[0-9]{2})?$"
+                  },
+                  "priceCurrency": {
+                    "type": "string",
+                    "pattern": "^[A-Z]{3}$"
+                  },
+                  "billingDuration": {
+                    "type": "string",
+                    "pattern": "^P(T)?[0-9HMSDWMY]+$"
+                  },
+                  "billingIncrement": { "type": "number", "minimum": 0 },
+                  "unitText": { "type": "string" },
+                  "referenceQuantity": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "@type": { "const": "QuantitativeValue" },
+                      "value": { "type": "number" },
+                      "unitCode": { "type": "string" }
+                    },
+                    "required": ["@type", "value"]
+                  }
+                },
+                "required": ["@type", "price", "priceCurrency"]
+              },
+              "itemOffered": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "@id": {
+                    "description": "Reference to service in services.json.",
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "required": ["@id"]
+              },
+              "includedService": {
+                "description": "Supplementary services bundled with this package.",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "@id": { "type": "string", "minLength": 1 }
+                  },
+                  "required": ["@id"]
+                },
+                "maxItems": 10
+              },
+              "eligibleCustomerType": {
+                "type": "string",
+                "enum": ["business", "enterprise", "startup", "consumer", "government"]
+              },
+              "eligibleQuantity": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "@type": { "const": "QuantitativeValue" },
+                  "value": { "type": "number", "minimum": 1 },
+                  "unitCode": { "type": "string" }
+                },
+                "required": ["@type", "value"]
+              },
+              "advanceBookingRequirement": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "@type": { "const": "QuantitativeValue" },
+                  "value": { "type": "number", "minimum": 0 },
+                  "unitCode": { "type": "string" }
+                },
+                "required": ["@type", "value"]
+              },
+              "paymentAccepted": {
+                "type": "array",
+                "items": { "type": "string", "minLength": 1 },
+                "maxItems": 10,
+                "uniqueItems": true
+              },
+              "termsOfService": {
+                "type": "string",
+                "format": "uri"
+              }
+            },
+            "required": ["@type", "@id", "name", "description", "itemOffered"]
+          }
+        },
+        "required": ["@type", "position", "item"]
+      },
+      "minItems": 1,
+      "maxItems": 25
+    },
+    "lastModified": {
+      "description": "Timestamp the pricing catalog was last regenerated.",
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": ["@context", "@type", "@id", "name", "description", "itemListElement", "lastModified"]
+}

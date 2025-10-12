@@ -1,0 +1,163 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aifds.org/schemas/v1/contact.schema.json",
+  "title": "AIFDS Service Contact (v1 draft)",
+  "description": "Structured contact intake information aligned with schema.org/ContactPoint.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "@context": { "const": "https://schema.org" },
+    "@type": { "const": "ContactPoint" },
+    "@id": {
+      "description": "Stable identifier for this contact entry (URI or slug).",
+      "type": "string",
+      "minLength": 1
+    },
+    "contactType": {
+      "description": "Role of this contact (e.g., sales, support).",
+      "type": "string",
+      "minLength": 1
+    },
+    "telephone": {
+      "description": "Primary phone number in E.164 format.",
+      "type": "string",
+      "pattern": "^\\+[1-9]\\d{1,14}$"
+    },
+    "email": {
+      "type": "string",
+      "format": "email"
+    },
+    "url": {
+      "description": "Landing page or intake form URL.",
+      "type": "string",
+      "format": "uri"
+    },
+    "availableLanguage": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Za-z]{2,3}(-[A-Za-z0-9]{2,8})*$"
+      },
+      "maxItems": 10,
+      "uniqueItems": true
+    },
+    "areaServed": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "maxItems": 20,
+      "uniqueItems": true
+    },
+    "hoursAvailable": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "@type": { "const": "OpeningHoursSpecification" },
+          "dayOfWeek": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "https://schema.org/Monday",
+                "https://schema.org/Tuesday",
+                "https://schema.org/Wednesday",
+                "https://schema.org/Thursday",
+                "https://schema.org/Friday",
+                "https://schema.org/Saturday",
+                "https://schema.org/Sunday"
+              ]
+            },
+            "minItems": 1,
+            "maxItems": 7
+          },
+          "opens": { "type": "string", "pattern": "^[0-2][0-9]:[0-5][0-9]$" },
+          "closes": { "type": "string", "pattern": "^[0-2][0-9]:[0-5][0-9]$" },
+          "validFrom": { "type": "string", "format": "date" },
+          "validThrough": { "type": "string", "format": "date" }
+        },
+        "required": ["@type", "dayOfWeek", "opens", "closes"]
+      },
+      "maxItems": 14
+    },
+    "serviceLevelAgreement": {
+      "description": "Response expectations communicated to prospects.",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "initialResponse": {
+          "description": "Expected time to first response (ISO 8601 duration).",
+          "type": "string",
+          "pattern": "^P(T)?[0-9HMSDWMY]+$"
+        },
+        "resolutionTime": {
+          "description": "Typical time frame to deliver proposal or resolution (ISO 8601 duration).",
+          "type": "string",
+          "pattern": "^P(T)?[0-9HMSDWMY]+$"
+        },
+        "supportHours": {
+          "description": "Narrative support availability.",
+          "type": "string"
+        }
+      }
+    },
+    "preferredMethod": {
+      "description": "Primary intake channel.",
+      "type": "string",
+      "enum": ["email", "phone", "form", "chat", "calendar", "other"]
+    },
+    "contactOption": {
+      "description": "Special service qualifiers (schema.org/contactPointOption).",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "https://schema.org/TollFree",
+          "https://schema.org/HearingImpairedSupported",
+          "https://schema.org/VoiceMail"
+        ]
+      },
+      "maxItems": 3,
+      "uniqueItems": true
+    },
+    "potentialAction": {
+      "description": "Action available to initiate contact (e.g., schedule call).",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "@type": { "const": "Action" },
+        "name": { "type": "string", "minLength": 1 },
+        "target": { "type": "string", "format": "uri" }
+      },
+      "required": ["@type", "name", "target"]
+    },
+    "followupWorkflow": {
+      "description": "Downstream workflow steps after initial contact.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "step": { "type": "string", "minLength": 1 },
+          "timeline": {
+            "type": "string",
+            "pattern": "^P(T)?[0-9HMSDWMY]+$"
+          },
+          "ownerRole": { "type": "string" }
+        },
+        "required": ["step"]
+      },
+      "maxItems": 10
+    },
+    "notes": {
+      "description": "Additional guidance or requirements for prospects.",
+      "type": "string"
+    },
+    "lastModified": {
+      "description": "Timestamp the contact payload was last regenerated.",
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": ["@context", "@type", "@id", "contactType", "lastModified"]
+}

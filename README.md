@@ -7,7 +7,7 @@
 ---
 
 ## Overview
-The **AI Schema Discovery Standard (AIFDS)** is an open JSON schema standard that makes business and product data **AI-ready for Large Language Models (LLMs)** through validation-first workflows.
+The **AI Schema Discovery Standard (AIFDS)** publishes schema.org-aligned JSON playbooks so commerce and service operators can ship canonical, AI-ready data through validation-first workflows.
 
 Today, LLMs ingest messy, HTML-heavy content from crawlers and private data deals. This leads to:
 - Hallucinations and misinformation  
@@ -19,11 +19,16 @@ AIFDS provides a clean, structured alternative — inspired by schema.org, but p
 ---
 
 ## Core Schemas
-- `business.json` — Organizational profile  
-- `products.json` — Product catalog  
-- `services.json` — Structured service data  
-- `faq.json` — Canonical Q&A  
-- `updates.jsonl` — Append-only freshness log  
+- `product.json` — Canonical SKU facts and offers (`schema:Product`)  
+- `homepage.json` — Structured storefront landing page (`schema:WebPage`)  
+- `collections.json` — Merchandising groupings with product references (`schema:CollectionPage`)  
+- `blog.json` — Editorial layer with `schema:Blog` and `schema:BlogPosting` entries  
+- `service-homepage.json` — Service business landing page (`schema:WebPage`)  
+- `services.json` — Catalog of offerings mapped to `schema:Service`  
+- `contact.json` — Intake and SLA details (`schema:ContactPoint`)  
+- `pricing.json` — Offer catalog for packages (`schema:OfferCatalog`)  
+- `business.json` — Organizational profile metadata (`schema:Organization`)  
+- `faqs.json` — Canonical Q&A catalog (`schema:FAQPage`)  
 
 ---
 
@@ -45,9 +50,17 @@ aifds-site/
 │           └── index.html     # v1 draft spec (placeholder)
 └── schemas/
     └── v1/
+        ├── blog.schema.json
         ├── business.schema.json
-        ├── products.schema.json
-        └── index.html         # schema listing
+        ├── collections.schema.json
+        ├── contact.schema.json
+        ├── homepage.schema.json
+        ├── pricing.schema.json
+        ├── product.schema.json
+        ├── products.schema.json   # legacy array draft
+        ├── service-homepage.schema.json
+        ├── services.schema.json
+        └── index.html              # schema listing
 ```
 
 ---

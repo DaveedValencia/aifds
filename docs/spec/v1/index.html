@@ -13,22 +13,95 @@
 </head>
 <body>
   <h1>AI Schema Discovery Standard (AIFDS) v1 — Draft</h1>
-  <p class="muted">This is a placeholder for the full specification.</p>
+  <p class="muted">Draft guidance for publishing schema.org-aligned JSON payloads that keep commerce and service data AI-ready.</p>
 
-  <h2>Schemas in v1</h2>
+  <h2>Tracks in v1</h2>
   <ul>
-    <li><code>business.json</code></li>
-    <li><code>products.json</code></li>
-    <li><code>services.json</code></li>
-    <li><code>faqs.json</code></li>
-    <li><code>updates.jsonl</code></li>
+    <li><strong>Commerce Schema Family (Shopify-first)</strong> — finalized drafts for <code>product.json</code>, <code>homepage.json</code>, <code>collections.json</code>, and <code>blog.json</code>.</li>
+    <li><strong>Service Schema Family</strong> — draft schemas for <code>service-homepage.json</code>, <code>services.json</code>, <code>contact.json</code>, and <code>pricing.json</code>.</li>
   </ul>
 
-  <h2>Status</h2>
-  <p>v1 is in draft. Schemas and validator tools are being prepared.</p>
+  <h2>Commerce Schema Family</h2>
+  <p>The commerce track translates core Shopify surfaces into schema.org-aligned JSON. Implementers can adopt the drafts below to keep merchandising state synchronized across AI partners.</p>
+  <section>
+    <h3><code>product.json</code></h3>
+    <p>Maps a shoppable SKU to <code>schema:Product</code>, enforcing canonical identifiers, merchandising facts, and offer integrity.</p>
+    <ul>
+      <li>Required payload keys: <code>@context</code>, <code>@type</code>, <code>sku</code>, <code>name</code>, <code>description</code>, <code>url</code>, <code>offers</code>, <code>lastModified</code>.</li>
+      <li><code>offers</code> must include price, currency, availability, and PDP URL. Use schema.org URLs for availability enums.</li>
+      <li>Variant relationships are captured via <code>hasVariant</code> referencing sibling SKU identifiers.</li>
+    </ul>
+  </section>
+  <section>
+    <h3><code>homepage.json</code></h3>
+    <p>Captures the storefront landing page as <code>schema:WebPage</code> with structured hero sections, featured collections, and conversion CTAs.</p>
+    <ul>
+      <li>Use <code>hasPart</code> to describe sections such as hero banners, promo carousels, or offer catalogs.</li>
+      <li>Each section may reference downstream collections or products via <code>itemListElement</code>.</li>
+      <li>Surface brand identity through <code>mainEntity</code> with links to organization or brand JSON-LD.</li>
+    </ul>
+  </section>
+  <section>
+    <h3><code>collections.json</code></h3>
+    <p>An array of <code>schema:CollectionPage</code> objects with embedded <code>schema:ItemList</code> entries describing merchandising groups.</p>
+    <ul>
+      <li>Reference products using <code>@id</code> or <code>sku</code> to align with <code>product.json</code>.</li>
+      <li>Document shopper experience with available filters, sort options, and SEO metadata.</li>
+      <li>Track freshness through <code>lastModified</code> timestamps per collection.</li>
+    </ul>
+  </section>
+  <section>
+    <h3><code>blog.json</code></h3>
+    <p>Models the editorial layer as <code>schema:Blog</code> with a curated list of <code>schema:BlogPosting</code> entries.</p>
+    <ul>
+      <li>Every post must carry canonical URLs, publication dates, author metadata, and summary content.</li>
+      <li>Use <code>mentions</code> to cross-link products or services highlighted in the article.</li>
+      <li>Voice-ready excerpts can be described with <code>speakable</code> markup.</li>
+    </ul>
+  </section>
 
-  <h2>Validation</h2>
-  <p>Implementers should validate payloads against these schemas before publishing to ensure AI consumers receive accurate, trustworthy data.</p>
+  <h2>Service Schema Family</h2>
+  <p>The service track documents how agencies and studios articulate offers, proof, and pricing to AI distribution partners.</p>
+  <section>
+    <h3><code>service-homepage.json</code></h3>
+    <p>Models the primary services landing page as <code>schema:WebPage</code> with semantic sections for hero messaging, proof, and CTAs.</p>
+    <ul>
+      <li>Use <code>sectionType</code> labels (<code>hero</code>, <code>services</code>, <code>testimonials</code>, etc.) to keep downstream experiences consistent.</li>
+      <li>Testimonials are expressed via <code>schema:Review</code> objects to retain author, publisher, and quote metadata.</li>
+    </ul>
+  </section>
+  <section>
+    <h3><code>services.json</code></h3>
+    <p>An array of <code>schema:Service</code> entries capturing deliverables, audiences, operating hours, and offer metadata.</p>
+    <ul>
+      <li>Every service must publish <code>@id</code>, <code>serviceType</code>, and <code>lastModified</code> for traceability.</li>
+      <li>Cross-link pricing packages with <code>hasOfferCatalog</code> referencing the <code>pricing.json</code> catalog.</li>
+      <li>Use <code>deliverable</code> and <code>workExample</code> arrays to surface proof artifacts.</li>
+    </ul>
+  </section>
+  <section>
+    <h3><code>contact.json</code></h3>
+    <p>Defines intake expectations via <code>schema:ContactPoint</code> including languages, SLAs, and workflow steps.</p>
+    <ul>
+      <li>Normalize availability with <code>schema:OpeningHoursSpecification</code> objects.</li>
+      <li>Express response commitments using ISO 8601 durations in the <code>serviceLevelAgreement</code> block.</li>
+    </ul>
+  </section>
+  <section>
+    <h3><code>pricing.json</code></h3>
+    <p>Captures offer bundles as a <code>schema:OfferCatalog</code> with ordered packages mapped back to services.</p>
+    <ul>
+      <li>Each package should reference a service via <code>itemOffered.@id</code> and expose price specifications or negotiability.</li>
+      <li>Include <code>advanceBookingRequirement</code> and <code>eligibleCustomerType</code> to set buyer expectations.</li>
+    </ul>
+  </section>
+
+  <h2>Validation Workflow</h2>
+  <ol>
+    <li>Generate payloads from source systems (Shopify, CMS, service catalogs) into the JSON schemas published at <a href="/schemas/v1/">/schemas/v1/</a>.</li>
+    <li>Validate with JSON Schema Draft 2020-12 compatible tooling before distribution.</li>
+    <li>Publish validation reports alongside feeds so partners can diff payload changes (<code>lastModified</code> fields) and assess impact quickly.</li>
+  </ol>
 
   <footer style="margin-top:2rem;">
     <a href="/">← Back to aifds.org</a>
