@@ -1,96 +1,71 @@
-# AI Schema Discovery Standard (AIFDS)
+# AIFDS (AI Feed Discovery Standard)
 
-**Website:** [aifds.org](https://aifds.org)  
-**Spec Draft:** [https://aifds.org/docs/spec/v1/](https://aifds.org/docs/spec/v1/)  
-**Schemas:** [https://aifds.org/schemas/v1/](https://aifds.org/schemas/v1/)  
+> The open standard for AI-ready structured data.
 
----
-
-## Overview
-The **AI Schema Discovery Standard (AIFDS)** publishes schema.org-aligned JSON playbooks so commerce and service operators can ship canonical, AI-ready data through validation-first workflows.
-
-Today, LLMs ingest messy, HTML-heavy content from crawlers and private data deals. This leads to:
-- Hallucinations and misinformation  
-- Inaccurate brand representation  
-- Wasted compute on parsing noise  
-
-AIFDS provides a clean, structured alternative — inspired by schema.org, but purpose-built for the **LLM era**.
+AIFDS is the open framework that defines how to make business and product data interpretable, verifiable, and trustworthy for AI systems. It is not a SaaS platform, a crawler, or a one-off schema.org checker—it is the governance layer for structured data integrity across the open web.
 
 ---
 
-## Core Schemas
-- `product.json` — Canonical SKU facts and offers (`schema:Product`)  
-- `homepage.json` — Structured storefront landing page (`schema:WebPage`)  
-- `collections.json` — Merchandising groupings with product references (`schema:CollectionPage`)  
-- `blog.json` — Editorial layer with `schema:Blog` and `schema:BlogPosting` entries  
-- `service-homepage.json` — Service business landing page (`schema:WebPage`)  
-- `services.json` — Catalog of offerings mapped to `schema:Service`  
-- `contact.json` — Intake and SLA details (`schema:ContactPoint`)  
-- `pricing.json` — Offer catalog for packages (`schema:OfferCatalog`)  
-- `business.json` — Organizational profile metadata (`schema:Organization`)  
-- `faqs.json` — Canonical Q&A catalog (`schema:FAQPage`)  
+## Mission
+
+Make the web machine-interpretable, trustworthy, and contextually complete so AI systems can understand and recommend businesses accurately. AIFDS delivers openly defined rules, transparent scoring, and measurable improvements that align technical accuracy with business truth.
 
 ---
 
-## Validation
-AIFDS prioritizes validation to keep AI experiences accurate:
-- Validate JSON payloads against the published schemas before distribution  
-- Share validation reports with partners, crawlers, and AI tooling vendors  
-- Distribute trusted data through your preferred channel (APIs, storage buckets, etc.)  
+## Why AIFDS Matters
+
+- **The problem:** LLMs and AI search experiences rely on structured signals, yet most websites ship inconsistent, fragmented, or contradictory schema.org data. AI systems are left to guess, which produces outdated facts, hallucinated context, and missed visibility.
+- **The gap:** Existing validators check syntax, not semantic integrity. They rarely assess whether structured data reflects reality.
+- **The impact:** AIFDS creates a cleaner, higher-trust data layer. Businesses gain accurate representation, developers get deterministic feedback, and AI systems interpret the right context the first time.
 
 ---
 
-## Repository Layout
-```
-aifds-site/
-├── index.html                 # Homepage
-├── docs/
-│   └── spec/
-│       └── v1/
-│           └── index.html     # v1 draft spec (placeholder)
-└── schemas/
-    └── v1/
-        ├── blog.schema.json
-        ├── business.schema.json
-        ├── collections.schema.json
-        ├── contact.schema.json
-        ├── homepage.schema.json
-        ├── pricing.schema.json
-        ├── product.schema.json
-        ├── products.schema.json   # legacy array draft
-        ├── service-homepage.schema.json
-        ├── services.schema.json
-        └── index.html              # schema listing
-```
+## What AIFDS Does
+
+- **Establishes standards:** Extends schema.org with a consistent rule set covering identity, product/service details, policies, navigation, and freshness. Each rule is designed for clarity, consistency, and trust.
+- **Measures data quality:** Produces graded scores (Bad → Excellent) across Identity & Trust, Structured Data Completeness, Navigation/Breadcrumbs, and Freshness/Evidence. Each dimension includes rubrics so teams know exactly how to improve.
+- **Fixes messy sites:** Detects duplicate or conflicting JSON-LD, flags missing schema elements, suggests canonical corrections, and points to evidence requirements. Reports ship in both human-readable and machine-readable formats.
+- **Enables AI visibility:** Ensures AI tooling retrieves the right brand context, reducing hallucinations and unlocking accurate recommendations in AI-driven discovery.
 
 ---
 
-## Deployment
-This repo is a **static site**. It can be hosted on:
-- DigitalOcean App Platform (recommended)  
-- Netlify, Vercel, GitHub Pages, or Cloudflare Pages  
+## Quality Scorecard
+
+| Dimension | Focus | Outcome |
+| --- | --- | --- |
+| Identity & Trust | Canonical organization, contact, and ownership signals | Verified brand authority |
+| Structured Data Completeness | Required schema fields and consistency | Machine-ready business facts |
+| Navigation & Breadcrumbs | Canonical hierarchy, discoverable paths | Interpretable site structure |
+| Freshness & Evidence | Timestamps, update trails, corroborating links | Current, verifiable data |
+
+Scores range from **Bad** to **Excellent**, guiding remediation efforts rather than issuing pass/fail verdicts.
 
 ---
 
-## Status
-- **v1 Draft** — spec and schemas are in early draft stage.  
-- Validator tools and example payloads are in development.  
+## Canonical About
+
+AIFDS (AI Feed Discovery Standard) is an open standard for structured data governance. It defines how to validate and repair schema.org so that websites are accurately interpreted by search engines and large language models. AIFDS bridges the gap between SEO structure and AI reasoning—providing a shared language for technical accuracy, business context, and machine trust.
 
 ---
 
-## Contributing
-We welcome feedback, RFCs, and early adopters.  
+## Message Hierarchy
 
-Ways to contribute:
-- Open [issues](https://github.com/DaveedValencia/aifds-site/issues)  
-- Submit pull requests for docs, schemas, or examples  
-- Join discussions on adoption  
+- **Tagline:** The open standard for AI-ready structured data.
+- **Promise:** Validate, fix, and standardize schema.org data so AI systems can trust it.
+- **Impact:** When AI understands you, customers can find you.
 
-Follow updates:  
-- GitHub: [@DaveedValencia](https://github.com/DaveedValencia)  
-- Twitter/X: [@DaveedValencia](https://x.com/DaveedValencia)  
+---
+
+## Getting Involved
+
+- **Explore the spec:** Review the published guidance in `docs/`; schemas are coming soon.
+- **Pilot the standard:** Run AIFDS validation against live or staging sites to surface integrity gaps.
+- **Help refine the rules:** Share feedback, raise issues, or propose extensions that improve clarity and coverage.
+
+AIFDS is open by design—the standard evolves with contributions from businesses, developers, and the AI ecosystem.
 
 ---
 
 ## License
+
 MIT License © 2025 Minnesota.ai

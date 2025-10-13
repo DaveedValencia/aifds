@@ -2,15 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>AI Schema Discovery Standard (AIFDS)</title>
+  <title>AI Feed Discovery Standard (AIFDS)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="AIFDS defines schema.org-aligned JSON schemas so commerce and service data stays AI-ready and verifiable." />
+  <meta name="description" content="AIFDS is the open standard for AI-ready structured data, defining how to validate, score, and repair schema.org so AI systems can trust your site." />
   <link rel="canonical" href="https://aifds.org/" />
   <meta name="robots" content="index,follow" />
 
   <!-- Open Graph / Twitter -->
-  <meta property="og:title" content="AI Schema Discovery Standard (AIFDS)" />
-  <meta property="og:description" content="Schema.org-aligned JSON playbooks for commerce and service data." />
+  <meta property="og:title" content="AI Feed Discovery Standard (AIFDS)" />
+  <meta property="og:description" content="The open standard that makes business data interpretable, verifiable, and trustworthy for AI systems." />
   <meta property="og:url" content="https://aifds.org/" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:creator" content="@DaveedValencia" />
@@ -46,6 +46,8 @@
     .btn.primary { background: var(--accent); color: #0b0c10; border-color: transparent; }
     .btn.secondary { background: #13141a; }
     .btn:hover { filter: brightness(1.1); text-decoration: none; }
+    .btn[aria-disabled="true"] { cursor: default; opacity: 0.6; }
+    .btn[aria-disabled="true"]:hover { filter: none; }
 
     .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; margin-top: 28px; }
     .card { grid-column: span 12; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px; }
@@ -76,83 +78,149 @@
         <span class="badge">v1 (draft)</span>
       </div>
       <nav>
-        <a href="#approach">Approach</a>
-        <a href="#commerce">Commerce</a>
-        <a href="#services">Services</a>
-        <a href="#roadmap">Roadmap</a>
-        <a href="https://github.com/DaveedValencia" rel="noopener" target="_blank">GitHub</a>
+        <a href="#mission">Mission</a>
+        <a href="/docs/spec/v1/">Spec</a>
+        <a href="#contact">Contact</a>
       </nav>
     </header>
 
     <section class="hero">
-      <h1>Define AI-Ready Schemas for Commerce & Services</h1>
-      <p>We publish schema.org-aligned JSON playbooks so Shopify storefronts and service businesses can ship verified facts straight into AI systems.</p>
+      <h1>The open standard for AI-ready structured data.</h1>
+      <p>AIFDS defines how to make business and product data interpretable, verifiable, and trustworthy for AI systems—so brands can publish facts once and be understood everywhere.</p>
       <div class="cta">
-        <a class="btn primary" href="#commerce">Commerce Track</a>
-        <a class="btn secondary" href="#services">Services Track</a>
-        <a class="btn secondary" href="/docs/spec/v1/">Read the Spec</a>
+        <a class="btn primary" href="#mission">Read the Mission</a>
+        <a class="btn secondary" href="/docs/spec/v1/">Explore the Spec</a>
+        <span class="btn secondary" aria-disabled="true">Schemas Coming Soon</span>
       </div>
     </section>
 
-    <section id="approach" class="grid">
+    <section id="mission" class="grid">
       <div class="card col-6">
-        <h2>Why Schema-First</h2>
-        <p>AI crawlers still scrape HTML and marketing copy, producing hallucinations and eroding brand control. Canonical JSON reverses that drift by giving models structured, testable facts.</p>
+        <h2>Mission</h2>
+        <p>Make the web machine-interpretable, trustworthy, and contextually complete so AI systems can understand and recommend businesses accurately.</p>
       </div>
       <div class="card col-6">
-        <h2>What AIFDS Provides</h2>
-        <ul class="list">
-          <li>Opinionated JSON schema families built on schema.org best practices.</li>
-          <li>Validation guidance for publishing, versioning, and sharing machine-readable payloads.</li>
-          <li>Examples tuned for Shopify storefronts and service operators shipping trusted data.</li>
-        </ul>
+        <h2>Vision</h2>
+        <p>A governing framework for structured data integrity in the AI era—anchored in openly defined rules, transparent scoring, and measurable improvement.</p>
       </div>
     </section>
 
-    <section id="commerce" class="grid">
-      <div class="card col-6">
-        <h2>Commerce Track (Shopify-first)</h2>
-        <p>We are distilling the core surfaces that power ecommerce discovery — from PDP accuracy to merchandising experiences — into portable, validated JSON schemas.</p>
-      </div>
-      <div class="card col-6">
-        <h2>Artifacts in Draft</h2>
-        <ul class="list">
-          <li><code>product.json</code> — canonical SKU facts, availability, and merchandising tags.</li>
-          <li><code>homepage.json</code> — hero messaging, featured collections, and promotional states.</li>
-          <li><code>collections.json</code> — thematic groupings with filters, sort orders, and SEO handles.</li>
-          <li><code>blog.json</code> — editorial summaries, canonical URLs, and cross-linking metadata.</li>
-        </ul>
-      </div>
-    </section>
-
-    <section id="services" class="grid">
-      <div class="card col-6">
-        <h2>Service Track</h2>
-        <p>Service operators need a shared language for offers, delivery proof, and ROI. The services track captures how agencies and studios communicate their value to AI surfaces.</p>
-      </div>
-      <div class="card col-6">
-        <h2>Draft Artifacts</h2>
-        <ul class="list">
-          <li><code>service-homepage.json</code> — positioning, proof points, testimonials, and CTAs.</li>
-          <li><code>services.json</code> — catalog of offerings, deliverables, pricing models, and SLAs.</li>
-          <li><code>contact.json</code> — intake workflows, preferred channels, and response windows.</li>
-          <li><code>pricing.json</code> — packaged rates, prerequisites, and discount logic.</li>
-        </ul>
-      </div>
-    </section>
-
-    <section id="roadmap" class="grid">
-      <div class="card col-8">
-        <h2>What’s Next</h2>
-        <ul class="list">
-          <li>Publish reference payloads and validation checklists for each schema family.</li>
-          <li>Extend coverage to subscriptions, marketplaces, and post-purchase experiences.</li>
-          <li>Codify change management so partners can diff and verify updates in real time.</li>
-        </ul>
+    <section id="why" class="grid">
+      <div class="card col-4">
+        <h2>The Problem</h2>
+        <p>AI search and discovery rely on structured signals, yet most sites ship inconsistent, fragmented schema.org data, forcing models to guess.</p>
       </div>
       <div class="card col-4">
+        <h2>The Gap</h2>
+        <p>Legacy validators stop at syntax. They rarely check whether structured data reflects truth, leaving conflicts and contradictions unresolved.</p>
+      </div>
+      <div class="card col-4">
+        <h2>The Impact</h2>
+        <p>AIFDS delivers a cleaner, higher-trust data layer so businesses are represented accurately, developers get deterministic feedback, and AI systems source the facts they need.</p>
+      </div>
+    </section>
+
+    <section id="capabilities" class="grid">
+      <div class="card col-6">
+        <h2>Establish Standards</h2>
+        <ul class="list">
+          <li>Extends schema.org with rule sets for identity, product/service detail, policies, navigation, and freshness.</li>
+          <li>Defines what “AI-ready structure” means across canonical signals and evidence.</li>
+        </ul>
+      </div>
+      <div class="card col-6">
+        <h2>Measure Quality</h2>
+        <ul class="list">
+          <li>Grades structured data (Bad → Excellent) across Identity &amp; Trust, Completeness, Navigation, and Freshness.</li>
+          <li>Pairs each score with a rubric so teams know what to fix, not just what failed.</li>
+        </ul>
+      </div>
+      <div class="card col-6">
+        <h2>Repair Conflicts</h2>
+        <ul class="list">
+          <li>Detects duplicate or contradictory JSON-LD blocks and flags missing schema elements.</li>
+          <li>Suggests canonical corrections and evidence links, outputting human and machine-readable reports.</li>
+        </ul>
+      </div>
+      <div class="card col-6">
+        <h2>Enable AI Visibility</h2>
+        <ul class="list">
+          <li>Enforces consistency so AI systems retrieve the right brand context.</li>
+          <li>Reduces hallucinations and elevates discoverability across AI-driven experiences.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="scorecard" class="grid">
+      <div class="card col-12">
+        <h2>Quality Scorecard</h2>
+        <p class="muted">Scores range from Bad to Excellent, guiding remediation instead of issuing pass/fail verdicts.</p>
+        <div style="overflow-x:auto; margin-top:16px;">
+          <table style="width:100%; border-collapse:collapse;">
+            <thead>
+              <tr style="text-align:left; border-bottom:1px solid var(--border);">
+                <th style="padding:10px 8px;">Dimension</th>
+                <th style="padding:10px 8px;">Focus</th>
+                <th style="padding:10px 8px;">Outcome</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border);">
+                <td style="padding:10px 8px;">Identity &amp; Trust</td>
+                <td style="padding:10px 8px;">Canonical organization, contact, and ownership signals</td>
+                <td style="padding:10px 8px;">Verified brand authority</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border);">
+                <td style="padding:10px 8px;">Structured Data Completeness</td>
+                <td style="padding:10px 8px;">Required schema fields and canonical consistency</td>
+                <td style="padding:10px 8px;">Machine-ready business facts</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border);">
+                <td style="padding:10px 8px;">Navigation &amp; Breadcrumbs</td>
+                <td style="padding:10px 8px;">Canonical hierarchy and discoverable pathways</td>
+                <td style="padding:10px 8px;">Interpretable site structure</td>
+              </tr>
+              <tr>
+                <td style="padding:10px 8px;">Freshness &amp; Evidence</td>
+                <td style="padding:10px 8px;">Timestamps, update trails, and corroborating links</td>
+                <td style="padding:10px 8px;">Current, verifiable data</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="card col-6">
+        <h2>Canonical About</h2>
+        <p>AIFDS (AI Feed Discovery Standard) is an open standard for structured data governance. It defines how to validate and repair schema.org so that websites are accurately interpreted by search engines and large language models. AIFDS bridges the gap between SEO structure and AI reasoning—providing a shared language for technical accuracy, business context, and machine trust.</p>
+      </div>
+      <div class="card col-6">
+        <h2>Message Hierarchy</h2>
+        <ul class="list">
+          <li><strong>Tagline:</strong> The open standard for AI-ready structured data.</li>
+          <li><strong>Promise:</strong> Validate, fix, and standardize schema.org data so AI systems can trust it.</li>
+          <li><strong>Impact:</strong> When AI understands you, customers can find you.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="get-involved" class="grid">
+      <div class="card col-8">
         <h2>Get Involved</h2>
-        <p>Contribute feedback, propose schema additions, or pilot the drafts with your storefront or studio. Reach out on GitHub or X — this standard grows with practitioners.</p>
+        <ul class="list">
+          <li>Review the spec and schemas, then pilot validation on your site or client projects.</li>
+          <li>Share validation results and propose rule refinements via GitHub issues or RFCs.</li>
+          <li>Contribute example payloads and remediation guides to expand the knowledge base.</li>
+        </ul>
+      </div>
+      <div class="card col-4" id="contact">
+        <h2>Stay Connected</h2>
+        <p class="muted">Stay updated with the project and subscribe to the newsletter.</p>
+        <p><a href="https://github.com/DaveedValencia" rel="noopener" target="_blank">GitHub</a><br />
+        <a href="https://x.com/DaveedValencia" rel="noopener" target="_blank">@DaveedValencia</a><br />
+        <a href="https://daveedvalencia.com" rel="noopener" target="_blank">daveedvalencia.com</a></p>
       </div>
     </section>
 
@@ -160,14 +228,14 @@
       <div class="footgrid">
         <div>
           <strong>AIFDS</strong><br />
-          <span class="muted">AI Schema Discovery Standard</span>
+          <span class="muted">AI Feed Discovery Standard</span>
         </div>
         <div>
           <span class="muted">Operated by</span> <a href="https://x.com/DaveedValencia" target="_blank">David Valencia</a>
         </div>
         <div>
           <a href="/docs/spec/v1/">Spec</a> ·
-          <a href="/schemas/v1/">Schemas</a> ·
+          <span class="muted">Schemas (coming soon)</span> ·
           <a href="https://github.com/DaveedValencia" rel="noopener" target="_blank">GitHub</a> ·
           <a href="https://x.com/DaveedValencia" rel="noopener" target="_blank">@DaveedValencia</a>
         </div>
