@@ -15,11 +15,13 @@
 ## 3. Current Surface Inventory
 | Surface | Path | Intent | Notes |
 | --- | --- | --- | --- |
-| Homepage | `index.html` | Public mission narrative, scoring overview, call-to-actions | Nav = Mission / Spec / Contact. Contact anchors to “Stay Connected.” |
-| Spec Draft | `docs/spec/v1/index.html` | Governance model, scoring rubric, schema requirements (schemas TBD) | No functional schema links until drafts exist. |
-| README | `README.md` | Public repo overview & storytelling anchor | Mirrors homepage language; references spec and “schemas coming soon.” |
-| Sitemap | `sitemap.xml` | Search inclusion for current public pages | Must update when new pages publish. |
-| Robots | `robots.txt` | Allow all crawlers, advertise sitemap | Keep in sync with sitemap filename/location. |
+| Homepage | `index.html` | Public mission narrative, current focus, CTAs | Nav links: Mission, Spec, Schemas, Contact. Validator CTA disabled until launch. |
+| Schema Hub | `docs/schemas/index.html` | Directory of profiles with inline JSON viewers | Fetches schema/example files; ensure CORS-safe URLs when deploying. |
+| Ecommerce Profile Page | `docs/schemas/ecommerce/index.html` | Detailed homepage profile overview and copyable JSON | Auto-loads `homepage.profile.json` + `homepage.min.json`. |
+| Spec Draft | `docs/spec/v1/index.html` | Governance model, scoring rubric, schema requirements | References schema hub; keep rule changes in sync with `spec/conformance.md`. |
+| README | `README.md` | Repo summary, project status, contribution guide | Updated with project snapshot and active focus list. |
+| Sitemap | `sitemap.xml` | Search inclusion for public pages and assets | Includes schema hub, ecommerce profile, raw schema + example, docs + spec. |
+| Robots | `robots.txt` | Allow all crawlers, advertise sitemap | Keep sitemap URL in sync after deployments. |
 
 ## 4. Change Checklist (Run for Every Content/Page Update)
 1. **Narrative Alignment**
@@ -39,10 +41,12 @@
    - If schemas are introduced, create `/schemas/` with actual drafts and relink all placeholders.
 
 ## 5. Outstanding & Upcoming Work
-- **Schema Drafts:** `/schemas/ecommerce/homepage.profile.json` live with corresponding `/docs/schemas/` hub. Collections/Product profiles next.
-- **Validation Samples:** Plan sample payloads and report templates to demonstrate Bad/Average/Good/Excellent scoring.
-- **Newsletter CTA:** Future enhancement to add direct signup link in “Stay Connected.”
-- **Navigation JSON:** Placeholder mentioned in spec (5.5). Create actual artifact when requirements stabilize.
+- **Validator MVP (In Progress):** Build submission UI, wire JSON Schema validation, output Bad / Average / Good / Excellent report with rule references.
+- **Ecommerce Collections/Product Profiles (Drafting):** Replicate homepage pattern (`schemas/ecommerce/*.profile.json` + examples + docs page).
+- **Service Business Profile (Planned):** Capture requirements once ecommerce set is stable; create `/schemas/services/` tree.
+- **Validation Samples:** Add passing/failing payloads and report templates to illustrate scoring bands.
+- **Navigation JSON:** Implement canonical navigation artifact referenced in spec §5.5 when requirements finalize.
+- **Newsletter CTA:** Replace placeholder copy with subscription link when ready.
 
 ## 6. Reference Links
 - Production site: `https://aifds.org/`
@@ -51,5 +55,6 @@
 - Social: `https://github.com/DaveedValencia`, `https://x.com/DaveedValencia`
 
 ## 7. Version Notes
+- **2025-01-??:** Published schema hub, ecommerce homepage profile, inline JSON viewers; refreshed homepage narrative and README snapshot; added GA tracking.
 - **2025-??-??:** Reset mission-first narrative (homepage, README, spec). Schemas marked as “coming soon.” Added sitemap & robots.
 - Update this log with date + summary whenever major changes ship.
