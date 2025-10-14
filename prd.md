@@ -39,7 +39,7 @@
    - If schemas are introduced, create `/schemas/` with actual drafts and relink all placeholders.
 
 ## 5. Outstanding & Upcoming Work
-- **Schema Drafts:** `/schemas/` removed; reintroduce once governance-ready. Prepare messaging update + sitemap entry at that time.
+- **Schema Drafts:** `/schemas/ecommerce/homepage.profile.json` live with corresponding `/docs/schemas/` hub. Collections/Product profiles next.
 - **Validation Samples:** Plan sample payloads and report templates to demonstrate Bad/Average/Good/Excellent scoring.
 - **Newsletter CTA:** Future enhancement to add direct signup link in “Stay Connected.”
 - **Navigation JSON:** Placeholder mentioned in spec (5.5). Create actual artifact when requirements stabilize.

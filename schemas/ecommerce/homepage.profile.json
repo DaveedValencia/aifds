@@ -1,0 +1,656 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aifds.org/schemas/ecommerce/homepage.profile.json",
+  "title": "AIFDS Ecommerce Homepage Profile",
+  "description": "Validation schema for the canonical homepage JSON-LD payload defined by the AI Feed Discovery Standard ecommerce profile. Ensures the root page publishes a single Organization/LocalBusiness, WebSite, and WebPage graph with required trust and discovery signals.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "@context",
+    "@graph"
+  ],
+  "properties": {
+    "@context": {
+      "type": "string",
+      "const": "https://schema.org",
+      "description": "Global JSON-LD context. MUST be https://schema.org."
+    },
+    "@graph": {
+      "type": "array",
+      "description": "Homepage graph describing the authoritative organization/local business, the site container, and the root web page.",
+      "minItems": 3,
+      "items": {
+        "$ref": "#/$defs/homepageNode"
+      },
+      "allOf": [
+        {
+          "contains": {
+            "$ref": "#/$defs/organizationNode"
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "$ref": "#/$defs/websiteNode"
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "$ref": "#/$defs/webpageNode"
+          },
+          "minContains": 1,
+          "maxContains": 1
+        }
+      ]
+    }
+  },
+  "$defs": {
+    "homepageNode": {
+      "title": "Homepage Graph Node",
+      "description": "One of Organization/LocalBusiness, WebSite, or WebPage entries defined by the AIFDS homepage requirements.",
+      "oneOf": [
+        {
+          "$ref": "#/$defs/organizationNode"
+        },
+        {
+          "$ref": "#/$defs/websiteNode"
+        },
+        {
+          "$ref": "#/$defs/webpageNode"
+        }
+      ]
+    },
+    "organizationNode": {
+      "title": "Organization Node",
+      "description": "Authoritative organization or local business that owns the site.",
+      "type": "object",
+      "required": [
+        "@type",
+        "@id",
+        "name",
+        "url",
+        "logo",
+        "sameAs",
+        "contactPoint"
+      ],
+      "properties": {
+        "@type": {
+          "type": "string",
+          "enum": [
+            "Organization",
+            "LocalBusiness"
+          ],
+          "description": "Organization class. Use LocalBusiness when the entity serves customers in person."
+        },
+        "@id": {
+          "type": "string",
+          "pattern": "^https://[^/]+/#.+$",
+          "description": "Stable node identifier that anchors the organization within the domain."
+        },
+        "name": {
+          "type": "string",
+          "description": "Brand-facing name of the organization."
+        },
+        "legalName": {
+          "type": "string",
+          "description": "Registered legal name. SHOULD be present for additional trust."
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https://[^/]+/.*$",
+          "description": "Canonical organization URL. MUST live on the same domain as the homepage."
+        },
+        "logo": {
+          "$ref": "#/$defs/imageObject",
+          "description": "Primary logo asset rendered as an ImageObject."
+        },
+        "sameAs": {
+          "type": "array",
+          "description": "Authoritative third-party profiles. SHOULD include two or more entries.",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        },
+        "contactPoint": {
+          "type": "array",
+          "description": "At least one contact channel with contactType and email/telephone.",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/contactPoint"
+          }
+        },
+        "brand": {
+          "description": "Brand information for the organization.",
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "object",
+              "required": [
+                "@type",
+                "name"
+              ],
+              "properties": {
+                "@type": {
+                  "type": "string",
+                  "const": "Brand"
+                },
+                "name": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false
+            }
+          ]
+        },
+        "foundingDate": {
+          "type": "string",
+          "format": "date",
+          "description": "Organization founding date (ISO-8601)."
+        },
+        "slogan": {
+          "type": "string",
+          "description": "Verified slogan or tagline."
+        },
+        "areaServed": {
+          "description": "Geographic service coverage.",
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ]
+        },
+        "knowsAbout": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Domains of expertise represented by concise, non-spammy terms."
+        },
+        "address": {
+          "$ref": "#/$defs/postalAddress",
+          "description": "Registered or mailing address when available."
+        }
+      },
+      "additionalProperties": false
+    },
+    "websiteNode": {
+      "title": "WebSite Node",
+      "description": "Container for the site and search experience metadata.",
+      "type": "object",
+      "required": [
+        "@type",
+        "@id",
+        "url",
+        "name",
+        "publisher",
+        "potentialAction"
+      ],
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "WebSite"
+        },
+        "@id": {
+          "type": "string",
+          "pattern": "^https://[^/]+/#.+$",
+          "description": "Stable node identifier for the WebSite."
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https://[^/]+/.*$",
+          "description": "Canonical site URL."
+        },
+        "name": {
+          "type": "string",
+          "description": "Human-readable site name."
+        },
+        "alternateName": {
+          "type": "string",
+          "description": "Common shorthand or abbreviation."
+        },
+        "inLanguage": {
+          "$ref": "#/$defs/language",
+          "description": "BCP-47 language tag for the primary site language."
+        },
+        "publisher": {
+          "$ref": "#/$defs/idReference",
+          "description": "Reference to the organization node via @id."
+        },
+        "potentialAction": {
+          "$ref": "#/$defs/searchAction",
+          "description": "Site search action template exposing {search_term_string}."
+        }
+      },
+      "additionalProperties": false
+    },
+    "webpageNode": {
+      "title": "WebPage Node",
+      "description": "Homepage specific metadata.",
+      "type": "object",
+      "required": [
+        "@type",
+        "@id",
+        "url",
+        "name",
+        "description",
+        "isPartOf"
+      ],
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "WebPage"
+        },
+        "@id": {
+          "type": "string",
+          "pattern": "^https://[^/]+/#.+$",
+          "description": "Stable node identifier for the homepage."
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https://[^/]+/.*$",
+          "description": "Canonical homepage URL."
+        },
+        "name": {
+          "type": "string",
+          "description": "Hero headline or page title rendered on the homepage."
+        },
+        "description": {
+          "type": "string",
+          "description": "Clear, non-promissory summary of what the site offers."
+        },
+        "inLanguage": {
+          "$ref": "#/$defs/language",
+          "description": "BCP-47 language tag for the page."
+        },
+        "isPartOf": {
+          "$ref": "#/$defs/idReference",
+          "description": "Reference to the parent WebSite node."
+        },
+        "primaryImageOfPage": {
+          "description": "Hero or representative image. Either embed or reference an ImageObject.",
+          "oneOf": [
+            {
+              "$ref": "#/$defs/imageObject"
+            },
+            {
+              "$ref": "#/$defs/idReference"
+            }
+          ]
+        },
+        "breadcrumb": {
+          "$ref": "#/$defs/breadcrumbList",
+          "description": "Breadcrumb trail with at least the homepage entry."
+        },
+        "about": {
+          "description": "Entities or topics covered by the page.",
+          "oneOf": [
+            {
+              "type": "object"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            }
+          ]
+        },
+        "datePublished": {
+          "type": "string",
+          "format": "date",
+          "description": "Date the homepage narrative first published."
+        },
+        "dateModified": {
+          "type": "string",
+          "format": "date",
+          "description": "Most recent update date for the homepage."
+        }
+      },
+      "additionalProperties": false
+    },
+    "imageObject": {
+      "title": "ImageObject",
+      "type": "object",
+      "required": [
+        "@type",
+        "url"
+      ],
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "ImageObject"
+        },
+        "@id": {
+          "type": "string",
+          "format": "uri",
+          "description": "Optional identifier that allows other nodes to reference the image."
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https?://.+$",
+          "description": "Absolute URL to the image asset."
+        },
+        "width": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Image width in pixels. Recommended for faster rendering hints."
+        },
+        "height": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Image height in pixels. Recommended for faster rendering hints."
+        },
+        "caption": {
+          "type": "string"
+        },
+        "thumbnailUrl": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https?://.+$"
+        }
+      },
+      "additionalProperties": false
+    },
+    "postalAddress": {
+      "title": "PostalAddress",
+      "type": "object",
+      "required": [
+        "@type"
+      ],
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "PostalAddress"
+        },
+        "streetAddress": {
+          "type": "string"
+        },
+        "addressLocality": {
+          "type": "string"
+        },
+        "addressRegion": {
+          "type": "string"
+        },
+        "postalCode": {
+          "type": "string"
+        },
+        "addressCountry": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "contactPoint": {
+      "title": "ContactPoint",
+      "type": "object",
+      "required": [
+        "@type",
+        "contactType"
+      ],
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "ContactPoint"
+        },
+        "contactType": {
+          "type": "string",
+          "description": "Purpose of the contact channel (e.g., customer support, partnerships)."
+        },
+        "telephone": {
+          "type": "string",
+          "description": "Telephone number with country code."
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "Contact email address."
+        },
+        "areaServed": {
+          "type": "string"
+        },
+        "availableLanguage": {
+          "description": "Languages supported on the contact channel.",
+          "oneOf": [
+            {
+              "$ref": "#/$defs/language"
+            },
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/language"
+              }
+            }
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "anyOf": [
+            {
+              "required": [
+                "telephone"
+              ]
+            },
+            {
+              "required": [
+                "email"
+              ]
+            }
+          ]
+        }
+      ],
+      "additionalProperties": false
+    },
+    "searchAction": {
+      "title": "SearchAction",
+      "type": "object",
+      "required": [
+        "@type",
+        "target",
+        "query-input"
+      ],
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "SearchAction"
+        },
+        "target": {
+          "type": "string",
+          "format": "uri-template",
+          "pattern": "\\{search_term_string\\}",
+          "description": "Search URL template that MUST contain {search_term_string}."
+        },
+        "query-input": {
+          "type": "string",
+          "const": "required name=search_term_string",
+          "description": "Specifies the required query string variable."
+        }
+      },
+      "additionalProperties": false
+    },
+    "idReference": {
+      "title": "JSON-LD ID Reference",
+      "type": "object",
+      "required": [
+        "@id"
+      ],
+      "properties": {
+        "@id": {
+          "type": "string",
+          "pattern": "^https://[^/]+/#.+$"
+        }
+      },
+      "additionalProperties": false
+    },
+    "breadcrumbList": {
+      "title": "BreadcrumbList",
+      "type": "object",
+      "required": [
+        "@type",
+        "itemListElement"
+      ],
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "BreadcrumbList"
+        },
+        "itemListElement": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/listItem"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "listItem": {
+      "title": "Breadcrumb ListItem",
+      "type": "object",
+      "required": [
+        "@type",
+        "position",
+        "item"
+      ],
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "ListItem"
+        },
+        "position": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "item": {
+          "type": "object",
+          "required": [
+            "@id",
+            "name"
+          ],
+          "properties": {
+            "@id": {
+              "type": "string",
+              "format": "uri"
+            },
+            "name": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "language": {
+      "title": "Language Tag",
+      "type": "string",
+      "pattern": "^[A-Za-z]{2,3}(-[A-Za-z0-9]{2,8})*$",
+      "description": "Primary language code in BCP-47 format (e.g., en, en-US)."
+    }
+  },
+  "examples": [
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://aifds.org/#org",
+          "name": "AI Feed Discovery Standard",
+          "legalName": "AI Feed Discovery Standard",
+          "url": "https://aifds.org/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://aifds.org/logo.svg",
+            "width": 512,
+            "height": 512
+          },
+          "sameAs": [
+            "https://github.com/DaveedValencia",
+            "https://x.com/DaveedValencia",
+            "https://daveedvalencia.com"
+          ],
+          "contactPoint": [
+            {
+              "@type": "ContactPoint",
+              "contactType": "general inquiries",
+              "email": "contact@aifds.org",
+              "areaServed": "Worldwide"
+            }
+          ],
+          "brand": {
+            "@type": "Brand",
+            "name": "AIFDS"
+          },
+          "foundingDate": "2025-01-01",
+          "slogan": "The open standard for AI-ready structured data.",
+          "areaServed": "Worldwide",
+          "knowsAbout": [
+            "AI-ready structured data",
+            "schema.org validation",
+            "structured data governance"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://aifds.org/#website",
+          "url": "https://aifds.org/",
+          "name": "AI Feed Discovery Standard",
+          "alternateName": "AIFDS",
+          "inLanguage": "en-US",
+          "publisher": {
+            "@id": "https://aifds.org/#org"
+          },
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://duckduckgo.com/?q=site%3Aaifds.org+{search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://aifds.org/#webpage",
+          "url": "https://aifds.org/",
+          "name": "The open standard for AI-ready structured data.",
+          "description": "AIFDS defines how to validate, fix, and standardize schema.org so AI systems can trust your business data.",
+          "inLanguage": "en-US",
+          "isPartOf": {
+            "@id": "https://aifds.org/#website"
+          },
+          "primaryImageOfPage": {
+            "@id": "https://aifds.org/#logo"
+          },
+          "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "item": {
+                  "@id": "https://aifds.org/",
+                  "name": "Home"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

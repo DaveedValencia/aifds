@@ -6,4 +6,28 @@
   <url>
     <loc>https://aifds.org/docs/spec/v1/</loc>
   </url>
+  <url>
+    <loc>https://aifds.org/docs/index.md</loc>
+  </url>
+  <url>
+    <loc>https://aifds.org/docs/roadmap.md</loc>
+  </url>
+  <url>
+    <loc>https://aifds.org/docs/schemas/</loc>
+  </url>
+  <url>
+    <loc>https://aifds.org/docs/schemas/ecommerce/</loc>
+  </url>
+  <url>
+    <loc>https://aifds.org/schemas/ecommerce/homepage.profile.json</loc>
+  </url>
+  <url>
+    <loc>https://aifds.org/examples/ecommerce/homepage.min.json</loc>
+  </url>
+  <url>
+    <loc>https://aifds.org/spec/conformance.md</loc>
+  </url>
+  <url>
+    <loc>https://aifds.org/spec/versioning.md</loc>
+  </url>
 </urlset>

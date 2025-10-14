@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>AIFDS Schema Hub</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Browse AI Feed Discovery Standard schema profiles, JSON definitions, and example payloads." />
+  <style>
+    :root {
+      --bg: #05060a;
+      --panel: #0b0c10;
+      --border: #161823;
+      --text: #f4f6ff;
+      --muted: #9ea5bb;
+      --accent: #6ea8fe;
+      --accent-2: #9ad0ff;
+      --radius: 14px;
+      --maxw: 960px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    header {
+      padding: 48px 24px 24px;
+      border-bottom: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(17,19,28,0.85) 0%, rgba(11,12,16,0.95) 100%);
+    }
+    main {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 32px 24px 64px;
+    }
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(32px, 5vw, 46px);
+    }
+    h2 {
+      margin-top: 48px;
+      font-size: 28px;
+      border-top: 1px solid var(--border);
+      padding-top: 24px;
+    }
+    p {
+      color: var(--muted);
+      margin: 0 0 16px;
+    }
+    .lede {
+      font-size: 18px;
+      max-width: 720px;
+      color: var(--muted);
+    }
+    a {
+      color: var(--accent-2);
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(110, 168, 254, 0.12);
+      color: var(--accent-2);
+      font-size: 14px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 16px;
+    }
+    th, td {
+      border: 1px solid var(--border);
+      padding: 12px 14px;
+      text-align: left;
+      color: var(--muted);
+      vertical-align: top;
+    }
+    th {
+      color: var(--text);
+      background: rgba(110,168,254,0.12);
+    }
+    ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+    @media (max-width: 640px) {
+      header { padding: 32px 18px 20px; }
+      main { padding: 24px 18px 48px; }
+      th, td { font-size: 14px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="badge">AIFDS ▸ Schema Hub</div>
+    <h1>Schema Library</h1>
+    <p class="lede">Profiles, JSON Schemas, and runnable examples for the AI Feed Discovery Standard. Start with a profile below, copy the JSON in-browser, and wire it into your validation workflow.</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>Available Profiles</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Profile</th>
+            <th>What it Covers</th>
+            <th>Resources</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <strong>Ecommerce</strong><br />
+              <small>Homepage (live), Collections &amp; Product (planned)</small>
+            </td>
+            <td>
+              Governs the root ecommerce experience: organization identity, site search, homepage trust and navigation signals.
+            </td>
+            <td>
+              <ul>
+                <li><a href="/docs/schemas/ecommerce/">Profile index</a></li>
+                <li><a href="/schemas/ecommerce/homepage.profile.json">homepage.profile.json</a></li>
+                <li><a href="/examples/ecommerce/homepage.min.json">homepage.min.json</a></li>
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>How to Work With Profiles</h2>
+      <p>Every profile uses JSON Schema Draft 2020-12. Load the schema file into your validator, validate your JSON-LD payload, and track remediation using the AIFDS conformance tables.</p>
+      <ul>
+        <li>Need rule severity? See <a href="/spec/conformance.md">Conformance tables</a>.</li>
+        <li>Unsure about stability? Review <a href="/spec/versioning.md">versioning and deprecation policy</a>.</li>
+        <li>Want roadmap context? Visit <a href="/docs/roadmap.md">the roadmap</a> for upcoming drafts.</li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>

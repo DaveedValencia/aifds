@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">AIFDS Monogram</title>
+  <desc id="desc">Logo for the AI Feed Discovery Standard</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#122046"/>
+      <stop offset="100%" stop-color="#0b0c10"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" fill="url(#bg)"/>
+  <g fill="none" stroke="#9ad0ff" stroke-width="32" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M128 320h128l64-128h128"/>
+    <path d="M128 320l64-128h128l64 128"/>
+    <path d="M176 416l-48-96"/>
+    <path d="M336 320l48 96"/>
+  </g>
+  <g fill="#e6e8ee" font-family="Helvetica, Arial, sans-serif" font-size="96" font-weight="700" text-anchor="middle">
+    <text x="256" y="190">AIFDS</text>
+  </g>
+</svg>

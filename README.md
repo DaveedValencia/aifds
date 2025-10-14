@@ -42,6 +42,14 @@ Scores range from **Bad** to **Excellent**, guiding remediation efforts rather t
 
 ---
 
+## Schema Drafts
+
+- **Schema Hub ([docs/schemas/](docs/schemas/))** — Human-readable index for every profile plus inline JSON viewers.
+- **Ecommerce Homepage Schema ([schemas/ecommerce/homepage.profile.json](schemas/ecommerce/homepage.profile.json))** — Draft 2020-12 schema for Organization/LocalBusiness, WebSite, and WebPage nodes on the root URL.
+- **Ecommerce Homepage Example ([examples/ecommerce/homepage.min.json](examples/ecommerce/homepage.min.json))** — Minimal JSON-LD payload that passes the homepage profile.
+
+---
+
 ## Canonical About
 
 AIFDS (AI Feed Discovery Standard) is an open standard for structured data governance. It defines how to validate and repair schema.org so that websites are accurately interpreted by search engines and large language models. AIFDS bridges the gap between SEO structure and AI reasoning—providing a shared language for technical accuracy, business context, and machine trust.
@@ -58,7 +66,7 @@ AIFDS (AI Feed Discovery Standard) is an open standard for structured data gover
 
 ## Getting Involved
 
-- **Explore the spec:** Review the published guidance in `docs/`; schemas are coming soon.
+- **Explore the spec:** Review the published guidance in `docs/` and the schema hub in `docs/schemas/`.
 - **Pilot the standard:** Run AIFDS validation against live or staging sites to surface integrity gaps.
 - **Help refine the rules:** Share feedback, raise issues, or propose extensions that improve clarity and coverage.
 
