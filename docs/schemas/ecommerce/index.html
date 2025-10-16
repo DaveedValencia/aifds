@@ -119,6 +119,30 @@
       color: var(--muted);
       margin-top: 8px;
     }
+    .conformance {
+      margin-top: 16px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .conformance table {
+      width: 100%;
+      border-collapse: collapse;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .conformance th,
+    .conformance td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      text-align: left;
+    }
+    .conformance th {
+      background: rgba(110, 168, 254, 0.08);
+      color: var(--text);
+      font-weight: 600;
+    }
     @media (max-width: 640px) {
       header { padding: 32px 18px 20px; }
       main { padding: 24px 18px 48px; }
@@ -166,6 +190,31 @@
           <pre id="homepage-example" data-source="/examples/ecommerce/homepage.min.json">Loading example…</pre>
         </details>
         <p class="note">Copy the JSON directly or download the raw files for integration tests. The schema uses JSON Schema Draft 2020-12.</p>
+        <div class="conformance">
+          <table>
+            <thead>
+              <tr>
+                <th>Severity</th>
+                <th>What the validator checks</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Critical</strong></td>
+                <td>JSON-LD block with `@context`, single Organization/WebSite/WebPage triad, shared HTTPS origin, and at least one contact channel with email or phone.</td>
+              </tr>
+              <tr>
+                <td><strong>Strong</strong></td>
+                <td>Language tags, on-site SearchAction, verified profiles, mainEntityOfPage, logo dimensions, legal identity, and complete contact details.</td>
+              </tr>
+              <tr>
+                <td><strong>Informational</strong></td>
+                <td>Breadcrumb trail, copyright signals, LocalBusiness address/hours, and high-quality topical context (`knowsAbout`).</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="note">See <a href="/spec/conformance.md">spec/conformance.md</a> for the full rule list and scoring guidance.</p>
+        </div>
       </div>
     </section>
   </main>
