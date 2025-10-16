@@ -4,7 +4,7 @@
   "title": "AIFDS Ecommerce Homepage Profile",
   "description": "Validation schema for the canonical homepage JSON-LD payload defined by the AI Feed Discovery Standard ecommerce profile. Ensures the root page publishes a single Organization/LocalBusiness, WebSite, and WebPage graph with required trust and discovery signals.",
   "type": "object",
-  "additionalProperties": false,
+  "unevaluatedProperties": true,
   "required": [
     "@context",
     "@graph"
@@ -63,18 +63,204 @@
         }
       ]
     },
+    "sameDomainIdentifier": {
+      "title": "Same-Domain HTTPS Identifier",
+      "type": "string",
+      "pattern": "^https://[^/]+(?:/[^\\s#]*)?(?:#.*)?$",
+      "description": "Absolute HTTPS URL anchored to the publisher's domain. Fragments are optional."
+    },
+    "publisherObject": {
+      "title": "Inline Publisher Object",
+      "type": "object",
+      "required": [
+        "@type",
+        "name"
+      ],
+      "properties": {
+        "@type": {
+          "type": "string",
+          "enum": [
+            "Organization",
+            "LocalBusiness"
+          ]
+        },
+        "name": {
+          "type": "string"
+        },
+        "@id": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/sameDomainIdentifier"
+            }
+          ]
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https://[^/]+/.*$"
+        }
+      },
+      "unevaluatedProperties": true
+    },
+    "websiteReference": {
+      "title": "Inline WebSite Reference",
+      "type": "object",
+      "required": [
+        "@type"
+      ],
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "WebSite"
+        },
+        "@id": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/sameDomainIdentifier"
+            }
+          ]
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https://[^/]+/.*$"
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "allOf": [
+        {
+          "anyOf": [
+            {
+              "required": [
+                "@id"
+              ]
+            },
+            {
+              "required": [
+                "url"
+              ]
+            }
+          ]
+        }
+      ],
+      "unevaluatedProperties": true
+    },
+    "thingObject": {
+      "title": "Thing Object",
+      "type": "object",
+      "required": [
+        "@type",
+        "name"
+      ],
+      "properties": {
+        "@type": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "@id": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/sameDomainIdentifier"
+            }
+          ]
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "description": {
+          "type": "string"
+        },
+        "sameAs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      },
+      "unevaluatedProperties": true
+    },
+    "entityReference": {
+      "title": "Entity Reference",
+      "oneOf": [
+        {
+          "$ref": "#/$defs/idReference"
+        },
+        {
+          "$ref": "#/$defs/thingObject"
+        }
+      ]
+    },
+    "thingReference": {
+      "title": "Thing Reference",
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "$ref": "#/$defs/idReference"
+        },
+        {
+          "$ref": "#/$defs/thingObject"
+        }
+      ]
+    },
+    "openingHoursSpecification": {
+      "title": "OpeningHoursSpecification",
+      "type": "object",
+      "required": [
+        "@type"
+      ],
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "OpeningHoursSpecification"
+        },
+        "dayOfWeek": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ]
+        },
+        "opens": {
+          "type": "string"
+        },
+        "closes": {
+          "type": "string"
+        },
+        "validFrom": {
+          "type": "string",
+          "format": "date"
+        },
+        "validThrough": {
+          "type": "string",
+          "format": "date"
+        }
+      },
+      "unevaluatedProperties": true
+    },
     "organizationNode": {
       "title": "Organization Node",
-      "description": "Authoritative organization or local business that owns the site.",
+      "description": "Authoritative organization or local business that owns the site. When using LocalBusiness, include address, areaServed, and hoursAvailable wherever accurate.",
       "type": "object",
       "required": [
         "@type",
         "@id",
         "name",
         "url",
-        "logo",
-        "sameAs",
-        "contactPoint"
+        "logo"
       ],
       "properties": {
         "@type": {
@@ -86,8 +272,11 @@
           "description": "Organization class. Use LocalBusiness when the entity serves customers in person."
         },
         "@id": {
-          "type": "string",
-          "pattern": "^https://[^/]+/#.+$",
+          "allOf": [
+            {
+              "$ref": "#/$defs/sameDomainIdentifier"
+            }
+          ],
           "description": "Stable node identifier that anchors the organization within the domain."
         },
         "name": {
@@ -105,13 +294,23 @@
           "description": "Canonical organization URL. MUST live on the same domain as the homepage."
         },
         "logo": {
-          "$ref": "#/$defs/imageObject",
-          "description": "Primary logo asset rendered as an ImageObject."
+          "description": "Primary logo asset. Prefer an ImageObject; plain HTTPS URL also accepted. Pair SVG sources with a raster `thumbnailUrl` or alternate image when available.",
+          "oneOf": [
+            {
+              "$ref": "#/$defs/imageObject"
+            },
+            {
+              "type": "string",
+              "format": "uri",
+              "pattern": "^https://.+$"
+            }
+          ]
         },
         "sameAs": {
           "type": "array",
-          "description": "Authoritative third-party profiles. SHOULD include two or more entries.",
-          "minItems": 1,
+          "description": "Authoritative third-party profiles. Aim for two or more high-trust sources.",
+          "minItems": 2,
+          "uniqueItems": true,
           "items": {
             "type": "string",
             "format": "uri"
@@ -119,7 +318,7 @@
         },
         "contactPoint": {
           "type": "array",
-          "description": "At least one contact channel with contactType and email/telephone.",
+          "description": "Contact channels with contactType and email/telephone.",
           "minItems": 1,
           "items": {
             "$ref": "#/$defs/contactPoint"
@@ -144,9 +343,37 @@
                 },
                 "name": {
                   "type": "string"
+                },
+                "@id": {
+                  "type": "string",
+                  "format": "uri"
+                },
+                "url": {
+                  "type": "string",
+                  "format": "uri",
+                  "pattern": "^https://.+$"
+                },
+                "logo": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/$defs/imageObject"
+                    },
+                    {
+                      "type": "string",
+                      "format": "uri",
+                      "pattern": "^https://.+$"
+                    }
+                  ]
+                },
+                "sameAs": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "format": "uri"
+                  }
                 }
               },
-              "additionalProperties": false
+              "unevaluatedProperties": true
             }
           ]
         },
@@ -185,7 +412,7 @@
           "description": "Registered or mailing address when available."
         }
       },
-      "additionalProperties": false
+      "unevaluatedProperties": true
     },
     "websiteNode": {
       "title": "WebSite Node",
@@ -196,8 +423,7 @@
         "@id",
         "url",
         "name",
-        "publisher",
-        "potentialAction"
+        "publisher"
       ],
       "properties": {
         "@type": {
@@ -205,8 +431,11 @@
           "const": "WebSite"
         },
         "@id": {
-          "type": "string",
-          "pattern": "^https://[^/]+/#.+$",
+          "allOf": [
+            {
+              "$ref": "#/$defs/sameDomainIdentifier"
+            }
+          ],
           "description": "Stable node identifier for the WebSite."
         },
         "url": {
@@ -228,15 +457,46 @@
           "description": "BCP-47 language tag for the primary site language."
         },
         "publisher": {
-          "$ref": "#/$defs/idReference",
-          "description": "Reference to the organization node via @id."
+          "description": "Publisher organization for the site.",
+          "oneOf": [
+            {
+              "$ref": "#/$defs/idReference"
+            },
+            {
+              "$ref": "#/$defs/publisherObject"
+            }
+          ]
         },
         "potentialAction": {
           "$ref": "#/$defs/searchAction",
-          "description": "Site search action template exposing {search_term_string}."
+          "description": "Site search action template exposing {search_term_string}. Strongly recommended."
+        },
+        "copyrightHolder": {
+          "description": "Entity that legally owns the site content.",
+          "oneOf": [
+            {
+              "$ref": "#/$defs/entityReference"
+            },
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "copyrightYear": {
+          "description": "Copyright year associated with the site.",
+          "oneOf": [
+            {
+              "type": "integer",
+              "minimum": 1900
+            },
+            {
+              "type": "string",
+              "pattern": "^[0-9]{4}$"
+            }
+          ]
         }
       },
-      "additionalProperties": false
+      "unevaluatedProperties": true
     },
     "webpageNode": {
       "title": "WebPage Node",
@@ -256,8 +516,11 @@
           "const": "WebPage"
         },
         "@id": {
-          "type": "string",
-          "pattern": "^https://[^/]+/#.+$",
+          "allOf": [
+            {
+              "$ref": "#/$defs/sameDomainIdentifier"
+            }
+          ],
           "description": "Stable node identifier for the homepage."
         },
         "url": {
@@ -279,8 +542,15 @@
           "description": "BCP-47 language tag for the page."
         },
         "isPartOf": {
-          "$ref": "#/$defs/idReference",
-          "description": "Reference to the parent WebSite node."
+          "description": "Reference or inline definition of the parent WebSite node.",
+          "oneOf": [
+            {
+              "$ref": "#/$defs/idReference"
+            },
+            {
+              "$ref": "#/$defs/websiteReference"
+            }
+          ]
         },
         "primaryImageOfPage": {
           "description": "Hero or representative image. Either embed or reference an ImageObject.",
@@ -293,6 +563,45 @@
             }
           ]
         },
+        "mainEntityOfPage": {
+          "description": "Primary entity represented by the homepage. Often points to the Organization.",
+          "oneOf": [
+            {
+              "$ref": "#/$defs/entityReference"
+            },
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/entityReference"
+              },
+              "minItems": 1
+            }
+          ]
+        },
+        "copyrightHolder": {
+          "description": "Entity responsible for homepage content.",
+          "oneOf": [
+            {
+              "$ref": "#/$defs/entityReference"
+            },
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "copyrightYear": {
+          "description": "Copyright year displayed on the homepage.",
+          "oneOf": [
+            {
+              "type": "integer",
+              "minimum": 1900
+            },
+            {
+              "type": "string",
+              "pattern": "^[0-9]{4}$"
+            }
+          ]
+        },
         "breadcrumb": {
           "$ref": "#/$defs/breadcrumbList",
           "description": "Breadcrumb trail with at least the homepage entry."
@@ -301,28 +610,44 @@
           "description": "Entities or topics covered by the page.",
           "oneOf": [
             {
-              "type": "object"
+              "$ref": "#/$defs/thingReference"
             },
             {
               "type": "array",
               "items": {
-                "type": "object"
+                "$ref": "#/$defs/thingReference"
               }
             }
           ]
         },
         "datePublished": {
-          "type": "string",
-          "format": "date",
-          "description": "Date the homepage narrative first published."
+          "description": "Date the homepage narrative first published.",
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "date"
+            },
+            {
+              "type": "string",
+              "format": "date-time"
+            }
+          ]
         },
         "dateModified": {
-          "type": "string",
-          "format": "date",
-          "description": "Most recent update date for the homepage."
+          "description": "Most recent update date for the homepage.",
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "date"
+            },
+            {
+              "type": "string",
+              "format": "date-time"
+            }
+          ]
         }
       },
-      "additionalProperties": false
+      "unevaluatedProperties": true
     },
     "imageObject": {
       "title": "ImageObject",
@@ -344,7 +669,7 @@
         "url": {
           "type": "string",
           "format": "uri",
-          "pattern": "^https?://.+$",
+          "pattern": "^https://.+$",
           "description": "Absolute URL to the image asset."
         },
         "width": {
@@ -363,10 +688,10 @@
         "thumbnailUrl": {
           "type": "string",
           "format": "uri",
-          "pattern": "^https?://.+$"
+          "pattern": "^https://.+$"
         }
       },
-      "additionalProperties": false
+      "unevaluatedProperties": true
     },
     "postalAddress": {
       "title": "PostalAddress",
@@ -395,7 +720,7 @@
           "type": "string"
         }
       },
-      "additionalProperties": false
+      "unevaluatedProperties": true
     },
     "contactPoint": {
       "title": "ContactPoint",
@@ -423,7 +748,17 @@
           "description": "Contact email address."
         },
         "areaServed": {
-          "type": "string"
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ]
         },
         "availableLanguage": {
           "description": "Languages supported on the contact channel.",
@@ -436,6 +771,35 @@
               "items": {
                 "$ref": "#/$defs/language"
               }
+            }
+          ]
+        },
+        "contactOption": {
+          "description": "Qualifiers such as TollFree or HearingImpairedSupported.",
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ]
+        },
+        "hoursAvailable": {
+          "description": "Structured availability windows for the contact channel.",
+          "oneOf": [
+            {
+              "$ref": "#/$defs/openingHoursSpecification"
+            },
+            {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/openingHoursSpecification"
+              },
+              "minItems": 1
             }
           ]
         }
@@ -456,7 +820,7 @@
           ]
         }
       ],
-      "additionalProperties": false
+      "unevaluatedProperties": true
     },
     "searchAction": {
       "title": "SearchAction",
@@ -493,8 +857,11 @@
       ],
       "properties": {
         "@id": {
-          "type": "string",
-          "pattern": "^https://[^/]+/#.+$"
+          "allOf": [
+            {
+              "$ref": "#/$defs/sameDomainIdentifier"
+            }
+          ]
         }
       },
       "additionalProperties": false
@@ -561,7 +928,8 @@
     "language": {
       "title": "Language Tag",
       "type": "string",
-      "pattern": "^[A-Za-z]{2,3}(-[A-Za-z0-9]{2,8})*$",
+      "pattern": "^([A-Za-z]{2,8})(-[A-Za-z0-9]{1,8})*$",
+      "format": "language",
       "description": "Primary language code in BCP-47 format (e.g., en, en-US)."
     }
   },
@@ -577,6 +945,7 @@
           "url": "https://aifds.org/",
           "logo": {
             "@type": "ImageObject",
+            "@id": "https://aifds.org/#logo",
             "url": "https://aifds.org/logo.svg",
             "width": 512,
             "height": 512
@@ -619,9 +988,13 @@
           },
           "potentialAction": {
             "@type": "SearchAction",
-            "target": "https://duckduckgo.com/?q=site%3Aaifds.org+{search_term_string}",
+            "target": "https://aifds.org/search?q={search_term_string}",
             "query-input": "required name=search_term_string"
-          }
+          },
+          "copyrightHolder": {
+            "@id": "https://aifds.org/#org"
+          },
+          "copyrightYear": 2025
         },
         {
           "@type": "WebPage",
@@ -636,6 +1009,9 @@
           "primaryImageOfPage": {
             "@id": "https://aifds.org/#logo"
           },
+          "mainEntityOfPage": {
+            "@id": "https://aifds.org/#org"
+          },
           "breadcrumb": {
             "@type": "BreadcrumbList",
             "itemListElement": [
@@ -648,7 +1024,13 @@
                 }
               }
             ]
-          }
+          },
+          "datePublished": "2025-01-01T00:00:00Z",
+          "dateModified": "2025-01-15T12:34:00Z",
+          "copyrightHolder": {
+            "@id": "https://aifds.org/#org"
+          },
+          "copyrightYear": 2025
         }
       ]
     }

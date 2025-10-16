@@ -4,7 +4,7 @@ This directory houses the human-friendly schema hub that lives on the public sit
 
 ## Available Schemas
 
-- `schemas/ecommerce/homepage.profile.json` – Ensures the root page publishes compliant Organization, WebSite, and WebPage nodes with trust, navigation, and search signals.
+- `schemas/ecommerce/homepage.profile.json` – Ensures the root page publishes compliant Organization, WebSite, and WebPage nodes with trust, navigation, primary-entity, and search signals. Ship SVG logos with a raster or `thumbnailUrl` fallback and include address + hours when the publisher is a `LocalBusiness`.
 - `examples/ecommerce/homepage.min.json` – Minimal JSON-LD payload that passes the homepage profile.
 
 ## Usage

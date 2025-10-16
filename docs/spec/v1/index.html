@@ -176,9 +176,10 @@
           <h3>5.1 Organization &amp; Website</h3>
           <ul>
             <li><strong>File:</strong> <code>business.json</code> and <a href="/schemas/ecommerce/homepage.profile.json"><code>homepage.profile.json</code></a> (draft)</li>
-            <li><strong>Required:</strong> <code>@id</code>, <code>name</code>, <code>url</code>, <code>logo</code>, <code>contactPoint</code>, <code>foundingDate</code>, <code>sameAs</code></li>
-            <li><strong>Recommended:</strong> <code>parentOrganization</code>, <code>hasCredential</code>, <code>awards</code>, <code>serviceArea</code></li>
-            <li><strong>Advisory:</strong> <code>brand</code>, <code>purpose</code>, <code>mission</code></li>
+            <li><strong>Required:</strong> <code>@id</code>, <code>name</code>, <code>url</code>, <code>logo</code></li>
+            <li><strong>Recommended:</strong> <code>contactPoint</code>, <code>sameAs</code> (2+ authoritative profiles), <code>potentialAction</code>, <code>mainEntityOfPage</code>, <code>foundingDate</code></li>
+            <li><strong>Advisory:</strong> <code>brand</code>, <code>purpose</code>, <code>mission</code>, <code>thumbnailUrl</code>/<code>logo</code> raster fallback, <code>copyrightYear</code>/<code>copyrightHolder</code></li>
+            <li><strong>Guidance:</strong> When <code>@type</code> = <code>LocalBusiness</code>, include accurate <code>address</code>, <code>openingHours</code>, and <code>areaServed</code> signals wherever possible.</li>
             <li><strong>Evidence:</strong> Link to legal documents, certification listings, and canonical policy pages.</li>
           </ul>
         </div>
