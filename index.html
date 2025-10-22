@@ -4,9 +4,10 @@
   <meta charset="utf-8" />
   <title>AIFDS — AI Feed Discovery Standard</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="AIFDS ships lightweight JSON standards so AI agents instantly understand your business. Start with the ecommerce layout and expand into new industries." />
+  <meta name="description" content="AIFDS publishes structured JSON templates so AI agents instantly understand your business. Start with ecommerce, map new industries, and validate coverage with confidence." />
   <link rel="canonical" href="https://aifds.org/" />
   <meta name="robots" content="index,follow" />
+  <link rel="stylesheet" href="/assets/styles.css" />
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-P2LQY85LN1"></script>
@@ -16,158 +17,200 @@
     gtag('js', new Date());
     gtag('config', 'G-P2LQY85LN1');
   </script>
-
-  <style>
-    :root {
-      --bg: #0b0c10;
-      --card: #111217;
-      --text: #e6e8ee;
-      --muted: #a7adbb;
-      --accent: #6ea8fe;
-      --accent-2: #9ad0ff;
-      --border: #20222b;
-      --radius: 14px;
-      --maxw: 1100px;
-    }
-    * { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif; }
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 24px; }
-    header { padding: 28px 0 10px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-    .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: 0.2px; }
-    .badge { font-size: 12px; color: var(--muted); }
-    nav a { margin-left: 16px; color: var(--text); opacity: 0.9; }
-    nav a:hover { opacity: 1; }
-
-    .hero { margin-top: 30px; padding: 48px; background: linear-gradient(180deg, #12131a 0%, #0f1016 100%); border: 1px solid var(--border); border-radius: var(--radius); text-align: center; }
-    .hero h1 { margin: 0 0 10px; font-size: clamp(32px, 5vw, 48px); line-height: 1.1; }
-    .hero p { margin: 0 auto; max-width: 760px; color: var(--muted); font-size: 18px; }
-    .cta { margin-top: 28px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-    .btn { display: inline-block; padding: 12px 18px; border-radius: 10px; border: 1px solid var(--border); background: #1a1b22; color: var(--text); font-weight: 600; }
-    .btn.primary { background: var(--accent); color: #0b0c10; border-color: transparent; }
-    .btn.secondary { background: #13141a; }
-    .btn:hover { filter: brightness(1.1); text-decoration: none; }
-    .btn[aria-disabled="true"] { cursor: default; opacity: 0.6; }
-    .btn[aria-disabled="true"]:hover { filter: none; }
-
-    .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; margin-top: 28px; }
-    .card { grid-column: span 12; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; }
-    .card h2 { margin: 4px 0 12px; font-size: 24px; }
-    .card p { color: var(--muted); margin: 0 0 10px; }
-    .list { margin: 8px 0 0; padding-left: 18px; color: var(--muted); }
-    .muted { color: var(--muted); }
-
-    @media (min-width: 880px) {
-      .col-6 { grid-column: span 6; }
-      .col-4 { grid-column: span 4; }
-      .col-8 { grid-column: span 8; }
-    }
-
-    footer { margin: 48px 0 24px; padding-top: 16px; border-top: 1px solid var(--border); color: var(--muted); font-size: 14px; }
-    footer a { color: var(--accent-2); }
-    .footgrid { display: grid; gap: 10px; grid-template-columns: repeat(12, 1fr); }
-    .footgrid > div { grid-column: span 12; }
-    @media (min-width: 880px) { .footgrid > div { grid-column: span 4; } }
-    code { background: #0f1016; padding: 2px 6px; border: 1px solid var(--border); border-radius: 6px; }
-  </style>
 </head>
-<body>
-  <div class="wrap">
-    <header>
-      <div class="brand">
+<body data-page="home">
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="brand" href="/">
         <span>AIFDS</span>
-        <span class="badge">0.1 · experimental</span>
-      </div>
-      <nav>
-        <a href="/docs/">Docs</a>
-        <a href="/schemas/homepage.schema.json">Schemas</a>
-        <a href="/docs/validator.html">Validator</a>
-        <a href="#contact">Contact</a>
+        <span class="badge">0.2 · beta</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
+        Menu
+      </button>
+      <nav class="site-nav" id="primary-nav" aria-label="Primary">
+        <ul class="nav-list">
+          <li><a class="nav-link" data-nav="docs" href="/docs/">Docs</a></li>
+          <li><a class="nav-link" data-nav="industries" href="/industries/">Industries</a></li>
+          <li><a class="nav-link" data-nav="validator" href="/validator.html">Validator</a></li>
+          <li><a class="nav-link" data-nav="contact" href="/contact.html">Contact</a></li>
+        </ul>
       </nav>
-    </header>
+    </div>
+  </header>
 
+  <main class="site-wrapper">
     <section class="hero">
-      <h1>Define the JSON agents actually need.</h1>
-      <p>AIFDS replaces generic schema.org payloads with concise, factual JSON layouts. Start with ecommerce and expand into new industries without rewriting your stack.</p>
-      <div class="cta">
-        <a class="btn primary" href="/docs/">Read the docs</a>
-        <a class="btn secondary" href="/schemas/homepage.schema.json">Download homepage schema</a>
+      <p class="pill">Structured JSON for agent-first experiences</p>
+      <h1>Feed intelligent agents with actionable truth.</h1>
+      <p>AIFDS packages the facts agents need—ownership, operations, actions, and credibility—into predictable JSON templates. Serve the right answers instantly and evolve page types without refactoring your stack.</p>
+      <div class="cta-group">
+        <a class="btn btn-primary" href="/docs/">Explore the docs</a>
+        <a class="btn" href="/industries/">See industry playbooks</a>
       </div>
     </section>
 
-    <section class="grid" id="overview">
-      <div class="card col-6">
-        <h2>Why agents need AIFDS</h2>
-        <ul class="list">
-          <li>Self-contained facts: ownership, operations, actions, and credibility in one file.</li>
-          <li>Predictable structure that lets LLMs map questions to answers without crawling.</li>
-          <li>Versioned JSON so downstream systems trust freshness signals instantly.</li>
-        </ul>
+    <section class="section" aria-labelledby="why-aifds">
+      <div class="section-header">
+        <h2 id="why-aifds">Why AIFDS matters</h2>
+        <p>We translate messy site structures into portable evidence packets agents can parse, trust, and act on.</p>
       </div>
-      <div class="card col-6">
-        <h2>Current focus: Ecommerce</h2>
-        <ul class="list">
-          <li><strong>Homepage</strong> JSON template (`site → about → credibility → contact → operations → navigation → highlights → actions`).</li>
-          <li>Collections, PDP, and marketing pages staged as placeholders ready for field definitions.</li>
-          <li>Validator design underway to grade readiness (understands, answers, acts).</li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="grid" id="industries">
-      <div class="card col-12">
-        <h2>Industry roadmap</h2>
-        <p>We are sequencing page types by evidence needs. Ecommerce ships first; Services, SaaS, and Media follow using the same modular blocks.</p>
-        <ul class="list">
-          <li><strong>Ecommerce:</strong> homepage, collections, product detail, support content.</li>
-          <li><strong>Services:</strong> credentialed staff, coverage zones, booking actions.</li>
-          <li><strong>SaaS:</strong> pricing tiers, integrations, success metrics.</li>
-          <li><strong>Media:</strong> catalog navigation, licensing, distribution partners.</li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="grid" id="build">
-      <div class="card col-8">
-        <h2>How to build with AIFDS</h2>
-        <ul class="list">
-          <li>Create the matching schema + example pair under `/schemas` and `/examples`.</li>
-          <li>Publish the JSON next to your site so agents can fetch it via HTTPS.</li>
-          <li>Track `version` and `updated_at` to broadcast change history.</li>
-          <li>Map every call-to-action (`search`, `checkout`, `contact`) to a resolvable URL.</li>
-        </ul>
-      </div>
-      <div class="card col-4" id="contact">
-        <h2>Connect</h2>
-        <p class="muted">Questions or want to collaborate on new industries? Reach out.</p>
-        <p><a href="mailto:contact@aifds.org">contact@aifds.org</a><br />
-        <a href="https://github.com/DaveedValencia" rel="noopener" target="_blank">GitHub</a><br />
-        <a href="https://x.com/DaveedValencia" rel="noopener" target="_blank">@DaveedValencia</a></p>
+      <div class="card-grid">
+        <article class="card">
+          <h3>Deterministic structure</h3>
+          <p>Every template delivers the same keys, nesting, and context so LLMs never guess which field holds critical answers.</p>
+          <ul class="highlight-list">
+            <li>Named sections for ownership, credibility, and actions</li>
+            <li>Snake_case keys, described and versioned</li>
+            <li>Extensible blocks matched across industries</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Agent-ready context</h3>
+          <p>Schema fields prioritize facts agents request during conversations, from pricing tiers to support coverage.</p>
+          <ul class="highlight-list">
+            <li>Evidence slots for reviews, licenses, partners</li>
+            <li>Action objects with clear success URLs</li>
+            <li>Metadata for freshness, versions, and SLA</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Publish once, stay current</h3>
+          <p>Templates align with your CMS and data warehouse so updates cascade to agent ecosystems with zero copywriting.</p>
+          <ul class="highlight-list">
+            <li>JSON examples and schema definitions</li>
+            <li>Validator roadmap for readiness scoring</li>
+            <li>Roadmapped industries share core layout</li>
+          </ul>
+        </article>
       </div>
     </section>
 
-    <footer>
-      <div class="footgrid">
-        <div>
-          <strong>AIFDS</strong><br />
-          <span class="muted">AI Feed Discovery Standard</span>
+    <section class="section" aria-labelledby="industries-overview">
+      <div class="section-header">
+        <h2 id="industries-overview">Industries shipping next</h2>
+        <p>Each playbook highlights the cues agents need to advise customers with confidence.</p>
+      </div>
+      <div class="split-grid">
+        <div class="card">
+          <h3>Ecommerce</h3>
+          <p>Showcase flagship products, credibility signals, and operations so buyers convert within conversational flows.</p>
+          <ul class="highlight-list">
+            <li>Homepage, collections, PDP, editorial, and static pages</li>
+            <li>Inventory, fulfillment, and customer support snapshots</li>
+            <li>Direct link to the validating schema for each page type</li>
+          </ul>
+          <p><a href="/industries/ecommerce/">Explore ecommerce overview →</a></p>
         </div>
-        <div>
-          <span class="muted">Current release:</span> 0.1 draft (ecommerce focus)
-        </div>
-        <div>
-          <a href="/docs/">Docs</a> ·
-          <a href="/schemas/homepage.schema.json">Schemas</a> ·
-          <a href="/docs/validator.html">Validator</a>
+        <div class="card">
+          <h3>Roadmap</h3>
+          <p class="info-callout">Services, SaaS, and Media inherit the same truth slots—only the evidence blocks change.</p>
+          <ul class="highlight-list">
+            <li><strong>Services:</strong> credentialed staff, coverage zones, booking</li>
+            <li><strong>SaaS:</strong> pricing tiers, integrations, success metrics</li>
+            <li><strong>Media:</strong> catalog navigation, licensing, distribution</li>
+          </ul>
+          <p><a href="/industries/">View the full industries roadmap →</a></p>
         </div>
       </div>
-      <div style="margin-top:10px" class="muted">© <span id="year"></span> AIFDS. Built for agent-readable truth.</div>
-    </footer>
-  </div>
+    </section>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+    <section class="section" aria-labelledby="build">
+      <div class="section-header">
+        <h2 id="build">Build once, answer everywhere</h2>
+        <p>Pair schemas with their live JSON, publish beside your site, and hand agents the keys to reliable automation.</p>
+      </div>
+      <div class="card-grid">
+        <article class="card">
+          <h3>Model the truth</h3>
+          <p>Start from the schema, slot in your facts, and validate the response structure before shipping to production agents.</p>
+          <ul class="highlight-list">
+            <li>Keep `version` and `updated_at` in lockstep</li>
+            <li>Back every claim with a source link or identifier</li>
+            <li>Align call-to-action objects with real endpoints</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Ship alongside your site</h3>
+          <p>Host JSON next to the pages it describes. Link from robots.txt, sitemaps, and developer docs for immediate discovery.</p>
+          <ul class="highlight-list">
+            <li>HTTPS accessible at predictable URLs</li>
+            <li>Mirror content with your CMS automation</li>
+            <li>Expose change history via diffable JSON</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Measure readiness</h3>
+          <p>Use the upcoming validator to assess coverage, freshness, and reliability before a conversational agent ever asks.</p>
+          <ul class="highlight-list">
+            <li>Understands: completeness of the evidence map</li>
+            <li>Answers: ability to solve customer questions</li>
+            <li>Acts: confirm every action resolves safely</li>
+          </ul>
+          <p><a href="/validator.html">Track validator progress →</a></p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="connect" aria-labelledby="connect">
+      <div class="section-header">
+        <h2>Stay in the loop</h2>
+        <p>Join the community that’s teaching agents how to do real work with structured evidence.</p>
+      </div>
+      <div class="card-grid">
+        <article class="card">
+          <h3>Collaborate on templates</h3>
+          <p>Have an industry playbook or JSON example to share? We partner with domain experts to solidify coverage.</p>
+          <p><a href="/contact.html">Contact the team →</a></p>
+        </article>
+        <article class="card">
+          <h3>Follow the roadmap</h3>
+          <p>We publish schema updates, validator milestones, and integration guides in the open.</p>
+          <ul class="inline-list">
+            <li><a href="https://x.com/DaveedValencia" target="_blank" rel="noopener">X / Twitter</a></li>
+            <li><a href="https://www.linkedin.com/in/daveedvalencia" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a href="https://github.com/DaveedValencia" target="_blank" rel="noopener">GitHub</a></li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Download reference files</h3>
+          <p>Jump straight into implementation with the schema and hand-tuned examples for each page type.</p>
+          <p><a href="/schemas/homepage.schema.json">Download homepage schema →</a></p>
+          <p><a href="/examples/homepage.json">Download homepage example →</a></p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div>
+        <strong>AIFDS</strong>
+        <p>AI Feed Discovery Standard</p>
+        <p>Structured truth for agent-first customer journeys.</p>
+      </div>
+      <div>
+        <strong>Contact</strong>
+        <p><a href="mailto:contact@aifds.org">contact@aifds.org</a></p>
+        <ul class="inline-list">
+          <li><a href="https://x.com/DaveedValencia" target="_blank" rel="noopener">X / Twitter</a></li>
+          <li><a href="https://www.linkedin.com/in/daveedvalencia" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://github.com/DaveedValencia" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
+      <div>
+        <strong>Navigate</strong>
+        <nav class="footer-nav" aria-label="Footer">
+          <a href="/docs/">Docs</a>
+          <a href="/industries/">Industries</a>
+          <a href="/validator.html">Validator</a>
+          <a href="/contact.html">Contact</a>
+        </nav>
+      </div>
+    </div>
+    <div class="footer-bottom">© <span data-year></span> AIFDS. Built for agent-readable truth.</div>
+  </footer>
+
+  <script src="/assets/main.js" defer></script>
 </body>
 </html>

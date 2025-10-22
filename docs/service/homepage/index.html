@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Service — Homepage Template | AIFDS Docs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Field reference and JSON example for the AIFDS service homepage template. Capture offerings, credentials, coverage zones, and booking options." />
+  <link rel="stylesheet" href="/assets/styles.css" />
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-P2LQY85LN1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-P2LQY85LN1');
+  </script>
+</head>
+<body data-page="docs">
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="brand" href="/">
+        <span>AIFDS</span>
+        <span class="badge">0.2 · beta</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
+        Menu
+      </button>
+      <nav class="site-nav" id="primary-nav" aria-label="Primary">
+        <ul class="nav-list">
+          <li><a class="nav-link" data-nav="docs" href="/docs/">Docs</a></li>
+          <li><a class="nav-link" data-nav="industries" href="/industries/">Industries</a></li>
+          <li><a class="nav-link" data-nav="validator" href="/validator.html">Validator</a></li>
+          <li><a class="nav-link" data-nav="contact" href="/contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="site-wrapper">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="/docs/">Docs</a>
+      <span aria-hidden="true">›</span>
+      <a href="/docs/service/">Service</a>
+      <span aria-hidden="true">›</span>
+      <span>Homepage</span>
+    </nav>
+
+    <header class="section-header">
+      <h1>Service — Homepage</h1>
+      <p class="doc-intro">Introduce your service catalog, team credentials, and booking paths so agents can schedule confidently.</p>
+      <div class="template-meta">
+        <span>Schema: <a href="/schemas/service-homepage.schema.json">service-homepage.schema.json</a></span>
+        <span>Industry overview: <a href="/industries/service/">/industries/service/</a></span>
+      </div>
+    </header>
+
+    <section class="section" aria-labelledby="service-home-fields">
+      <div class="section-header">
+        <h2 id="service-home-fields">Fields</h2>
+        <p>Focus on operational truth—service list, availability, credentials, and escalation paths.</p>
+      </div>
+      <div class="table-wrap" role="region" aria-labelledby="service-home-fields">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Field</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>template</code></td>
+              <td>String identifier; always <code>service_homepage</code>. Required.</td>
+            </tr>
+            <tr>
+              <td><code>version</code></td>
+              <td>Semantic version of the JSON contract. Required.</td>
+            </tr>
+            <tr>
+              <td><code>updated_at</code></td>
+              <td>ISO 8601 timestamp for freshness tracking. Required.</td>
+            </tr>
+            <tr>
+              <td><code>business</code></td>
+              <td>Core profile (<code>name</code>, <code>domain</code>, <code>tagline</code>, <code>logo</code>, <code>years_in_business</code>, <code>licenses</code>).</td>
+            </tr>
+            <tr>
+              <td><code>services</code></td>
+              <td>Array of offerings with <code>id</code>, <code>name</code>, <code>description</code>, <code>duration</code>, <code>base_rate</code>, and <code>evidence</code>.</td>
+            </tr>
+            <tr>
+              <td><code>coverage</code></td>
+              <td>Geographic reach (postal codes, polygons, or coordinates) plus onsite/remote notes.</td>
+            </tr>
+            <tr>
+              <td><code>credentials</code></td>
+              <td>Licenses, insurance, certifications with <code>issuer</code>, <code>id</code>, <code>expires_at</code>.</td>
+            </tr>
+            <tr>
+              <td><code>team</code></td>
+              <td>Roster with <code>name</code>, <code>role</code>, <code>credentials</code>, <code>languages</code>, and <code>bio</code>.</td>
+            </tr>
+            <tr>
+              <td><code>operations</code></td>
+              <td>Response windows, dispatch times, emergency coverage, and tools used onsite.</td>
+            </tr>
+            <tr>
+              <td><code>actions</code></td>
+              <td>Booking, estimate, and support pathways with <code>type</code>, <code>label</code>, <code>url</code>, <code>availability</code>, <code>owner</code>.</td>
+            </tr>
+            <tr>
+              <td><code>evidence</code></td>
+              <td>Reviews, portfolio links, or case studies validating your expertise.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <details class="collapsible">
+      <summary>
+        <span class="summary-label">Example schema — handsomecalavera.com</span>
+        <span class="chevron" aria-hidden="true">&#9662;</span>
+      </summary>
+      <div class="collapsible-content">
+        <pre><code>{
+  "template": "service_homepage",
+  "version": "1.0.0",
+  "updated_at": "2024-02-12T17:05:00Z",
+  "business": {
+    "name": "Handsome Calavera Leather Studio",
+    "domain": "https://www.handsomecalavera.com",
+    "tagline": "On-site leather restoration and custom fittings.",
+    "logo": "https://www.handsomecalavera.com/assets/logo-mark.svg",
+    "years_in_business": 12,
+    "licenses": [
+      { "name": "City of Austin Mobile Artisan Permit", "id": "AUS-ART-8821", "expires_at": "2025-08-01" }
+    ]
+  },
+  "services": [
+    {
+      "id": "HC-SVC-101",
+      "name": "On-site leather conditioning",
+      "description": "Two-person crew restores finish, conditions leather, and replaces hardware as needed.",
+      "duration": "2 hours",
+      "base_rate": { "currency": "USD", "amount": 240 },
+      "evidence": [
+        { "type": "review", "value": "4.95 / 5 average across 612 appointments" },
+        { "type": "before_after_gallery", "url": "https://www.handsomecalavera.com/pages/gallery#conditioning" }
+      ]
+    },
+    {
+      "id": "HC-SVC-204",
+      "name": "Corporate bag outfitting",
+      "description": "Custom embossing and personalization for team gift sets. Includes color consultation.",
+      "duration": "Half-day",
+      "base_rate": { "currency": "USD", "amount": 1250 },
+      "evidence": [
+        { "type": "case_study", "value": "Equinox executive lounge rollout", "url": "https://www.handsomecalavera.com/pages/case-studies#equinox" }
+      ]
+    }
+  ],
+  "coverage": {
+    "primary_regions": [
+      { "type": "postal_codes", "values": ["78701", "78702", "78703", "78704"] }
+    ],
+    "travel_surcharge": {
+      "applies_from": "30 miles",
+      "amount": 75,
+      "notes": "Waived for annual care contracts."
+    },
+    "remote_support": "Virtual assessments offered worldwide via video consult."
+  },
+  "credentials": [
+    {
+      "name": "Leather Working Group Certification",
+      "issuer": "LWG",
+      "id": "LWG-51219",
+      "expires_at": "2026-02-01"
+    },
+    {
+      "name": "Bonded & insured",
+      "issuer": "Austin Mutual",
+      "policy_number": "AM-LEA-44712",
+      "coverage": "General liability up to $2M"
+    }
+  ],
+  "team": [
+    {
+      "name": "Diego Martínez",
+      "role": "Lead artisan",
+      "credentials": ["LWG Master Level", "IICRC Leather Restoration"],
+      "languages": ["en", "es"],
+      "bio": "Former saddle maker overseeing all restoration work."
+    },
+    {
+      "name": "Amelia Chen",
+      "role": "Client concierge",
+      "credentials": ["NFPA Certified", "OSHA 30"],
+      "languages": ["en"],
+      "bio": "Coordinates onsite appointments and safety checks."
+    }
+  ],
+  "operations": {
+    "response_time": "Requests answered within 2 business hours.",
+    "emergency_hours": "7 days a week, 7am–10pm CT for water damage triage.",
+    "tools": ["Mobile finishing station", "Portable ventilation", "Laser embossing unit"]
+  },
+  "actions": [
+    {
+      "type": "booking",
+      "label": "Schedule onsite service",
+      "url": "https://cal.com/handsomecalavera/onsite",
+      "availability": "appointment",
+      "owner": "concierge@handsomecalavera.com"
+    },
+    {
+      "type": "estimate",
+      "label": "Request a custom quote",
+      "url": "https://www.handsomecalavera.com/pages/estimate",
+      "availability": "online",
+      "owner": "projects@handsomecalavera.com"
+    },
+    {
+      "type": "support",
+      "label": "Call dispatch",
+      "url": "tel:+15125550133",
+      "availability": "24/7"
+    }
+  ],
+  "evidence": [
+    {
+      "type": "review",
+      "source": "Google",
+      "value": "4.9 / 5 (368 reviews)",
+      "url": "https://maps.app.goo.gl/handsomecalavera"
+    },
+    {
+      "type": "press",
+      "source": "Texas Monthly",
+      "quote": "The go-to leather studio for Austin hospitality groups.",
+      "url": "https://www.texasmonthly.com/style/handsome-calavera/"
+    }
+  ]
+}</code></pre>
+      </div>
+    </details>
+
+    <details class="collapsible">
+      <summary>
+        <span class="summary-label">Copy &amp; paste template</span>
+        <span class="chevron" aria-hidden="true">&#9662;</span>
+      </summary>
+      <div class="collapsible-content">
+        <pre><code>{
+  "template": "service_homepage",
+  "version": "1.0.0",
+  "updated_at": "YYYY-MM-DDThh:mm:ssZ",
+  "business": {
+    "name": "YOUR-SERVICE-NAME",
+    "domain": "https://www.YOUR-DOMAIN.com",
+    "tagline": "Promise statement.",
+    "logo": "https://www.YOUR-DOMAIN.com/path-to-logo.svg",
+    "years_in_business": 0,
+    "licenses": [{ "name": "License name", "id": "ID", "expires_at": "YYYY-MM-DD" }]
+  },
+  "services": [
+    {
+      "id": "SERVICE-ID",
+      "name": "Service name",
+      "description": "What happens during this service.",
+      "duration": "Time estimate",
+      "base_rate": { "currency": "USD", "amount": 0 },
+      "evidence": [{ "type": "review", "value": "Proof", "url": "https://link" }]
+    }
+  ],
+  "coverage": {
+    "primary_regions": [{ "type": "postal_codes", "values": ["ZIP1", "ZIP2"] }],
+    "travel_surcharge": { "applies_from": "Distance or condition", "amount": 0, "notes": "Optional." },
+    "remote_support": "Explain remote offerings."
+  },
+  "credentials": [
+    { "name": "Credential", "issuer": "Issuer", "id": "ID", "expires_at": "YYYY-MM-DD" }
+  ],
+  "team": [
+    { "name": "Team member", "role": "Role", "credentials": ["Certification"], "languages": ["en"], "bio": "Short bio." }
+  ],
+  "operations": {
+    "response_time": "Standard response SLA.",
+    "emergency_hours": "Emergency availability.",
+    "tools": ["Tool list"]
+  },
+  "actions": [
+    { "type": "booking", "label": "Primary CTA", "url": "https://www.YOUR-DOMAIN.com/path", "availability": "appointment", "owner": "team@YOUR-DOMAIN.com" }
+  ],
+  "evidence": [
+    { "type": "review", "source": "Source name", "value": "Rating or quote", "url": "https://link" }
+  ]
+}</code></pre>
+      </div>
+    </details>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div>
+        <strong>AIFDS</strong>
+        <p>AI Feed Discovery Standard</p>
+        <p>Structured truth for agent-first customer journeys.</p>
+      </div>
+      <div>
+        <strong>Contact</strong>
+        <p><a href="mailto:contact@aifds.org">contact@aifds.org</a></p>
+        <ul class="inline-list">
+          <li><a href="https://x.com/DaveedValencia" target="_blank" rel="noopener">X / Twitter</a></li>
+          <li><a href="https://www.linkedin.com/in/daveedvalencia" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://github.com/DaveedValencia" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
+      <div>
+        <strong>Navigate</strong>
+        <nav class="footer-nav" aria-label="Footer">
+          <a href="/docs/">Docs</a>
+          <a href="/industries/">Industries</a>
+          <a href="/validator.html">Validator</a>
+          <a href="/contact.html">Contact</a>
+        </nav>
+      </div>
+    </div>
+    <div class="footer-bottom">© <span data-year></span> AIFDS. Built for agent-readable truth.</div>
+  </footer>
+
+  <script src="/assets/main.js" defer></script>
+</body>
+</html>

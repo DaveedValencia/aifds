@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Validator Roadmap — AIFDS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Track the AIFDS validator roadmap. Understand upcoming milestones for assessing JSON coverage, freshness, and reliability." />
+  <link rel="stylesheet" href="/assets/styles.css" />
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-P2LQY85LN1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-P2LQY85LN1');
+  </script>
+</head>
+<body data-page="validator">
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="brand" href="/">
+        <span>AIFDS</span>
+        <span class="badge">0.2 · beta</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
+        Menu
+      </button>
+      <nav class="site-nav" id="primary-nav" aria-label="Primary">
+        <ul class="nav-list">
+          <li><a class="nav-link" data-nav="docs" href="/docs/">Docs</a></li>
+          <li><a class="nav-link" data-nav="industries" href="/industries/">Industries</a></li>
+          <li><a class="nav-link" data-nav="validator" href="/validator.html">Validator</a></li>
+          <li><a class="nav-link" data-nav="contact" href="/contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="site-wrapper">
+    <section class="hero">
+      <p class="pill">Tooling roadmap</p>
+      <h1>AIFDS Validator</h1>
+      <p>The validator scores how ready your JSON is for agent consumption—measuring completeness, freshness, and evidence quality. We’re building it in the open with industry partners.</p>
+      <div class="cta-group">
+        <a class="btn btn-primary" href="mailto:contact@aifds.org?subject=AIFDS%20Validator%20Early%20Access">Request early access</a>
+        <a class="btn" href="/docs/">Review the doc templates</a>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="validator-pillars">
+      <div class="section-header">
+        <h2 id="validator-pillars">Scoring pillars</h2>
+        <p>The validator returns independent scores so you know where to invest next.</p>
+      </div>
+      <div class="card-grid">
+        <article class="card">
+          <h3>Understands</h3>
+          <p>Checks template adherence, required field coverage, and schema validation. Surfaces missing context or malformed data structures.</p>
+        </article>
+        <article class="card">
+          <h3>Answers</h3>
+          <p>Benchmarks how well you address known customer questions. Flags absent evidence, stale copy, or broken cross-links.</p>
+        </article>
+        <article class="card">
+          <h3>Acts</h3>
+          <p>Confirms every action resolves predictably with correct HTTP status, security, and post-click experience.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="validator-timeline">
+      <div class="section-header">
+        <h2 id="validator-timeline">Roadmap</h2>
+        <p>Beta access rolls out in phases so each industry gets meaningful coverage.</p>
+      </div>
+      <div class="table-wrap" role="region" aria-labelledby="validator-timeline">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Milestone</th>
+              <th scope="col">Status</th>
+              <th scope="col">Highlights</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Ecommerce baseline</td>
+              <td>In progress</td>
+              <td>Homepage, collections, and PDP validations with downloadable reports.</td>
+            </tr>
+            <tr>
+              <td>Service pilot</td>
+              <td>Q2 2024</td>
+              <td>Field coverage maps, credential verification, and dispatch response scoring.</td>
+            </tr>
+            <tr>
+              <td>SaaS integrator</td>
+              <td>Q3 2024</td>
+              <td>Integration surface checks, security attestations, and sandbox API tests.</td>
+            </tr>
+            <tr>
+              <td>Media readiness</td>
+              <td>Q4 2024</td>
+              <td>Rights window validation, metadata completeness, and screener link testing.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="validator-metrics">
+      <div class="section-header">
+        <h2 id="validator-metrics">Beta cohort metrics</h2>
+        <p>Early results from partners integrating the validator into their publishing workflow.</p>
+      </div>
+      <ul class="metric-list">
+        <li class="metric-card">
+          <span>Average score uplift after first pass</span>
+          <strong>+27%</strong>
+        </li>
+        <li class="metric-card">
+          <span>Median fix time for critical gaps</span>
+          <strong>3.4 days</strong>
+        </li>
+        <li class="metric-card">
+          <span>Percentage of actions validated monthly</span>
+          <strong>92%</strong>
+        </li>
+      </ul>
+    </section>
+
+    <section class="section" aria-labelledby="validator-cta">
+      <div class="section-header">
+        <h2 id="validator-cta">Stay informed</h2>
+        <p>We announce new checks, SDKs, and integration guides via the mailing list.</p>
+      </div>
+      <div class="card-grid">
+        <article class="card">
+          <h3>Join the waitlist</h3>
+          <p>Email <a href="mailto:contact@aifds.org?subject=AIFDS%20Validator%20Waitlist">contact@aifds.org</a> with your industry, JSON maturity, and points of contact.</p>
+        </article>
+        <article class="card">
+          <h3>Prep your templates</h3>
+          <p>Make sure your <a href="/docs/">docs</a> are current and link back to the matching <a href="/industries/">industry overview</a>.</p>
+        </article>
+        <article class="card">
+          <h3>Follow updates</h3>
+          <p>Roadmap drops happen on <a href="https://github.com/DaveedValencia" target="_blank" rel="noopener">GitHub</a> and <a href="https://x.com/DaveedValencia" target="_blank" rel="noopener">X / Twitter</a>.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div>
+        <strong>AIFDS</strong>
+        <p>AI Feed Discovery Standard</p>
+        <p>Structured truth for agent-first customer journeys.</p>
+      </div>
+      <div>
+        <strong>Contact</strong>
+        <p><a href="mailto:contact@aifds.org">contact@aifds.org</a></p>
+        <ul class="inline-list">
+          <li><a href="https://x.com/DaveedValencia" target="_blank" rel="noopener">X / Twitter</a></li>
+          <li><a href="https://www.linkedin.com/in/daveedvalencia" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://github.com/DaveedValencia" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
+      <div>
+        <strong>Navigate</strong>
+        <nav class="footer-nav" aria-label="Footer">
+          <a href="/docs/">Docs</a>
+          <a href="/industries/">Industries</a>
+          <a href="/validator.html">Validator</a>
+          <a href="/contact.html">Contact</a>
+        </nav>
+      </div>
+    </div>
+    <div class="footer-bottom">© <span data-year></span> AIFDS. Built for agent-readable truth.</div>
+  </footer>
+
+  <script src="/assets/main.js" defer></script>
+</body>
+</html>

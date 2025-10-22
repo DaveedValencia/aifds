@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Ecommerce — Product Pages Template | AIFDS Docs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Field reference and JSON example for the AIFDS ecommerce product page template. Document specifications, inventory, pricing, and fulfillment details." />
+  <link rel="stylesheet" href="/assets/styles.css" />
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-P2LQY85LN1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-P2LQY85LN1');
+  </script>
+</head>
+<body data-page="docs">
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="brand" href="/">
+        <span>AIFDS</span>
+        <span class="badge">0.2 · beta</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
+        Menu
+      </button>
+      <nav class="site-nav" id="primary-nav" aria-label="Primary">
+        <ul class="nav-list">
+          <li><a class="nav-link" data-nav="docs" href="/docs/">Docs</a></li>
+          <li><a class="nav-link" data-nav="industries" href="/industries/">Industries</a></li>
+          <li><a class="nav-link" data-nav="validator" href="/validator.html">Validator</a></li>
+          <li><a class="nav-link" data-nav="contact" href="/contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="site-wrapper">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="/docs/">Docs</a>
+      <span aria-hidden="true">›</span>
+      <a href="/docs/ecommerce/">Ecommerce</a>
+      <span aria-hidden="true">›</span>
+      <span>Product Pages</span>
+    </nav>
+
+    <header class="section-header">
+      <h1>Ecommerce — Product Pages</h1>
+      <p class="doc-intro">Describe every fact an agent needs to answer purchase questions—materials, sizing, stock levels, delivery promises, and customer proof.</p>
+      <div class="template-meta">
+        <span>Schema: <a href="/schemas/pdp.schema.json">pdp.schema.json</a></span>
+        <span>Industry overview: <a href="/industries/ecommerce/">/industries/ecommerce/</a></span>
+      </div>
+    </header>
+
+    <section class="section" aria-labelledby="pdp-fields">
+      <div class="section-header">
+        <h2 id="pdp-fields">Fields</h2>
+        <p>Product documents should remove ambiguity for both customers and agents handling escalations.</p>
+      </div>
+      <div class="table-wrap" role="region" aria-labelledby="pdp-fields">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Field</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>template</code></td>
+              <td>String identifier; always <code>ecommerce_product_page</code>. Required.</td>
+            </tr>
+            <tr>
+              <td><code>version</code></td>
+              <td>Semantic version number. Required.</td>
+            </tr>
+            <tr>
+              <td><code>updated_at</code></td>
+              <td>ISO 8601 timestamp for the JSON snapshot. Required.</td>
+            </tr>
+            <tr>
+              <td><code>product</code></td>
+              <td>Core metadata (<code>id</code>, <code>sku</code>, <code>name</code>, <code>slug</code>, <code>url</code>, <code>category</code>).</td>
+            </tr>
+            <tr>
+              <td><code>summary</code></td>
+              <td>Short narrative plus bullet highlights to frame the value proposition.</td>
+            </tr>
+            <tr>
+              <td><code>media</code></td>
+              <td>Array of images or video with <code>type</code>, <code>src</code>, <code>alt</code>, and optional <code>position</code>.</td>
+            </tr>
+            <tr>
+              <td><code>pricing</code></td>
+              <td>Price, compare-at price, currency, discounts, and subscription notes where applicable.</td>
+            </tr>
+            <tr>
+              <td><code>inventory</code></td>
+              <td>Stock status, quantity, backorder policy, and fulfillment estimates per region.</td>
+            </tr>
+            <tr>
+              <td><code>variants</code></td>
+              <td>Array describing size, color, or other selection dimensions with their specific SKU and stock.</td>
+            </tr>
+            <tr>
+              <td><code>specifications</code></td>
+              <td>Key-value pairs for materials, dimensions, care instructions, compatibility, etc.</td>
+            </tr>
+            <tr>
+              <td><code>policies</code></td>
+              <td>Return window, warranty info, sustainability notes, and service commitments.</td>
+            </tr>
+            <tr>
+              <td><code>evidence</code></td>
+              <td>Reviews, press quotes, certifications, or endorsements tied to the product.</td>
+            </tr>
+            <tr>
+              <td><code>actions</code></td>
+              <td>Purchase, pre-order, restock notification, or support actions with context.</td>
+            </tr>
+            <tr>
+              <td><code>related_products</code></td>
+              <td>Cross-sells or upsells with <code>product_id</code>, <code>name</code>, and <code>url</code>.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <details class="collapsible">
+      <summary>
+        <span class="summary-label">Example schema — handsomecalavera.com</span>
+        <span class="chevron" aria-hidden="true">&#9662;</span>
+      </summary>
+      <div class="collapsible-content">
+        <pre><code>{
+  "template": "ecommerce_product_page",
+  "version": "1.0.0",
+  "updated_at": "2024-02-22T11:45:00Z",
+  "product": {
+    "id": "HC-BAG-017",
+    "sku": "HC-COMMUTER-SATCHEL",
+    "name": "Calavera Commuter Satchel",
+    "slug": "commuter-satchel",
+    "url": "https://www.handsomecalavera.com/products/commuter-satchel",
+    "category": ["bags", "everyday-carry"]
+  },
+  "summary": {
+    "headline": "Slim leather satchel built for modern commute rhythms.",
+    "subheadline": "Carries a 15\" laptop, notebook, and essentials in a weather-resistant shell.",
+    "bullets": [
+      "Vegetable-tanned full-grain leather from León, MX",
+      "Magnetic closure with quick-access front pocket",
+      "Removable cross-body strap and luggage pass-through"
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "src": "https://www.handsomecalavera.com/assets/products/commuter-satchel-front.jpg",
+      "alt": "Calavera commuter satchel in chestnut leather",
+      "position": 1
+    },
+    {
+      "type": "image",
+      "src": "https://www.handsomecalavera.com/assets/products/commuter-satchel-interior.jpg",
+      "alt": "Interior pockets of commuter satchel",
+      "position": 2
+    }
+  ],
+  "pricing": {
+    "currency": "USD",
+    "amount": 325,
+    "compare_at": 355,
+    "discount": {
+      "label": "Founder circle",
+      "amount_off": 30,
+      "expires_at": "2024-03-15T05:59:00Z"
+    }
+  },
+  "inventory": {
+    "status": "in_stock",
+    "quantity": 142,
+    "backorder_policy": "Made-to-order after stock depletes. Ship window 3 weeks.",
+    "fulfillment": [
+      { "region": "US", "estimate": "2-4 business days" },
+      { "region": "EU", "estimate": "5-7 business days" }
+    ]
+  },
+  "variants": [
+    {
+      "id": "HC-BAG-017-CHESTNUT",
+      "options": { "color": "Chestnut" },
+      "sku": "HC-CS-CHESTNUT",
+      "inventory": { "status": "in_stock", "quantity": 62 }
+    },
+    {
+      "id": "HC-BAG-017-ONYX",
+      "options": { "color": "Onyx" },
+      "sku": "HC-CS-ONYX",
+      "inventory": { "status": "low_stock", "quantity": 18 }
+    }
+  ],
+  "specifications": {
+    "dimensions": "15.5\" W × 12\" H × 4\" D",
+    "weight": "3.2 lbs",
+    "materials": ["Full-grain leather", "Organic cotton lining"],
+    "care": "Spot clean; apply conditioner every 6 months.",
+    "fits": ["15\" laptop", "A4 notebook", "Tablet"]
+  },
+  "policies": {
+    "warranty": "Lifetime stitching warranty and repair coverage.",
+    "returns": "Free returns within 45 days.",
+    "sustainability": "Leather sourced from audited tanneries; packaging recycled fiber."
+  },
+  "evidence": [
+    {
+      "type": "review",
+      "source": "Verified buyer",
+      "value": "4.9 / 5 from 318 reviews",
+      "url": "https://www.handsomecalavera.com/products/commuter-satchel#reviews"
+    },
+    {
+      "type": "press",
+      "source": "Gear Patrol",
+      "quote": "The Calavera Satchel is a daily driver built to age with you.",
+      "url": "https://www.gearpatrol.com/style/a44123426/handsome-calavera-review/"
+    }
+  ],
+  "actions": [
+    {
+      "type": "purchase",
+      "label": "Add to cart",
+      "url": "https://www.handsomecalavera.com/cart/add/HC-BAG-017",
+      "availability": "online"
+    },
+    {
+      "type": "support",
+      "label": "Ask a product expert",
+      "url": "https://www.handsomecalavera.com/pages/contact",
+      "availability": "24/7",
+      "owner": "support@handsomecalavera.com"
+    },
+    {
+      "type": "notification",
+      "label": "Notify me when Onyx restocks",
+      "url": "https://www.handsomecalavera.com/products/commuter-satchel#notify",
+      "availability": "online"
+    }
+  ],
+  "related_products": [
+    { "product_id": "HC-WLT-004", "name": "Signal Shield Passport Wallet", "url": "https://www.handsomecalavera.com/products/passport-wallet" },
+    { "product_id": "HC-ACC-011", "name": "Leather Cable Organizer", "url": "https://www.handsomecalavera.com/products/cable-organizer" }
+  ]
+}</code></pre>
+      </div>
+    </details>
+
+    <details class="collapsible">
+      <summary>
+        <span class="summary-label">Copy &amp; paste template</span>
+        <span class="chevron" aria-hidden="true">&#9662;</span>
+      </summary>
+      <div class="collapsible-content">
+        <pre><code>{
+  "template": "ecommerce_product_page",
+  "version": "1.0.0",
+  "updated_at": "YYYY-MM-DDThh:mm:ssZ",
+  "product": {
+    "id": "PRODUCT-ID",
+    "sku": "SKU",
+    "name": "Product name",
+    "slug": "product-slug",
+    "url": "https://www.YOUR-DOMAIN.com/products/product-slug",
+    "category": ["primary-category", "secondary-category"]
+  },
+  "summary": {
+    "headline": "Hero promise.",
+    "subheadline": "Supportive detail.",
+    "bullets": ["Key feature", "Proof point", "Benefit"]
+  },
+  "media": [
+    { "type": "image", "src": "https://www.YOUR-DOMAIN.com/path.jpg", "alt": "Description", "position": 1 }
+  ],
+  "pricing": {
+    "currency": "USD",
+    "amount": 0,
+    "compare_at": null,
+    "discount": { "label": "Optional label", "amount_off": 0, "expires_at": null }
+  },
+  "inventory": {
+    "status": "in_stock",
+    "quantity": 0,
+    "backorder_policy": "Policy text",
+    "fulfillment": [{ "region": "Region name", "estimate": "Time frame" }]
+  },
+  "variants": [
+    {
+      "id": "VARIANT-ID",
+      "options": { "size": "M", "color": "Black" },
+      "sku": "SKU-VAR",
+      "inventory": { "status": "in_stock", "quantity": 0 }
+    }
+  ],
+  "specifications": {
+    "dimensions": "Length × Width × Height",
+    "weight": "0",
+    "materials": ["Material one"],
+    "care": "Care instructions"
+  },
+  "policies": {
+    "warranty": "Warranty details",
+    "returns": "Return window",
+    "sustainability": "Eco details"
+  },
+  "evidence": [
+    { "type": "review", "source": "Source name", "value": "Quote or rating", "url": "https://link" }
+  ],
+  "actions": [
+    { "type": "purchase", "label": "Add to cart", "url": "https://www.YOUR-DOMAIN.com/cart/add/SKU", "availability": "online" }
+  ],
+  "related_products": [
+    { "product_id": "RELATED-ID", "name": "Related name", "url": "https://www.YOUR-DOMAIN.com/products/related" }
+  ]
+}</code></pre>
+      </div>
+    </details>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div>
+        <strong>AIFDS</strong>
+        <p>AI Feed Discovery Standard</p>
+        <p>Structured truth for agent-first customer journeys.</p>
+      </div>
+      <div>
+        <strong>Contact</strong>
+        <p><a href="mailto:contact@aifds.org">contact@aifds.org</a></p>
+        <ul class="inline-list">
+          <li><a href="https://x.com/DaveedValencia" target="_blank" rel="noopener">X / Twitter</a></li>
+          <li><a href="https://www.linkedin.com/in/daveedvalencia" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://github.com/DaveedValencia" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
+      <div>
+        <strong>Navigate</strong>
+        <nav class="footer-nav" aria-label="Footer">
+          <a href="/docs/">Docs</a>
+          <a href="/industries/">Industries</a>
+          <a href="/validator.html">Validator</a>
+          <a href="/contact.html">Contact</a>
+        </nav>
+      </div>
+    </div>
+    <div class="footer-bottom">© <span data-year></span> AIFDS. Built for agent-readable truth.</div>
+  </footer>
+
+  <script src="/assets/main.js" defer></script>
+</body>
+</html>

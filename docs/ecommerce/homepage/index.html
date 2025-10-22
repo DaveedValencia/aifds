@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Ecommerce — Homepage Template | AIFDS Docs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Field reference and JSON example for the AIFDS ecommerce homepage template. Model brand story, credibility, highlights, and actions for agents." />
+  <link rel="stylesheet" href="/assets/styles.css" />
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-P2LQY85LN1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-P2LQY85LN1');
+  </script>
+</head>
+<body data-page="docs">
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="brand" href="/">
+        <span>AIFDS</span>
+        <span class="badge">0.2 · beta</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
+        Menu
+      </button>
+      <nav class="site-nav" id="primary-nav" aria-label="Primary">
+        <ul class="nav-list">
+          <li><a class="nav-link" data-nav="docs" href="/docs/">Docs</a></li>
+          <li><a class="nav-link" data-nav="industries" href="/industries/">Industries</a></li>
+          <li><a class="nav-link" data-nav="validator" href="/validator.html">Validator</a></li>
+          <li><a class="nav-link" data-nav="contact" href="/contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="site-wrapper">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="/docs/">Docs</a>
+      <span aria-hidden="true">›</span>
+      <a href="/docs/ecommerce/">Ecommerce</a>
+      <span aria-hidden="true">›</span>
+      <span>Homepage</span>
+    </nav>
+
+    <header class="section-header">
+      <h1>Ecommerce — Homepage</h1>
+      <p class="doc-intro">Present a brand-forward overview that primes agents with credibility, merchandising priorities, operations, and the primary paths a shopper can take.</p>
+      <div class="template-meta">
+        <span>Schema: <a href="/schemas/homepage.schema.json">homepage.schema.json</a></span>
+        <span>Industry overview: <a href="/industries/ecommerce/">/industries/ecommerce/</a></span>
+      </div>
+    </header>
+
+    <section class="section" aria-labelledby="homepage-fields">
+      <div class="section-header">
+        <h2 id="homepage-fields">Fields</h2>
+        <p>These fields define the minimum contract agents rely on. Optional items let you add richer storytelling without breaking compatibility.</p>
+      </div>
+      <div class="table-wrap" role="region" aria-labelledby="homepage-fields">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Field</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>template</code></td>
+              <td>String identifier; always <code>ecommerce_homepage</code>. Required.</td>
+            </tr>
+            <tr>
+              <td><code>version</code></td>
+              <td>Semantic version of the document contract. Required.</td>
+            </tr>
+            <tr>
+              <td><code>updated_at</code></td>
+              <td>ISO 8601 timestamp for the last JSON refresh. Required.</td>
+            </tr>
+            <tr>
+              <td><code>site</code></td>
+              <td>Object containing <code>name</code>, <code>domain</code>, <code>logo</code>, <code>languages</code>, and <code>platform</code> metadata.</td>
+            </tr>
+            <tr>
+              <td><code>about</code></td>
+              <td>Mission, tagline, and brand story; includes <code>highlights</code> for key differentiators.</td>
+            </tr>
+            <tr>
+              <td><code>credibility</code></td>
+              <td>Array of trust signals such as certifications, reviews, awards, and partnerships. Each item contains <code>label</code>, <code>value</code>, and optional <code>url</code>.</td>
+            </tr>
+            <tr>
+              <td><code>operations</code></td>
+              <td>Shipping, returns, fulfillment windows, and support channels. Include <code>contact</code> details.</td>
+            </tr>
+            <tr>
+              <td><code>navigation</code></td>
+              <td>Primary and secondary nav arrays with <code>label</code> and <code>url</code>, plus featured search shortcuts.</td>
+            </tr>
+            <tr>
+              <td><code>highlights</code></td>
+              <td>Cards for featured categories, campaigns, or promotions with imagery and supporting copy.</td>
+            </tr>
+            <tr>
+              <td><code>actions</code></td>
+              <td>Array of user intents (<code>search</code>, <code>shop</code>, <code>support</code>) with <code>type</code>, <code>label</code>, <code>url</code>, and readiness metadata.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <details class="collapsible">
+      <summary>
+        <span class="summary-label">Example schema — handsomecalavera.com</span>
+        <span class="chevron" aria-hidden="true">&#9662;</span>
+      </summary>
+      <div class="collapsible-content">
+        <pre><code>{
+  "template": "ecommerce_homepage",
+  "version": "1.0.0",
+  "updated_at": "2024-02-28T18:30:00Z",
+  "site": {
+    "name": "Handsome Calavera",
+    "domain": "https://www.handsomecalavera.com",
+    "logo": "https://www.handsomecalavera.com/assets/logo-mark.svg",
+    "languages": ["en-US"],
+    "platform": "Custom Shopify storefront"
+  },
+  "about": {
+    "tagline": "Handmade leather goods for purposeful journeys.",
+    "summary": "Handsome Calavera designs and handcrafts leather carry goods in Austin, TX. We focus on lifetime durability, responsible sourcing, and transparent repairs.",
+    "highlights": [
+      {
+        "title": "Lifetime repair program",
+        "description": "Complimentary repairs on every stitch and rivet."
+      },
+      {
+        "title": "Vegetable-tanned hides",
+        "description": "Sourced from heritage tanneries in León and Tuscany."
+      }
+    ]
+  },
+  "credibility": [
+    {
+      "label": "Customer rating",
+      "value": "4.9 / 5 (1,842 reviews)",
+      "url": "https://www.handsomecalavera.com/reviews"
+    },
+    {
+      "label": "Certified B Corporation",
+      "value": "B Corp ID 22781",
+      "url": "https://www.bcorporation.net/en-us/find-a-b-corp/company/handsome-calavera"
+    }
+  ],
+  "operations": {
+    "fulfillment_timeframe": "Ships within 48 hours",
+    "warehouses": ["Austin, TX"],
+    "shipping_regions": ["US", "Canada", "EU"],
+    "return_policy": "Free returns within 45 days on unused goods.",
+    "contact": {
+      "email": "support@handsomecalavera.com",
+      "phone": "+1-512-555-0199",
+      "hours": "Mon–Fri 9am–6pm CT"
+    }
+  },
+  "navigation": {
+    "primary": [
+      { "label": "New arrivals", "url": "https://www.handsomecalavera.com/collections/new" },
+      { "label": "Bags", "url": "https://www.handsomecalavera.com/collections/bags" },
+      { "label": "Wallets", "url": "https://www.handsomecalavera.com/collections/wallets" },
+      { "label": "Journal covers", "url": "https://www.handsomecalavera.com/collections/journals" }
+    ],
+    "secondary": [
+      { "label": "Story", "url": "https://www.handsomecalavera.com/pages/story" },
+      { "label": "Repairs", "url": "https://www.handsomecalavera.com/pages/repairs" },
+      { "label": "Wholesale", "url": "https://www.handsomecalavera.com/pages/wholesale" }
+    ],
+    "quick_search": [
+      { "label": "Passport wallet", "query": "passport wallet" },
+      { "label": "Gift cards", "query": "gift card" }
+    ]
+  },
+  "highlights": [
+    {
+      "title": "Build your everyday carry",
+      "description": "Curated kits for commute, travel, and field work.",
+      "image": "https://www.handsomecalavera.com/assets/highlights/everyday-carry.jpg",
+      "cta": { "label": "Shop EDC kits", "url": "https://www.handsomecalavera.com/collections/edc-kits" }
+    },
+    {
+      "title": "Journal cover studio",
+      "description": "Made-to-order covers sized for Field Notes, Leuchtturm, and Hobonichi planners.",
+      "image": "https://www.handsomecalavera.com/assets/highlights/journal-studio.jpg",
+      "cta": { "label": "Design your cover", "url": "https://www.handsomecalavera.com/pages/journal-studio" }
+    }
+  ],
+  "actions": [
+    {
+      "type": "search",
+      "label": "Search the catalog",
+      "url": "https://www.handsomecalavera.com/search",
+      "availability": "online",
+      "notes": "Real-time inventory backed by Shopify Storefront API."
+    },
+    {
+      "type": "purchase",
+      "label": "Start a custom build",
+      "url": "https://www.handsomecalavera.com/pages/custom",
+      "availability": "by-request",
+      "owner": "custom@handsomecalavera.com"
+    },
+    {
+      "type": "support",
+      "label": "Reach support",
+      "url": "https://www.handsomecalavera.com/pages/contact",
+      "availability": "24/7",
+      "channels": ["email", "chat"]
+    }
+  ]
+}</code></pre>
+      </div>
+    </details>
+
+    <details class="collapsible">
+      <summary>
+        <span class="summary-label">Copy &amp; paste template</span>
+        <span class="chevron" aria-hidden="true">&#9662;</span>
+      </summary>
+      <div class="collapsible-content">
+        <pre><code>{
+  "template": "ecommerce_homepage",
+  "version": "1.0.0",
+  "updated_at": "YYYY-MM-DDThh:mm:ssZ",
+  "site": {
+    "name": "YOUR-BRAND-NAME",
+    "domain": "https://www.YOUR-DOMAIN.com",
+    "logo": "https://www.YOUR-DOMAIN.com/path-to-logo.svg",
+    "languages": ["en-US"],
+    "platform": "YOUR-ECOMMERCE-PLATFORM"
+  },
+  "about": {
+    "tagline": "YOUR-TAGLINE",
+    "summary": "Short paragraph describing your brand mission.",
+    "highlights": [
+      { "title": "Highlight title", "description": "Why it matters." }
+    ]
+  },
+  "credibility": [
+    { "label": "Proof name", "value": "Proof value", "url": "https://proof-link" }
+  ],
+  "operations": {
+    "fulfillment_timeframe": "YOUR-SHIPPING-WINDOW",
+    "warehouses": ["PRIMARY-LOCATION"],
+    "shipping_regions": ["LIST", "OF", "REGIONS"],
+    "return_policy": "YOUR-RETURN-POLICY",
+    "contact": {
+      "email": "support@YOUR-DOMAIN.com",
+      "phone": "+1-000-000-0000",
+      "hours": "Support hours"
+    }
+  },
+  "navigation": {
+    "primary": [
+      { "label": "Nav item", "url": "https://www.YOUR-DOMAIN.com/path" }
+    ],
+    "secondary": [],
+    "quick_search": [
+      { "label": "Search label", "query": "search term" }
+    ]
+  },
+  "highlights": [
+    {
+      "title": "Feature name",
+      "description": "What the visitor should know.",
+      "image": "https://www.YOUR-DOMAIN.com/path-to-image.jpg",
+      "cta": { "label": "CTA label", "url": "https://www.YOUR-DOMAIN.com/path" }
+    }
+  ],
+  "actions": [
+    {
+      "type": "search",
+      "label": "Primary action label",
+      "url": "https://www.YOUR-DOMAIN.com/path",
+      "availability": "online"
+    }
+  ]
+}</code></pre>
+      </div>
+    </details>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div>
+        <strong>AIFDS</strong>
+        <p>AI Feed Discovery Standard</p>
+        <p>Structured truth for agent-first customer journeys.</p>
+      </div>
+      <div>
+        <strong>Contact</strong>
+        <p><a href="mailto:contact@aifds.org">contact@aifds.org</a></p>
+        <ul class="inline-list">
+          <li><a href="https://x.com/DaveedValencia" target="_blank" rel="noopener">X / Twitter</a></li>
+          <li><a href="https://www.linkedin.com/in/daveedvalencia" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://github.com/DaveedValencia" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
+      <div>
+        <strong>Navigate</strong>
+        <nav class="footer-nav" aria-label="Footer">
+          <a href="/docs/">Docs</a>
+          <a href="/industries/">Industries</a>
+          <a href="/validator.html">Validator</a>
+          <a href="/contact.html">Contact</a>
+        </nav>
+      </div>
+    </div>
+    <div class="footer-bottom">© <span data-year></span> AIFDS. Built for agent-readable truth.</div>
+  </footer>
+
+  <script src="/assets/main.js" defer></script>
+</body>
+</html>

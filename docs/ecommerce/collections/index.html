@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Ecommerce — Collections Template | AIFDS Docs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Field reference and JSON example for the AIFDS ecommerce collections template. Document merchandising logic, filters, and featured products." />
+  <link rel="stylesheet" href="/assets/styles.css" />
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-P2LQY85LN1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-P2LQY85LN1');
+  </script>
+</head>
+<body data-page="docs">
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="brand" href="/">
+        <span>AIFDS</span>
+        <span class="badge">0.2 · beta</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
+        Menu
+      </button>
+      <nav class="site-nav" id="primary-nav" aria-label="Primary">
+        <ul class="nav-list">
+          <li><a class="nav-link" data-nav="docs" href="/docs/">Docs</a></li>
+          <li><a class="nav-link" data-nav="industries" href="/industries/">Industries</a></li>
+          <li><a class="nav-link" data-nav="validator" href="/validator.html">Validator</a></li>
+          <li><a class="nav-link" data-nav="contact" href="/contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="site-wrapper">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="/docs/">Docs</a>
+      <span aria-hidden="true">›</span>
+      <a href="/docs/ecommerce/">Ecommerce</a>
+      <span aria-hidden="true">›</span>
+      <span>Collections</span>
+    </nav>
+
+    <header class="section-header">
+      <h1>Ecommerce — Collections</h1>
+      <p class="doc-intro">Explain how you group products, why a shopper should care, and which filters or merchandising notes matter most for the collection.</p>
+      <div class="template-meta">
+        <span>Schema: <a href="/schemas/collections.schema.json">collections.schema.json</a></span>
+        <span>Industry overview: <a href="/industries/ecommerce/">/industries/ecommerce/</a></span>
+      </div>
+    </header>
+
+    <section class="section" aria-labelledby="collections-fields">
+      <div class="section-header">
+        <h2 id="collections-fields">Fields</h2>
+        <p>Capture the merchandising intent, featured products, and evidence supporting this collection.</p>
+      </div>
+      <div class="table-wrap" role="region" aria-labelledby="collections-fields">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Field</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>template</code></td>
+              <td>String identifier; always <code>ecommerce_collection</code>. Required.</td>
+            </tr>
+            <tr>
+              <td><code>version</code></td>
+              <td>Semantic version for the document. Required.</td>
+            </tr>
+            <tr>
+              <td><code>updated_at</code></td>
+              <td>ISO 8601 timestamp for the last refresh. Required.</td>
+            </tr>
+            <tr>
+              <td><code>collection</code></td>
+              <td>Metadata about the collection: <code>slug</code>, <code>title</code>, <code>tagline</code>, optional <code>image</code>, and <code>description</code>.</td>
+            </tr>
+            <tr>
+              <td><code>merchandising</code></td>
+              <td>Describes the strategy (seasonal, persona-based, price tier) and the decision logic powering the listing.</td>
+            </tr>
+            <tr>
+              <td><code>filters</code></td>
+              <td>Array of filters with <code>label</code>, <code>key</code>, and optional <code>default</code>. Helps agents replicate the browsing options.</td>
+            </tr>
+            <tr>
+              <td><code>featured_products</code></td>
+              <td>Array of product references containing <code>product_id</code>, <code>name</code>, <code>url</code>, <code>price</code>, and highlight copy.</td>
+            </tr>
+            <tr>
+              <td><code>evidence</code></td>
+              <td>Supporting proof such as editor notes, reviews, or expert picks that explain why the collection matters.</td>
+            </tr>
+            <tr>
+              <td><code>actions</code></td>
+              <td>Next steps like shop, compare, or contact a stylist. Includes <code>type</code>, <code>label</code>, <code>url</code>, and optional <code>owner</code>.</td>
+            </tr>
+            <tr>
+              <td><code>related_collections</code></td>
+              <td>Array linking to complementary collections with <code>title</code> and <code>url</code>.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <details class="collapsible">
+      <summary>
+        <span class="summary-label">Example schema — handsomecalavera.com</span>
+        <span class="chevron" aria-hidden="true">&#9662;</span>
+      </summary>
+      <div class="collapsible-content">
+        <pre><code>{
+  "template": "ecommerce_collection",
+  "version": "1.0.0",
+  "updated_at": "2024-02-15T14:00:00Z",
+  "collection": {
+    "slug": "everyday-carry",
+    "title": "Everyday Carry Essentials",
+    "tagline": "Streamlined kits for commute and travel.",
+    "description": "Curated leather goods sized for notebooks, passports, and laptops. Built to patina with daily use.",
+    "url": "https://www.handsomecalavera.com/collections/everyday-carry",
+    "image": "https://www.handsomecalavera.com/assets/collections/everyday-carry.jpg"
+  },
+  "merchandising": {
+    "strategy": "Persona — commuters and remote workers",
+    "curator": "Product team",
+    "logic": "Featured items balance quick-access storage, minimal weight, and RFID shielding."
+  },
+  "filters": [
+    { "label": "Color", "key": "color", "options": ["chestnut", "espresso", "obsidian"] },
+    { "label": "Device fit", "key": "device_fit", "options": ["13-inch laptop", "tablet", "passport"] },
+    { "label": "Availability", "key": "availability", "options": ["ready-to-ship", "made-to-order"], "default": "ready-to-ship" }
+  ],
+  "featured_products": [
+    {
+      "product_id": "HC-BAG-017",
+      "name": "Calavera Commuter Satchel",
+      "url": "https://www.handsomecalavera.com/products/commuter-satchel",
+      "price": {
+        "currency": "USD",
+        "amount": 325
+      },
+      "headline": "Slim silhouette, holds a 15\" laptop and notebook.",
+      "hero_image": "https://www.handsomecalavera.com/assets/products/commuter-satchel.jpg"
+    },
+    {
+      "product_id": "HC-WLT-004",
+      "name": "Signal Shield Passport Wallet",
+      "url": "https://www.handsomecalavera.com/products/passport-wallet",
+      "price": {
+        "currency": "USD",
+        "amount": 98
+      },
+      "headline": "RFID protection with boarding pass sleeve.",
+      "hero_image": "https://www.handsomecalavera.com/assets/products/passport-wallet.jpg"
+    }
+  ],
+  "evidence": [
+    {
+      "type": "press",
+      "title": "Featured in Carryology's Best Everyday Bags",
+      "url": "https://www.carryology.com/bags/handsome-calavera",
+      "summary": "Highlighted for sustainability and repair program."
+    },
+    {
+      "type": "review",
+      "title": "Customer rating",
+      "value": "4.9 / 5 average across 218 reviews"
+    }
+  ],
+  "actions": [
+    {
+      "type": "shop",
+      "label": "Shop everyday carry",
+      "url": "https://www.handsomecalavera.com/collections/everyday-carry",
+      "availability": "online"
+    },
+    {
+      "type": "consult",
+      "label": "Book a gear fitting",
+      "url": "https://www.handsomecalavera.com/pages/consult",
+      "availability": "appointment",
+      "owner": "outfitter@handsomecalavera.com"
+    }
+  ],
+  "related_collections": [
+    { "title": "Travel duo sets", "url": "https://www.handsomecalavera.com/collections/travel-sets" },
+    { "title": "Notebook covers", "url": "https://www.handsomecalavera.com/collections/journals" }
+  ]
+}</code></pre>
+      </div>
+    </details>
+
+    <details class="collapsible">
+      <summary>
+        <span class="summary-label">Copy &amp; paste template</span>
+        <span class="chevron" aria-hidden="true">&#9662;</span>
+      </summary>
+      <div class="collapsible-content">
+        <pre><code>{
+  "template": "ecommerce_collection",
+  "version": "1.0.0",
+  "updated_at": "YYYY-MM-DDThh:mm:ssZ",
+  "collection": {
+    "slug": "YOUR-COLLECTION-SLUG",
+    "title": "Collection title",
+    "tagline": "Short promise for the shopper.",
+    "description": "Describe what the visitor will find and why it matters.",
+    "url": "https://www.YOUR-DOMAIN.com/collections/YOUR-COLLECTION-SLUG",
+    "image": "https://www.YOUR-DOMAIN.com/path-to-collection-image.jpg"
+  },
+  "merchandising": {
+    "strategy": "Persona / season / campaign alignment",
+    "curator": "Team or role responsible",
+    "logic": "Explain how items earn a spot."
+  },
+  "filters": [
+    { "label": "Filter name", "key": "filter_key", "options": ["value-1", "value-2"] }
+  ],
+  "featured_products": [
+    {
+      "product_id": "SKU-OR-UNIQUE-ID",
+      "name": "Product name",
+      "url": "https://www.YOUR-DOMAIN.com/products/PRODUCT-SLUG",
+      "price": { "currency": "USD", "amount": 0 },
+      "headline": "Quick benefit statement.",
+      "hero_image": "https://www.YOUR-DOMAIN.com/path-to-product.jpg"
+    }
+  ],
+  "evidence": [
+    { "type": "review", "title": "Proof name", "value": "Metrics or quote", "url": "https://link-if-applicable" }
+  ],
+  "actions": [
+    { "type": "shop", "label": "Primary action label", "url": "https://www.YOUR-DOMAIN.com/collections/YOUR-COLLECTION-SLUG", "availability": "online" }
+  ],
+  "related_collections": [
+    { "title": "Related collection", "url": "https://www.YOUR-DOMAIN.com/collections/RELATED" }
+  ]
+}</code></pre>
+      </div>
+    </details>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div>
+        <strong>AIFDS</strong>
+        <p>AI Feed Discovery Standard</p>
+        <p>Structured truth for agent-first customer journeys.</p>
+      </div>
+      <div>
+        <strong>Contact</strong>
+        <p><a href="mailto:contact@aifds.org">contact@aifds.org</a></p>
+        <ul class="inline-list">
+          <li><a href="https://x.com/DaveedValencia" target="_blank" rel="noopener">X / Twitter</a></li>
+          <li><a href="https://www.linkedin.com/in/daveedvalencia" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://github.com/DaveedValencia" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
+      <div>
+        <strong>Navigate</strong>
+        <nav class="footer-nav" aria-label="Footer">
+          <a href="/docs/">Docs</a>
+          <a href="/industries/">Industries</a>
+          <a href="/validator.html">Validator</a>
+          <a href="/contact.html">Contact</a>
+        </nav>
+      </div>
+    </div>
+    <div class="footer-bottom">© <span data-year></span> AIFDS. Built for agent-readable truth.</div>
+  </footer>
+
+  <script src="/assets/main.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Ecommerce — Blog Posts Template | AIFDS Docs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Field reference and JSON example for the AIFDS ecommerce blog post template. Connect editorial content to products, evidence, and actions." />
+  <link rel="stylesheet" href="/assets/styles.css" />
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-P2LQY85LN1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-P2LQY85LN1');
+  </script>
+</head>
+<body data-page="docs">
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="brand" href="/">
+        <span>AIFDS</span>
+        <span class="badge">0.2 · beta</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
+        Menu
+      </button>
+      <nav class="site-nav" id="primary-nav" aria-label="Primary">
+        <ul class="nav-list">
+          <li><a class="nav-link" data-nav="docs" href="/docs/">Docs</a></li>
+          <li><a class="nav-link" data-nav="industries" href="/industries/">Industries</a></li>
+          <li><a class="nav-link" data-nav="validator" href="/validator.html">Validator</a></li>
+          <li><a class="nav-link" data-nav="contact" href="/contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="site-wrapper">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="/docs/">Docs</a>
+      <span aria-hidden="true">›</span>
+      <a href="/docs/ecommerce/">Ecommerce</a>
+      <span aria-hidden="true">›</span>
+      <span>Blog Posts</span>
+    </nav>
+
+    <header class="section-header">
+      <h1>Ecommerce — Blog Posts</h1>
+      <p class="doc-intro">Blend storytelling with structured data so agents can cite your editorial work and connect readers to relevant products or actions.</p>
+      <div class="template-meta">
+        <span>Schema: <a href="/schemas/blog.schema.json">blog.schema.json</a></span>
+        <span>Industry overview: <a href="/industries/ecommerce/">/industries/ecommerce/</a></span>
+      </div>
+    </header>
+
+    <section class="section" aria-labelledby="blog-fields">
+      <div class="section-header">
+        <h2 id="blog-fields">Fields</h2>
+        <p>Tie editorial context to the commerce journey without forcing agents to scrape prose.</p>
+      </div>
+      <div class="table-wrap" role="region" aria-labelledby="blog-fields">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Field</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>template</code></td>
+              <td>String identifier; always <code>ecommerce_blog_post</code>. Required.</td>
+            </tr>
+            <tr>
+              <td><code>version</code></td>
+              <td>Semantic version number. Required.</td>
+            </tr>
+            <tr>
+              <td><code>updated_at</code></td>
+              <td>ISO 8601 timestamp for the current JSON snapshot. Required.</td>
+            </tr>
+            <tr>
+              <td><code>post</code></td>
+              <td>Post metadata: <code>id</code>, <code>slug</code>, <code>title</code>, <code>url</code>, <code>hero_image</code>, and <code>summary</code>.</td>
+            </tr>
+            <tr>
+              <td><code>author</code></td>
+              <td>Primary author details (name, title, bio, profile URL). Include <code>reviewed_by</code> for SMEs if relevant.</td>
+            </tr>
+            <tr>
+              <td><code>published_at</code></td>
+              <td>Original publish timestamp plus optional <code>updated_at</code> override for content refreshes.</td>
+            </tr>
+            <tr>
+              <td><code>topic</code></td>
+              <td>Structured set of tags, personas, or journeys the article supports.</td>
+            </tr>
+            <tr>
+              <td><code>content_blocks</code></td>
+              <td>Ordered sections with <code>heading</code>, <code>body</code> (text/markdown), optional <code>media</code>, and <code>key_takeaway</code>.</td>
+            </tr>
+            <tr>
+              <td><code>featured_products</code></td>
+              <td>Array linking to relevant product IDs with framing copy.</td>
+            </tr>
+            <tr>
+              <td><code>resources</code></td>
+              <td>Supporting links (guides, downloads, external references) with <code>type</code> and <code>url</code>.</td>
+            </tr>
+            <tr>
+              <td><code>actions</code></td>
+              <td>Recommended next steps such as shop, subscribe, or book consult. Include <code>intent</code>, <code>label</code>, and <code>url</code>.</td>
+            </tr>
+            <tr>
+              <td><code>seo</code></td>
+              <td>Optional metadata for title tag, meta description, and social preview assets.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <details class="collapsible">
+      <summary>
+        <span class="summary-label">Example schema — handsomecalavera.com</span>
+        <span class="chevron" aria-hidden="true">&#9662;</span>
+      </summary>
+      <div class="collapsible-content">
+        <pre><code>{
+  "template": "ecommerce_blog_post",
+  "version": "1.0.0",
+  "updated_at": "2024-02-05T09:10:00Z",
+  "post": {
+    "id": "HC-BLOG-221",
+    "slug": "field-notes-with-leather",
+    "title": "Field Notes, Meet Leather: Building a Travel-Friendly Writing Kit",
+    "url": "https://www.handsomecalavera.com/blogs/journal/field-notes-with-leather",
+    "hero_image": "https://www.handsomecalavera.com/assets/blog/field-notes-hero.jpg",
+    "summary": "How we assemble a compact writing kit for remote trips using vegetable-tanned covers and refillable inserts."
+  },
+  "author": {
+    "name": "Marisol Vega",
+    "title": "Lead Product Storyteller",
+    "bio": "Former travel correspondent now translating field research into product design notes.",
+    "profile_url": "https://www.handsomecalavera.com/pages/team#marisol"
+  },
+  "published_at": "2024-01-18T07:00:00Z",
+  "topic": {
+    "personas": ["travelers", "journalers"],
+    "journey_stage": "consideration",
+    "keywords": ["journal cover", "travel writing kit"]
+  },
+  "content_blocks": [
+    {
+      "heading": "Why physical notes still matter on the road",
+      "body": "Agents hear it daily: travelers want reliable tools when Wi-Fi drops. We outline the tangible benefits of keeping a compact writing kit handy.",
+      "key_takeaway": "Set the context for recommending analog gear."
+    },
+    {
+      "heading": "The anatomy of our travel kit",
+      "body": "We pair a slim leather cover with replaceable Field Notes inserts, brass pens, and a cable organizer. Each item slips into the Commuter Satchel without bulking up.",
+      "media": {
+        "type": "image",
+        "src": "https://www.handsomecalavera.com/assets/blog/field-notes-kit.jpg",
+        "alt": "Leather journal kit laid out on a desk"
+      },
+      "key_takeaway": "Detail the exact products to recommend."
+    },
+    {
+      "heading": "Care and longevity tips",
+      "body": "Condition the cover every 6 months, rotate inserts, and wipe hardware after exposure to salt or humidity.",
+      "key_takeaway": "Reinforce after-purchase coaching talking points."
+    }
+  ],
+  "featured_products": [
+    {
+      "product_id": "HC-JOURNAL-003",
+      "name": "Journeyman Journal Cover",
+      "url": "https://www.handsomecalavera.com/products/journeyman-journal-cover",
+      "reason": "Sized for Field Notes; includes pen loop."
+    },
+    {
+      "product_id": "HC-ACC-011",
+      "name": "Leather Cable Organizer",
+      "url": "https://www.handsomecalavera.com/products/cable-organizer",
+      "reason": "Keeps pens and chargers bundled."
+    }
+  ],
+  "resources": [
+    {
+      "type": "download",
+      "title": "Packing checklist PDF",
+      "url": "https://www.handsomecalavera.com/assets/downloads/travel-writing-checklist.pdf"
+    },
+    {
+      "type": "external",
+      "title": "Field Notes guide",
+      "url": "https://fieldnotesbrand.com/pages/about"
+    }
+  ],
+  "actions": [
+    {
+      "intent": "shop",
+      "label": "Shop the writing kit",
+      "url": "https://www.handsomecalavera.com/collections/writing-kit"
+    },
+    {
+      "intent": "subscribe",
+      "label": "Join studio dispatches",
+      "url": "https://www.handsomecalavera.com/pages/newsletter"
+    }
+  ],
+  "seo": {
+    "title": "Travel Writing Kit Essentials | Handsome Calavera Journal",
+    "description": "Build a durable writing kit for travel with our leather journal cover, Field Notes inserts, and accessories.",
+    "og_image": "https://www.handsomecalavera.com/assets/blog/field-notes-social.jpg"
+  }
+}</code></pre>
+      </div>
+    </details>
+
+    <details class="collapsible">
+      <summary>
+        <span class="summary-label">Copy &amp; paste template</span>
+        <span class="chevron" aria-hidden="true">&#9662;</span>
+      </summary>
+      <div class="collapsible-content">
+        <pre><code>{
+  "template": "ecommerce_blog_post",
+  "version": "1.0.0",
+  "updated_at": "YYYY-MM-DDThh:mm:ssZ",
+  "post": {
+    "id": "POST-ID",
+    "slug": "post-slug",
+    "title": "Post title",
+    "url": "https://www.YOUR-DOMAIN.com/blogs/collection/post-slug",
+    "hero_image": "https://www.YOUR-DOMAIN.com/path-to-hero.jpg",
+    "summary": "Short abstract for agents."
+  },
+  "author": {
+    "name": "Author name",
+    "title": "Author title",
+    "bio": "Brief bio for credibility.",
+    "profile_url": "https://www.YOUR-DOMAIN.com/team/author"
+  },
+  "published_at": "YYYY-MM-DDThh:mm:ssZ",
+  "topic": {
+    "personas": ["persona-1"],
+    "journey_stage": "awareness",
+    "keywords": ["keyword-1", "keyword-2"]
+  },
+  "content_blocks": [
+    {
+      "heading": "Section heading",
+      "body": "Narrative paragraph or markdown.",
+      "media": { "type": "image", "src": "https://www.YOUR-DOMAIN.com/path.jpg", "alt": "Alt text" },
+      "key_takeaway": "What agents should remember."
+    }
+  ],
+  "featured_products": [
+    { "product_id": "PRODUCT-ID", "name": "Product name", "url": "https://www.YOUR-DOMAIN.com/products/product", "reason": "Why included." }
+  ],
+  "resources": [
+    { "type": "guide", "title": "Resource title", "url": "https://link" }
+  ],
+  "actions": [
+    { "intent": "shop", "label": "Action label", "url": "https://www.YOUR-DOMAIN.com/path" }
+  ],
+  "seo": {
+    "title": "Meta title",
+    "description": "Meta description.",
+    "og_image": "https://www.YOUR-DOMAIN.com/path-og.jpg"
+  }
+}</code></pre>
+      </div>
+    </details>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div>
+        <strong>AIFDS</strong>
+        <p>AI Feed Discovery Standard</p>
+        <p>Structured truth for agent-first customer journeys.</p>
+      </div>
+      <div>
+        <strong>Contact</strong>
+        <p><a href="mailto:contact@aifds.org">contact@aifds.org</a></p>
+        <ul class="inline-list">
+          <li><a href="https://x.com/DaveedValencia" target="_blank" rel="noopener">X / Twitter</a></li>
+          <li><a href="https://www.linkedin.com/in/daveedvalencia" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://github.com/DaveedValencia" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
+      <div>
+        <strong>Navigate</strong>
+        <nav class="footer-nav" aria-label="Footer">
+          <a href="/docs/">Docs</a>
+          <a href="/industries/">Industries</a>
+          <a href="/validator.html">Validator</a>
+          <a href="/contact.html">Contact</a>
+        </nav>
+      </div>
+    </div>
+    <div class="footer-bottom">© <span data-year></span> AIFDS. Built for agent-readable truth.</div>
+  </footer>
+
+  <script src="/assets/main.js" defer></script>
+</body>
+</html>

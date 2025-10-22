@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Ecommerce Templates — AIFDS Docs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Technical reference for ecommerce templates in the AI Feed Discovery Standard. Review JSON fields, template relationships, and schema resources." />
+  <link rel="stylesheet" href="/assets/styles.css" />
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-P2LQY85LN1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-P2LQY85LN1');
+  </script>
+</head>
+<body data-page="docs">
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="brand" href="/">
+        <span>AIFDS</span>
+        <span class="badge">0.2 · beta</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
+        Menu
+      </button>
+      <nav class="site-nav" id="primary-nav" aria-label="Primary">
+        <ul class="nav-list">
+          <li><a class="nav-link" data-nav="docs" href="/docs/">Docs</a></li>
+          <li><a class="nav-link" data-nav="industries" href="/industries/">Industries</a></li>
+          <li><a class="nav-link" data-nav="validator" href="/validator.html">Validator</a></li>
+          <li><a class="nav-link" data-nav="contact" href="/contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="site-wrapper">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="/docs/">Docs</a>
+      <span aria-hidden="true">›</span>
+      <span>Ecommerce</span>
+    </nav>
+
+    <header class="section-header">
+      <h1>Ecommerce templates</h1>
+      <p class="doc-intro">These templates capture the commerce journey from discovery through support. Use them together to give agents consistent answers about products, policies, and calls-to-action.</p>
+      <p class="note">Need a strategic overview? Jump to the <a href="/industries/ecommerce/">ecommerce industry page</a>.</p>
+    </header>
+
+    <section class="section" aria-labelledby="ecommerce-table">
+      <div class="section-header">
+        <h2 id="ecommerce-table">Template catalog</h2>
+        <p>Each template links to a detail page with fields, JSON examples, and copy-ready scaffolds.</p>
+      </div>
+      <div class="table-wrap" role="region" aria-labelledby="ecommerce-table">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Template</th>
+              <th scope="col">What it covers</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a href="/docs/ecommerce/homepage/">Homepage</a></td>
+              <td>Brand story, credibility signals, featured categories, and prioritized actions.</td>
+            </tr>
+            <tr>
+              <td><a href="/docs/ecommerce/collections/">Collections</a></td>
+              <td>Category purpose, merchandising logic, filters, and promotion hooks.</td>
+            </tr>
+            <tr>
+              <td><a href="/docs/ecommerce/product-pages/">Product Pages</a></td>
+              <td>Specifications, inventory, pricing, guarantees, and service commitments.</td>
+            </tr>
+            <tr>
+              <td><a href="/docs/ecommerce/blog-posts/">Blog Posts</a></td>
+              <td>Storytelling content connecting editorial topics with shoppable moments.</td>
+            </tr>
+            <tr>
+              <td><a href="/docs/ecommerce/pages/">Static Pages</a></td>
+              <td>Policies, FAQs, and operational details agents reference mid-conversation.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="ecommerce-guidance">
+      <div class="section-header">
+        <h2 id="ecommerce-guidance">Implementation notes</h2>
+        <p>Keep the following conventions in mind as you adapt each template.</p>
+      </div>
+      <div class="card-grid">
+        <article class="card">
+          <h3>Standard field names</h3>
+          <p>All ecommerce templates share naming patterns like `inventory`, `policies`, `actions`, and `evidence`. Reuse these keys consistently so agents can cross-reference data across pages.</p>
+        </article>
+        <article class="card">
+          <h3>Action payloads</h3>
+          <p>Action objects must include `type`, `label`, and `url`. When possible add `availability` and `tracking` metadata to signal readiness.</p>
+        </article>
+        <article class="card">
+          <h3>Collections &amp; PDP harmony</h3>
+          <p>Collections reference product IDs through `featured_products`. Ensure those IDs are defined within the product page JSON to keep relationships intact.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div>
+        <strong>AIFDS</strong>
+        <p>AI Feed Discovery Standard</p>
+        <p>Structured truth for agent-first customer journeys.</p>
+      </div>
+      <div>
+        <strong>Contact</strong>
+        <p><a href="mailto:contact@aifds.org">contact@aifds.org</a></p>
+        <ul class="inline-list">
+          <li><a href="https://x.com/DaveedValencia" target="_blank" rel="noopener">X / Twitter</a></li>
+          <li><a href="https://www.linkedin.com/in/daveedvalencia" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://github.com/DaveedValencia" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
+      <div>
+        <strong>Navigate</strong>
+        <nav class="footer-nav" aria-label="Footer">
+          <a href="/docs/">Docs</a>
+          <a href="/industries/">Industries</a>
+          <a href="/validator.html">Validator</a>
+          <a href="/contact.html">Contact</a>
+        </nav>
+      </div>
+    </div>
+    <div class="footer-bottom">© <span data-year></span> AIFDS. Built for agent-readable truth.</div>
+  </footer>
+
+  <script src="/assets/main.js" defer></script>
+</body>
+</html>

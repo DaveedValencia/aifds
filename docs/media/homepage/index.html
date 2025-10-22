@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Media — Homepage Template | AIFDS Docs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Field reference and JSON example for the AIFDS media homepage template. Document catalog pillars, licensing terms, distribution partners, and call-to-action funnels." />
+  <link rel="stylesheet" href="/assets/styles.css" />
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-P2LQY85LN1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-P2LQY85LN1');
+  </script>
+</head>
+<body data-page="docs">
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="brand" href="/">
+        <span>AIFDS</span>
+        <span class="badge">0.2 · beta</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
+        Menu
+      </button>
+      <nav class="site-nav" id="primary-nav" aria-label="Primary">
+        <ul class="nav-list">
+          <li><a class="nav-link" data-nav="docs" href="/docs/">Docs</a></li>
+          <li><a class="nav-link" data-nav="industries" href="/industries/">Industries</a></li>
+          <li><a class="nav-link" data-nav="validator" href="/validator.html">Validator</a></li>
+          <li><a class="nav-link" data-nav="contact" href="/contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="site-wrapper">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="/docs/">Docs</a>
+      <span aria-hidden="true">›</span>
+      <a href="/docs/media/">Media</a>
+      <span aria-hidden="true">›</span>
+      <span>Homepage</span>
+    </nav>
+
+    <header class="section-header">
+      <h1>Media — Homepage</h1>
+      <p class="doc-intro">Showcase your catalog, rights availability, and partner ecosystem so agents can pitch or source content without waiting for human follow-up.</p>
+      <div class="template-meta">
+        <span>Schema: <a href="/schemas/media-homepage.schema.json">media-homepage.schema.json</a></span>
+        <span>Industry overview: <a href="/industries/media/">/industries/media/</a></span>
+      </div>
+    </header>
+
+    <section class="section" aria-labelledby="media-home-fields">
+      <div class="section-header">
+        <h2 id="media-home-fields">Fields</h2>
+        <p>Provide the business logic behind licensing and distribution decisions.</p>
+      </div>
+      <div class="table-wrap" role="region" aria-labelledby="media-home-fields">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Field</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>template</code></td>
+              <td>String identifier; always <code>media_homepage</code>. Required.</td>
+            </tr>
+            <tr>
+              <td><code>version</code></td>
+              <td>Semantic version number. Required.</td>
+            </tr>
+            <tr>
+              <td><code>updated_at</code></td>
+              <td>ISO 8601 timestamp for the JSON snapshot. Required.</td>
+            </tr>
+            <tr>
+              <td><code>brand</code></td>
+              <td>Metadata about the media house (<code>name</code>, <code>domain</code>, <code>tagline</code>, <code>logo</code>, <code>founded</code>).</td>
+            </tr>
+            <tr>
+              <td><code>catalog</code></td>
+              <td>Summary of catalog size, genres, and production cadence.</td>
+            </tr>
+            <tr>
+              <td><code>flagship_titles</code></td>
+              <td>Array of spotlight titles with <code>id</code>, <code>name</code>, <code>format</code>, <code>logline</code>, <code>availability</code>, and <code>trailer_url</code>.</td>
+            </tr>
+            <tr>
+              <td><code>rights</code></td>
+              <td>Breakdown of licensing tiers (SVOD, AVOD, theatrical, print) with territories, language dubs, and window timing.</td>
+            </tr>
+            <tr>
+              <td><code>distribution</code></td>
+              <td>Existing partners with <code>region</code>, <code>platform</code>, <code>contact</code>, and <code>status</code>.</td>
+            </tr>
+            <tr>
+              <td><code>audience</code></td>
+              <td>Key demographics, viewership metrics, and engagement trends.</td>
+            </tr>
+            <tr>
+              <td><code>actions</code></td>
+              <td>Licensing, screening, and partnership calls-to-action with <code>type</code>, <code>label</code>, <code>url</code>, <code>owner</code>.</td>
+            </tr>
+            <tr>
+              <td><code>resources</code></td>
+              <td>Press kits, screener portals, metadata downloads, and production schedules.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <details class="collapsible">
+      <summary>
+        <span class="summary-label">Example schema — handsomecalavera.com</span>
+        <span class="chevron" aria-hidden="true">&#9662;</span>
+      </summary>
+      <div class="collapsible-content">
+        <pre><code>{
+  "template": "media_homepage",
+  "version": "1.0.0",
+  "updated_at": "2024-02-10T10:48:00Z",
+  "brand": {
+    "name": "Handsome Calavera Media Collective",
+    "domain": "https://www.handsomecalavera.com",
+    "tagline": "Original documentaries and craft storytelling across the Americas.",
+    "logo": "https://www.handsomecalavera.com/assets/media/logo.svg",
+    "founded": 2016,
+    "headquarters": "Austin, TX"
+  },
+  "catalog": {
+    "titles": 142,
+    "formats": ["Documentary", "Docu-series", "Short film", "Podcast"],
+    "genres": ["Craft", "Travel", "Sustainability", "Entrepreneurship"],
+    "annual_output": 18
+  },
+  "flagship_titles": [
+    {
+      "id": "HC-DOC-019",
+      "name": "Leather Lines",
+      "format": "Docu-series",
+      "logline": "Follow artisans who keep traditional leathercraft alive across Mexico and Spain.",
+      "availability": {
+        "status": "available",
+        "rights": ["SVOD", "Educational"],
+        "territories": ["US", "Canada", "UK", "MX"],
+        "languages": ["English", "Spanish"],
+        "window_end": "2026-12-31"
+      },
+      "trailer_url": "https://www.handsomecalavera.com/media/leather-lines-trailer"
+    },
+    {
+      "id": "HC-SHORT-044",
+      "name": "The Repair Ticket",
+      "format": "Short film",
+      "logline": "A concierge chronicles heartfelt stories from a leather repair desk.",
+      "availability": {
+        "status": "festival",
+        "rights": ["Theatrical", "Festival"],
+        "territories": ["Worldwide"],
+        "languages": ["English"],
+        "window_end": "2024-09-30"
+      },
+      "trailer_url": "https://www.handsomecalavera.com/media/the-repair-ticket"
+    }
+  ],
+  "rights": [
+    {
+      "tier": "SVOD",
+      "included_titles": 78,
+      "territories": ["US", "Canada", "UK", "EU", "Australia"],
+      "window": {
+        "start": "2024-01-01",
+        "end": "2026-12-31"
+      },
+      "languages": ["English", "Spanish", "French"],
+      "notes": "First-window exclusivity for month one, then non-exclusive."
+    },
+    {
+      "tier": "Educational",
+      "included_titles": 56,
+      "territories": ["US", "Canada"],
+      "window": {
+        "start": "2023-08-01",
+        "end": "2025-08-01"
+      },
+      "languages": ["English"],
+      "notes": "Includes classroom discussion guides and transcript bundle."
+    }
+  ],
+  "distribution": [
+    {
+      "region": "North America",
+      "platform": "Vistia Stream",
+      "status": "active",
+      "contact": {
+        "name": "Alyssa Romero",
+        "email": "alyssa.romero@vistia.com"
+      }
+    },
+    {
+      "region": "Latin America",
+      "platform": "TeleColor",
+      "status": "negotiating",
+      "contact": {
+        "name": "Marco Ortiz",
+        "email": "marco.ortiz@telecolor.mx"
+      }
+    }
+  ],
+  "audience": {
+    "primary_demo": "25-44, urban, craft and travel enthusiasts",
+    "monthly_viewers": 2.7,
+    "units": "million",
+    "engagement_metrics": [
+      { "name": "Average watch time", "value": "36 minutes per session" },
+      { "name": "Newsletter CTR", "value": "14%" }
+    ]
+  },
+  "actions": [
+    {
+      "type": "licensing",
+      "label": "Request licensing deck",
+      "url": "https://www.handsomecalavera.com/media/licensing",
+      "owner": "rights@handsomecalavera.com"
+    },
+    {
+      "type": "screening",
+      "label": "Book a private screener",
+      "url": "https://cal.com/handsomecalavera/screener",
+      "owner": "screenings@handsomecalavera.com"
+    },
+    {
+      "type": "partnership",
+      "label": "Pitch a co-production",
+      "url": "https://www.handsomecalavera.com/media/coproduction",
+      "owner": "partners@handsomecalavera.com"
+    }
+  ],
+  "resources": [
+    {
+      "type": "press_kit",
+      "title": "2024 press kit",
+      "url": "https://www.handsomecalavera.com/assets/media/press-kit-2024.zip"
+    },
+    {
+      "type": "metadata",
+      "title": "Full title metadata CSV",
+      "url": "https://www.handsomecalavera.com/assets/media/catalog.csv"
+    },
+    {
+      "type": "schedule",
+      "title": "Production slate",
+      "url": "https://www.handsomecalavera.com/media/production-slate"
+    }
+  ]
+}</code></pre>
+      </div>
+    </details>
+
+    <details class="collapsible">
+      <summary>
+        <span class="summary-label">Copy &amp; paste template</span>
+        <span class="chevron" aria-hidden="true">&#9662;</span>
+      </summary>
+      <div class="collapsible-content">
+        <pre><code>{
+  "template": "media_homepage",
+  "version": "1.0.0",
+  "updated_at": "YYYY-MM-DDThh:mm:ssZ",
+  "brand": {
+    "name": "YOUR-MEDIA-BRAND",
+    "domain": "https://www.YOUR-DOMAIN.com",
+    "tagline": "Tagline here.",
+    "logo": "https://www.YOUR-DOMAIN.com/path-to-logo.svg",
+    "founded": 0,
+    "headquarters": "City, Country"
+  },
+  "catalog": {
+    "titles": 0,
+    "formats": ["Format"],
+    "genres": ["Genre"],
+    "annual_output": 0
+  },
+  "flagship_titles": [
+    {
+      "id": "TITLE-ID",
+      "name": "Title name",
+      "format": "Format",
+      "logline": "One-sentence hook.",
+      "availability": {
+        "status": "available",
+        "rights": ["SVOD"],
+        "territories": ["US"],
+        "languages": ["English"],
+        "window_end": "YYYY-MM-DD"
+      },
+      "trailer_url": "https://www.YOUR-DOMAIN.com/trailer"
+    }
+  ],
+  "rights": [
+    {
+      "tier": "Licensing tier",
+      "included_titles": 0,
+      "territories": ["US"],
+      "window": { "start": "YYYY-MM-DD", "end": "YYYY-MM-DD" },
+      "languages": ["English"],
+      "notes": "Additional details."
+    }
+  ],
+  "distribution": [
+    {
+      "region": "Region",
+      "platform": "Platform",
+      "status": "active",
+      "contact": { "name": "Name", "email": "email@domain.com" }
+    }
+  ],
+  "audience": {
+    "primary_demo": "Audience description",
+    "monthly_viewers": 0,
+    "units": "million",
+    "engagement_metrics": [
+      { "name": "Metric name", "value": "Value" }
+    ]
+  },
+  "actions": [
+    { "type": "licensing", "label": "Primary CTA", "url": "https://www.YOUR-DOMAIN.com/path", "owner": "team@YOUR-DOMAIN.com" }
+  ],
+  "resources": [
+    { "type": "press_kit", "title": "Resource title", "url": "https://www.YOUR-DOMAIN.com/resource.zip" }
+  ]
+}</code></pre>
+      </div>
+    </details>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div>
+        <strong>AIFDS</strong>
+        <p>AI Feed Discovery Standard</p>
+        <p>Structured truth for agent-first customer journeys.</p>
+      </div>
+      <div>
+        <strong>Contact</strong>
+        <p><a href="mailto:contact@aifds.org">contact@aifds.org</a></p>
+        <ul class="inline-list">
+          <li><a href="https://x.com/DaveedValencia" target="_blank" rel="noopener">X / Twitter</a></li>
+          <li><a href="https://www.linkedin.com/in/daveedvalencia" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://github.com/DaveedValencia" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
+      <div>
+        <strong>Navigate</strong>
+        <nav class="footer-nav" aria-label="Footer">
+          <a href="/docs/">Docs</a>
+          <a href="/industries/">Industries</a>
+          <a href="/validator.html">Validator</a>
+          <a href="/contact.html">Contact</a>
+        </nav>
+      </div>
+    </div>
+    <div class="footer-bottom">© <span data-year></span> AIFDS. Built for agent-readable truth.</div>
+  </footer>
+
+  <script src="/assets/main.js" defer></script>
+</body>
+</html>

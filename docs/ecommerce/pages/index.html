@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Ecommerce — Static Pages Template | AIFDS Docs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Field reference and JSON example for the AIFDS ecommerce static page template. Capture policies, FAQs, and operational commitments." />
+  <link rel="stylesheet" href="/assets/styles.css" />
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-P2LQY85LN1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-P2LQY85LN1');
+  </script>
+</head>
+<body data-page="docs">
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="brand" href="/">
+        <span>AIFDS</span>
+        <span class="badge">0.2 · beta</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
+        Menu
+      </button>
+      <nav class="site-nav" id="primary-nav" aria-label="Primary">
+        <ul class="nav-list">
+          <li><a class="nav-link" data-nav="docs" href="/docs/">Docs</a></li>
+          <li><a class="nav-link" data-nav="industries" href="/industries/">Industries</a></li>
+          <li><a class="nav-link" data-nav="validator" href="/validator.html">Validator</a></li>
+          <li><a class="nav-link" data-nav="contact" href="/contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="site-wrapper">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="/docs/">Docs</a>
+      <span aria-hidden="true">›</span>
+      <a href="/docs/ecommerce/">Ecommerce</a>
+      <span aria-hidden="true">›</span>
+      <span>Static Pages</span>
+    </nav>
+
+    <header class="section-header">
+      <h1>Ecommerce — Static Pages</h1>
+      <p class="doc-intro">Express policies, FAQs, and operational guarantees in machine-readable form so agents can cite them verbatim.</p>
+      <div class="template-meta">
+        <span>Schema: <a href="/schemas/pages.schema.json">pages.schema.json</a></span>
+        <span>Industry overview: <a href="/industries/ecommerce/">/industries/ecommerce/</a></span>
+      </div>
+    </header>
+
+    <section class="section" aria-labelledby="static-fields">
+      <div class="section-header">
+        <h2 id="static-fields">Fields</h2>
+        <p>Map long-form policy and support information into consistent evidence blocks.</p>
+      </div>
+      <div class="table-wrap" role="region" aria-labelledby="static-fields">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Field</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>template</code></td>
+              <td>String identifier; always <code>ecommerce_static_page</code>. Required.</td>
+            </tr>
+            <tr>
+              <td><code>version</code></td>
+              <td>Semantic version number. Required.</td>
+            </tr>
+            <tr>
+              <td><code>updated_at</code></td>
+              <td>ISO 8601 timestamp for the JSON snapshot. Required.</td>
+            </tr>
+            <tr>
+              <td><code>page</code></td>
+              <td>Core metadata (<code>slug</code>, <code>title</code>, <code>url</code>, <code>category</code>, <code>summary</code>).</td>
+            </tr>
+            <tr>
+              <td><code>owners</code></td>
+              <td>Team or role responsible for the policy, including escalation contacts.</td>
+            </tr>
+            <tr>
+              <td><code>sections</code></td>
+              <td>Ordered array of objects with <code>heading</code>, <code>body</code>, optional <code>list</code>, and <code>effective_date</code>.</td>
+            </tr>
+            <tr>
+              <td><code>questions</code></td>
+              <td>FAQ style entries with <code>question</code>, <code>answer</code>, and optional <code>related_actions</code>.</td>
+            </tr>
+            <tr>
+              <td><code>metrics</code></td>
+              <td>Operational metrics such as turnaround time, satisfaction scores, or compliance targets.</td>
+            </tr>
+            <tr>
+              <td><code>contact</code></td>
+              <td>Dedicated support paths for this policy: <code>email</code>, <code>phone</code>, <code>chat_url</code>, <code>hours</code>.</td>
+            </tr>
+            <tr>
+              <td><code>actions</code></td>
+              <td>Steps the customer or agent should take (submit request, print label, schedule repair) with <code>type</code> and <code>url</code>.</td>
+            </tr>
+            <tr>
+              <td><code>related_documents</code></td>
+              <td>Links to PDF policies, legal language, or partner programs.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <details class="collapsible">
+      <summary>
+        <span class="summary-label">Example schema — handsomecalavera.com</span>
+        <span class="chevron" aria-hidden="true">&#9662;</span>
+      </summary>
+      <div class="collapsible-content">
+        <pre><code>{
+  "template": "ecommerce_static_page",
+  "version": "1.0.0",
+  "updated_at": "2024-01-30T16:22:00Z",
+  "page": {
+    "slug": "returns-and-repairs",
+    "title": "Returns & Repairs",
+    "url": "https://www.handsomecalavera.com/pages/returns-and-repairs",
+    "category": "policy",
+    "summary": "Lifetime repair coverage and a 45-day return window on all handcrafted goods."
+  },
+  "owners": [
+    { "team": "Customer Care", "email": "care@handsomecalavera.com" },
+    { "team": "Repair Studio", "email": "repairs@handsomecalavera.com" }
+  ],
+  "sections": [
+    {
+      "heading": "Return eligibility",
+      "body": "Unused goods can be returned within 45 days of delivery with original packaging and proof of purchase.",
+      "effective_date": "2023-11-01"
+    },
+    {
+      "heading": "Repair coverage",
+      "body": "We repair stitching, hardware, and finish issues caused by normal use for the lifetime of the product.",
+      "list": [
+        "Complimentary repairs on stitching and rivets",
+        "Hardware replacement billed at cost after first year",
+        "Finish refresh available annually"
+      ],
+      "effective_date": "2024-01-01"
+    }
+  ],
+  "questions": [
+    {
+      "question": "How do I start a return?",
+      "answer": "Submit your order number and reason via the Returns Portal. We'll email a prepaid label within one business day.",
+      "related_actions": [
+        {
+          "type": "portal",
+          "label": "Open returns portal",
+          "url": "https://www.handsomecalavera.com/apps/returns",
+          "availability": "online"
+        }
+      ]
+    },
+    {
+      "question": "How long do repairs take?",
+      "answer": "Repairs are inspected within 48 hours and typically completed within 10 business days.",
+      "related_actions": [
+        {
+          "type": "schedule",
+          "label": "Book repair intake call",
+          "url": "https://cal.com/handsomecalavera/repair-intake",
+          "availability": "appointment"
+        }
+      ]
+    }
+  ],
+  "metrics": [
+    { "name": "Average repair turnaround", "value": "8.6 business days (Q4 2023)" },
+    { "name": "Return approval rate", "value": "97%" }
+  ],
+  "contact": {
+    "email": "care@handsomecalavera.com",
+    "phone": "+1-512-555-0118",
+    "chat_url": "https://www.handsomecalavera.com/pages/contact#chat",
+    "hours": "Mon–Fri 9am–6pm CT"
+  },
+  "actions": [
+    {
+      "type": "start_return",
+      "label": "Begin a return",
+      "url": "https://www.handsomecalavera.com/apps/returns",
+      "availability": "online"
+    },
+    {
+      "type": "repair_request",
+      "label": "Request a repair",
+      "url": "https://www.handsomecalavera.com/pages/repair-request",
+      "availability": "online"
+    }
+  ],
+  "related_documents": [
+    {
+      "title": "Repair program overview (PDF)",
+      "url": "https://www.handsomecalavera.com/assets/downloads/repair-program.pdf"
+    },
+    {
+      "title": "Warranty terms",
+      "url": "https://www.handsomecalavera.com/pages/warranty"
+    }
+  ]
+}</code></pre>
+      </div>
+    </details>
+
+    <details class="collapsible">
+      <summary>
+        <span class="summary-label">Copy &amp; paste template</span>
+        <span class="chevron" aria-hidden="true">&#9662;</span>
+      </summary>
+      <div class="collapsible-content">
+        <pre><code>{
+  "template": "ecommerce_static_page",
+  "version": "1.0.0",
+  "updated_at": "YYYY-MM-DDThh:mm:ssZ",
+  "page": {
+    "slug": "page-slug",
+    "title": "Page title",
+    "url": "https://www.YOUR-DOMAIN.com/pages/page-slug",
+    "category": "policy",
+    "summary": "What this page covers."
+  },
+  "owners": [
+    { "team": "Team name", "email": "team@YOUR-DOMAIN.com" }
+  ],
+  "sections": [
+    {
+      "heading": "Section heading",
+      "body": "Key policy language or explanation.",
+      "list": ["Optional bullet"],
+      "effective_date": "YYYY-MM-DD"
+    }
+  ],
+  "questions": [
+    {
+      "question": "FAQ question",
+      "answer": "Answer in clear, concise language.",
+      "related_actions": [
+        { "type": "portal", "label": "Call-to-action", "url": "https://www.YOUR-DOMAIN.com/path" }
+      ]
+    }
+  ],
+  "metrics": [
+    { "name": "Metric name", "value": "Value" }
+  ],
+  "contact": {
+    "email": "support@YOUR-DOMAIN.com",
+    "phone": "+1-000-000-0000",
+    "chat_url": "https://www.YOUR-DOMAIN.com/support/chat",
+    "hours": "Support hours"
+  },
+  "actions": [
+    { "type": "action_type", "label": "Action label", "url": "https://www.YOUR-DOMAIN.com/path", "availability": "online" }
+  ],
+  "related_documents": [
+    { "title": "Document title", "url": "https://www.YOUR-DOMAIN.com/doc.pdf" }
+  ]
+}</code></pre>
+      </div>
+    </details>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div>
+        <strong>AIFDS</strong>
+        <p>AI Feed Discovery Standard</p>
+        <p>Structured truth for agent-first customer journeys.</p>
+      </div>
+      <div>
+        <strong>Contact</strong>
+        <p><a href="mailto:contact@aifds.org">contact@aifds.org</a></p>
+        <ul class="inline-list">
+          <li><a href="https://x.com/DaveedValencia" target="_blank" rel="noopener">X / Twitter</a></li>
+          <li><a href="https://www.linkedin.com/in/daveedvalencia" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://github.com/DaveedValencia" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
+      <div>
+        <strong>Navigate</strong>
+        <nav class="footer-nav" aria-label="Footer">
+          <a href="/docs/">Docs</a>
+          <a href="/industries/">Industries</a>
+          <a href="/validator.html">Validator</a>
+          <a href="/contact.html">Contact</a>
+        </nav>
+      </div>
+    </div>
+    <div class="footer-bottom">© <span data-year></span> AIFDS. Built for agent-readable truth.</div>
+  </footer>
+
+  <script src="/assets/main.js" defer></script>
+</body>
+</html>

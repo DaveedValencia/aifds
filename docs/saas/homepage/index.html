@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>SaaS — Homepage Template | AIFDS Docs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Field reference and JSON example for the AIFDS SaaS homepage template. Document ICP, pricing, integrations, and outcomes." />
+  <link rel="stylesheet" href="/assets/styles.css" />
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-P2LQY85LN1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-P2LQY85LN1');
+  </script>
+</head>
+<body data-page="docs">
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="brand" href="/">
+        <span>AIFDS</span>
+        <span class="badge">0.2 · beta</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
+        Menu
+      </button>
+      <nav class="site-nav" id="primary-nav" aria-label="Primary">
+        <ul class="nav-list">
+          <li><a class="nav-link" data-nav="docs" href="/docs/">Docs</a></li>
+          <li><a class="nav-link" data-nav="industries" href="/industries/">Industries</a></li>
+          <li><a class="nav-link" data-nav="validator" href="/validator.html">Validator</a></li>
+          <li><a class="nav-link" data-nav="contact" href="/contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="site-wrapper">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="/docs/">Docs</a>
+      <span aria-hidden="true">›</span>
+      <a href="/docs/saas/">SaaS</a>
+      <span aria-hidden="true">›</span>
+      <span>Homepage</span>
+    </nav>
+
+    <header class="section-header">
+      <h1>SaaS — Homepage</h1>
+      <p class="doc-intro">Summarize who your platform serves, what outcomes it drives, the integrations that matter, and how to try or buy.</p>
+      <div class="template-meta">
+        <span>Schema: <a href="/schemas/saas-homepage.schema.json">saas-homepage.schema.json</a></span>
+        <span>Industry overview: <a href="/industries/saas/">/industries/saas/</a></span>
+      </div>
+    </header>
+
+    <section class="section" aria-labelledby="saas-home-fields">
+      <div class="section-header">
+        <h2 id="saas-home-fields">Fields</h2>
+        <p>Give agents the decision-critical data points procurement teams expect.</p>
+      </div>
+      <div class="table-wrap" role="region" aria-labelledby="saas-home-fields">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Field</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>template</code></td>
+              <td>String identifier; always <code>saas_homepage</code>. Required.</td>
+            </tr>
+            <tr>
+              <td><code>version</code></td>
+              <td>Semantic version number. Required.</td>
+            </tr>
+            <tr>
+              <td><code>updated_at</code></td>
+              <td>ISO 8601 timestamp for freshness. Required.</td>
+            </tr>
+            <tr>
+              <td><code>platform</code></td>
+              <td>Core metadata (<code>name</code>, <code>domain</code>, <code>tagline</code>, <code>category</code>, <code>deployment</code>).</td>
+            </tr>
+            <tr>
+              <td><code>icp</code></td>
+              <td>Ideal customer profiles with <code>industries</code>, <code>company_size</code>, <code>roles</code>, <code>pain_points</code>.</td>
+            </tr>
+            <tr>
+              <td><code>value_pillars</code></td>
+              <td>Top outcomes with supporting metrics or customer quotes.</td>
+            </tr>
+            <tr>
+              <td><code>pricing</code></td>
+              <td>Plan array including <code>name</code>, <code>monthly_price</code>, <code>annual_price</code>, <code>seats</code>, <code>features</code>, and <code>upgrade_path</code>.</td>
+            </tr>
+            <tr>
+              <td><code>integrations</code></td>
+              <td>Catalog of systems with <code>name</code>, <code>category</code>, <code>status</code> (native/partner/beta), <code>auth</code>, <code>docs_url</code>.</td>
+            </tr>
+            <tr>
+              <td><code>metrics</code></td>
+              <td>Adoption or outcome stats (activation time, ROI, NPS) with <code>source</code>.</td>
+            </tr>
+            <tr>
+              <td><code>security</code></td>
+              <td>Compliance frameworks, data residency, SLAs, and incident contact.</td>
+            </tr>
+            <tr>
+              <td><code>actions</code></td>
+              <td>Demo, trial, purchase, and sales contact flows with <code>type</code>, <code>label</code>, <code>url</code>, <code>owner</code>.</td>
+            </tr>
+            <tr>
+              <td><code>resources</code></td>
+              <td>Reference material like docs, roadmap, API explorers, customer stories.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <details class="collapsible">
+      <summary>
+        <span class="summary-label">Example schema — handsomecalavera.com</span>
+        <span class="chevron" aria-hidden="true">&#9662;</span>
+      </summary>
+      <div class="collapsible-content">
+        <pre><code>{
+  "template": "saas_homepage",
+  "version": "1.0.0",
+  "updated_at": "2024-02-19T13:18:00Z",
+  "platform": {
+    "name": "Handsome Calavera Supply Cloud",
+    "domain": "https://www.handsomecalavera.com",
+    "tagline": "Unify product, inventory, and repair data for modern retail teams.",
+    "category": ["Inventory orchestration", "Service operations"],
+    "deployment": ["SaaS", "API-first"],
+    "status": "GA"
+  },
+  "icp": [
+    {
+      "industry": "Premium retail",
+      "company_size": "50-500 employees",
+      "roles": ["Retail operations", "Ecommerce director"],
+      "pain_points": [
+        "Disconnected inventory updates between stores and DTC",
+        "Lack of visibility into repair pipeline",
+        "Slow onboarding for new product drops"
+      ]
+    },
+    {
+      "industry": "Hospitality",
+      "company_size": "10-50 locations",
+      "roles": ["Guest experience", "Procurement"],
+      "pain_points": [
+        "Need to track amenity replacements across properties",
+        "Custom embroidery updates require manual coordination"
+      ]
+    }
+  ],
+  "value_pillars": [
+    {
+      "name": "Single source of inventory truth",
+      "metric": "Cuts stockouts by 34% within 90 days.",
+      "evidence": "Aggregated across 28 stores using Shopify + NetSuite connectors."
+    },
+    {
+      "name": "Faster repair cycles",
+      "metric": "Repair turnaround reduced from 21 to 9 days.",
+      "evidence": "Measured for hospitality clients using the repair API."
+    },
+    {
+      "name": "Personalized agent responses",
+      "metric": "Agent resolution time improved by 42%.",
+      "evidence": "Powered by AIFDS JSON feeds consumed by customer support LLMs."
+    }
+  ],
+  "pricing": [
+    {
+      "name": "Launch",
+      "monthly_price": 249,
+      "annual_price": 2490,
+      "currency": "USD",
+      "seats_included": 10,
+      "features": ["Inventory dashboard", "Weekly sync jobs", "Email support"],
+      "upgrade_path": "Scale plan when you exceed 10 seats or add custom integrations."
+    },
+    {
+      "name": "Scale",
+      "monthly_price": 799,
+      "annual_price": 7990,
+      "currency": "USD",
+      "seats_included": 40,
+      "features": ["Real-time webhooks", "Repair workflow", "Dedicated success manager"],
+      "upgrade_path": "Enterprise plan unlocks dedicated data lake export."
+    },
+    {
+      "name": "Enterprise",
+      "price_request": "Contact sales",
+      "currency": "USD",
+      "features": ["Unlimited seats", "On-prem data mirror", "SAML/SCIM", "24/7 phone support"],
+      "upgrade_path": "Custom contract with annual review."
+    }
+  ],
+  "integrations": [
+    {
+      "name": "Shopify",
+      "category": "Commerce",
+      "status": "native",
+      "auth": "OAuth 2.0",
+      "docs_url": "https://docs.handsomecalavera.com/integrations/shopify"
+    },
+    {
+      "name": "NetSuite",
+      "category": "ERP",
+      "status": "partner",
+      "auth": "Token based SSO",
+      "docs_url": "https://docs.handsomecalavera.com/integrations/netsuite"
+    },
+    {
+      "name": "Zendesk",
+      "category": "Support",
+      "status": "native",
+      "auth": "OAuth 2.0",
+      "docs_url": "https://docs.handsomecalavera.com/integrations/zendesk"
+    }
+  ],
+  "metrics": [
+    { "name": "Average onboarding time", "value": "12 days", "source": "Customer success data 2023" },
+    { "name": "Net promoter score", "value": "67", "source": "Quarterly customer survey Q4 2023" }
+  ],
+  "security": {
+    "compliance": ["SOC 2 Type II", "GDPR"],
+    "data_residency": ["us-east-1", "eu-central-1"],
+    "sla": "99.9% uptime with 30-minute incident response.",
+    "security_contact": "security@handsomecalavera.com",
+    "status_page": "https://status.handsomecalavera.com"
+  },
+  "actions": [
+    {
+      "type": "demo",
+      "label": "Book a strategy demo",
+      "url": "https://cal.com/handsomecalavera/saas-demo",
+      "owner": "sales@handsomecalavera.com"
+    },
+    {
+      "type": "trial",
+      "label": "Start 14-day trial",
+      "url": "https://www.handsomecalavera.com/signup",
+      "owner": "activate@handsomecalavera.com"
+    },
+    {
+      "type": "pricing",
+      "label": "Download security & pricing pack",
+      "url": "https://www.handsomecalavera.com/assets/downloads/security-pack.pdf"
+    }
+  ],
+  "resources": [
+    {
+      "type": "docs",
+      "title": "API reference",
+      "url": "https://docs.handsomecalavera.com/reference"
+    },
+    {
+      "type": "roadmap",
+      "title": "Public roadmap",
+      "url": "https://www.handsomecalavera.com/roadmap"
+    },
+    {
+      "type": "case_study",
+      "title": "Bonfire Supply increases margin by 12%",
+      "url": "https://www.handsomecalavera.com/case-studies/bonfire"
+    }
+  ]
+}</code></pre>
+      </div>
+    </details>
+
+    <details class="collapsible">
+      <summary>
+        <span class="summary-label">Copy &amp; paste template</span>
+        <span class="chevron" aria-hidden="true">&#9662;</span>
+      </summary>
+      <div class="collapsible-content">
+        <pre><code>{
+  "template": "saas_homepage",
+  "version": "1.0.0",
+  "updated_at": "YYYY-MM-DDThh:mm:ssZ",
+  "platform": {
+    "name": "YOUR-PLATFORM-NAME",
+    "domain": "https://app.YOUR-DOMAIN.com",
+    "tagline": "Value promise.",
+    "category": ["Category"],
+    "deployment": ["SaaS"]
+  },
+  "icp": [
+    {
+      "industry": "Industry",
+      "company_size": "Size band",
+      "roles": ["Primary persona"],
+      "pain_points": ["Problem you solve"]
+    }
+  ],
+  "value_pillars": [
+    { "name": "Outcome name", "metric": "Quantified result", "evidence": "Proof source" }
+  ],
+  "pricing": [
+    {
+      "name": "Plan name",
+      "monthly_price": 0,
+      "annual_price": 0,
+      "currency": "USD",
+      "seats_included": 0,
+      "features": ["Feature list"],
+      "upgrade_path": "How to move up-tier."
+    }
+  ],
+  "integrations": [
+    { "name": "Integration name", "category": "Category", "status": "native", "auth": "OAuth 2.0", "docs_url": "https://docs" }
+  ],
+  "metrics": [
+    { "name": "Metric name", "value": "Value", "source": "Source" }
+  ],
+  "security": {
+    "compliance": ["Framework"],
+    "data_residency": ["Region"],
+    "sla": "SLA statement",
+    "security_contact": "security@YOUR-DOMAIN.com",
+    "status_page": "https://status.YOUR-DOMAIN.com"
+  },
+  "actions": [
+    { "type": "demo", "label": "Book demo", "url": "https://www.YOUR-DOMAIN.com/demo", "owner": "sales@YOUR-DOMAIN.com" }
+  ],
+  "resources": [
+    { "type": "docs", "title": "Developer docs", "url": "https://docs.YOUR-DOMAIN.com" }
+  ]
+}</code></pre>
+      </div>
+    </details>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div>
+        <strong>AIFDS</strong>
+        <p>AI Feed Discovery Standard</p>
+        <p>Structured truth for agent-first customer journeys.</p>
+      </div>
+      <div>
+        <strong>Contact</strong>
+        <p><a href="mailto:contact@aifds.org">contact@aifds.org</a></p>
+        <ul class="inline-list">
+          <li><a href="https://x.com/DaveedValencia" target="_blank" rel="noopener">X / Twitter</a></li>
+          <li><a href="https://www.linkedin.com/in/daveedvalencia" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://github.com/DaveedValencia" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
+      <div>
+        <strong>Navigate</strong>
+        <nav class="footer-nav" aria-label="Footer">
+          <a href="/docs/">Docs</a>
+          <a href="/industries/">Industries</a>
+          <a href="/validator.html">Validator</a>
+          <a href="/contact.html">Contact</a>
+        </nav>
+      </div>
+    </div>
+    <div class="footer-bottom">© <span data-year></span> AIFDS. Built for agent-readable truth.</div>
+  </footer>
+
+  <script src="/assets/main.js" defer></script>
+</body>
+</html>

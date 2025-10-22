@@ -2,93 +2,216 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>AIFDS Docs</title>
+  <title>Documentation — AIFDS</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <style>
-    :root {
-      --bg: #08090f;
-      --text: #f5f6fb;
-      --muted: #9ea3b8;
-      --accent: #6ea8fe;
-      --panel: #10121c;
-      --border: #1d2130;
-      --radius: 14px;
-      --maxw: 900px;
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
-    header {
-      padding: 48px 24px 24px;
-      background: linear-gradient(180deg, rgba(24,28,42,0.85) 0%, rgba(12,14,20,0.95) 100%);
-      border-bottom: 1px solid var(--border);
-    }
-    main {
-      max-width: var(--maxw);
-      margin: 0 auto;
-      padding: 32px 24px 64px;
-    }
-    h1 {
-      margin: 0 0 12px;
-      font-size: clamp(32px, 5vw, 46px);
-    }
-    h2 {
-      margin-top: 40px;
-      font-size: 26px;
-    }
-    p { color: var(--muted); }
-    a { color: var(--accent); }
-    ul { color: var(--muted); }
-    .panel {
-      margin-top: 20px;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      background: var(--panel);
-      padding: 20px 24px;
-    }
-    code { background: rgba(22,25,36,0.9); padding: 3px 6px; border-radius: 6px; }
-  </style>
+  <meta name="description" content="Technical reference for the AI Feed Discovery Standard. Browse JSON templates, field definitions, and schema examples across supported industries." />
+  <link rel="stylesheet" href="/assets/styles.css" />
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-P2LQY85LN1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-P2LQY85LN1');
+  </script>
 </head>
-<body>
-  <header>
-    <h1>AIFDS Documentation</h1>
-    <p>The AI Feed Discovery Standard defines lightweight JSON layouts so agents can understand your business without crawling every page. Start here to explore the file anatomy and roadmap.</p>
+<body data-page="docs">
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="brand" href="/">
+        <span>AIFDS</span>
+        <span class="badge">0.2 · beta</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
+        Menu
+      </button>
+      <nav class="site-nav" id="primary-nav" aria-label="Primary">
+        <ul class="nav-list">
+          <li><a class="nav-link" data-nav="docs" href="/docs/">Docs</a></li>
+          <li><a class="nav-link" data-nav="industries" href="/industries/">Industries</a></li>
+          <li><a class="nav-link" data-nav="validator" href="/validator.html">Validator</a></li>
+          <li><a class="nav-link" data-nav="contact" href="/contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
-  <main>
-    <section class="panel">
-      <h2>Schema Family</h2>
-      <ul>
-        <li><strong>Ecommerce:</strong> <code>homepage.schema.json</code>, <code>collections.schema.json</code>, <code>pdp.schema.json</code></li>
-        <li><strong>Content:</strong> <code>blog.schema.json</code>, <code>pages.schema.json</code></li>
-        <li><strong>Future Industries:</strong> Services, SaaS, Media (coming soon)</li>
-      </ul>
-      <p>Each schema pairs with a matching example JSON document under <code>/examples</code>. Both files will evolve together as the standard matures.</p>
+
+  <main class="site-wrapper">
+    <section class="hero">
+      <p class="pill">Implementation guide</p>
+      <h1>AIFDS Documentation</h1>
+      <p>Use these references to model your data, validate it against our schemas, and ship JSON that conversational agents can trust instantly.</p>
+      <div class="cta-group">
+        <a class="btn btn-primary" href="/industries/">Read the industry context</a>
+        <a class="btn" href="/contact.html">Request a new template</a>
+      </div>
     </section>
 
-    <section class="panel">
-      <h2>Design Principles</h2>
-      <ul>
-        <li>Snake_case keys with predictable nesting so agents can traverse the object tree deterministically.</li>
-        <li>Time-stamped documents via <code>version</code> and <code>updated_at</code> to express freshness.</li>
-        <li>Action-forward data: highlight what a user or agent can do (search, checkout, contact) instead of prose.</li>
-        <li>Evidence slots for credibility signals (directories, reviews, ownership) baked into every layout.</li>
-      </ul>
+    <section class="section" aria-labelledby="docs-overview">
+      <div class="section-header">
+        <h2 id="docs-overview">Industry template directory</h2>
+        <p>Select an industry to access all template docs, schema references, and JSON examples.</p>
+      </div>
+
+      <div class="card-grid">
+        <article class="card">
+          <h3>Ecommerce</h3>
+          <p>Support the entire shopping journey—from discovery to fulfillment—in structured JSON.</p>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Template</th>
+                  <th scope="col">Link</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Homepage</td>
+                  <td><a href="/docs/ecommerce/homepage/">Open doc</a></td>
+                </tr>
+                <tr>
+                  <td>Collections</td>
+                  <td><a href="/docs/ecommerce/collections/">Open doc</a></td>
+                </tr>
+                <tr>
+                  <td>Product Pages</td>
+                  <td><a href="/docs/ecommerce/product-pages/">Open doc</a></td>
+                </tr>
+                <tr>
+                  <td>Blog Posts</td>
+                  <td><a href="/docs/ecommerce/blog-posts/">Open doc</a></td>
+                </tr>
+                <tr>
+                  <td>Static Pages</td>
+                  <td><a href="/docs/ecommerce/pages/">Open doc</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="note">Need the business overview? Visit the <a href="/industries/ecommerce/">ecommerce industry page</a>.</p>
+        </article>
+
+        <article class="card">
+          <h3>Service Businesses</h3>
+          <p>Share credentials, coverage zones, and booking actions to streamline scheduling.</p>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Template</th>
+                  <th scope="col">Link</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Homepage</td>
+                  <td><a href="/docs/service/homepage/">Open doc</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="note">Business context lives on the <a href="/industries/service/">service industry page</a>.</p>
+        </article>
+
+        <article class="card">
+          <h3>SaaS &amp; Platforms</h3>
+          <p>Clarify who you serve, how you integrate, and why customers stay.</p>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Template</th>
+                  <th scope="col">Link</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Homepage</td>
+                  <td><a href="/docs/saas/homepage/">Open doc</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="note">Cross-check business goals via the <a href="/industries/saas/">SaaS industry page</a>.</p>
+        </article>
+
+        <article class="card">
+          <h3>Media &amp; Publishing</h3>
+          <p>Expose catalog highlights, licensing terms, and distribution partners.</p>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Template</th>
+                  <th scope="col">Link</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Homepage</td>
+                  <td><a href="/docs/media/homepage/">Open doc</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="note">High-level reasoning is on the <a href="/industries/media/">media industry page</a>.</p>
+        </article>
+      </div>
     </section>
 
-    <section class="panel">
-      <h2>What to Expect Next</h2>
-      <ul>
-        <li>Validation harness that reads AIFDS JSON and scores readiness for LLM consumption.</li>
-        <li>Industry playbooks showing how to adapt the base schema to services, SaaS, and media properties.</li>
-        <li>Guides for publishing AIFDS JSON alongside traditional site content without leaking private data.</li>
-      </ul>
-      <p>Questions or feedback? Email <a href="mailto:contact@aifds.org">contact@aifds.org</a>.</p>
+    <section class="section" aria-labelledby="docs-guidance">
+      <div class="section-header">
+        <h2 id="docs-guidance">How to work with AIFDS</h2>
+        <p>Keep these guidelines handy as you adapt the schemas to your own stack.</p>
+      </div>
+      <div class="card-grid">
+        <article class="card">
+          <h3>Layout rhythm</h3>
+          <p>Each template follows a consistent order: context → evidence → actions. Maintain this sequence so downstream agents always know where to look.</p>
+        </article>
+        <article class="card">
+          <h3>Versioning</h3>
+          <p>Update the `version` and `updated_at` fields every time the JSON changes. Agents rely on those timestamps to decide when to refresh cached knowledge.</p>
+        </article>
+        <article class="card">
+          <h3>Publishing</h3>
+          <p>Host JSON at stable, crawlable URLs. Reference them from `robots.txt`, site maps, and the `Link` HTTP header when possible.</p>
+        </article>
+      </div>
     </section>
   </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div>
+        <strong>AIFDS</strong>
+        <p>AI Feed Discovery Standard</p>
+        <p>Structured truth for agent-first customer journeys.</p>
+      </div>
+      <div>
+        <strong>Contact</strong>
+        <p><a href="mailto:contact@aifds.org">contact@aifds.org</a></p>
+        <ul class="inline-list">
+          <li><a href="https://x.com/DaveedValencia" target="_blank" rel="noopener">X / Twitter</a></li>
+          <li><a href="https://www.linkedin.com/in/daveedvalencia" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://github.com/DaveedValencia" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
+      <div>
+        <strong>Navigate</strong>
+        <nav class="footer-nav" aria-label="Footer">
+          <a href="/docs/">Docs</a>
+          <a href="/industries/">Industries</a>
+          <a href="/validator.html">Validator</a>
+          <a href="/contact.html">Contact</a>
+        </nav>
+      </div>
+    </div>
+    <div class="footer-bottom">© <span data-year></span> AIFDS. Built for agent-readable truth.</div>
+  </footer>
+
+  <script src="/assets/main.js" defer></script>
 </body>
 </html>
