@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>AI Feed Discovery Standard (AIFDS)</title>
+  <title>AIFDS — AI Feed Discovery Standard</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="AIFDS is the open standard for AI-ready structured data, defining how to validate, score, and repair schema.org so AI systems can trust your site." />
+  <meta name="description" content="AIFDS ships lightweight JSON standards so AI agents instantly understand your business. Start with the ecommerce layout and expand into new industries." />
   <link rel="canonical" href="https://aifds.org/" />
   <meta name="robots" content="index,follow" />
 
@@ -14,118 +14,7 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-P2LQY85LN1');
-  </script>
-
-  <!-- Open Graph / Twitter -->
-  <meta property="og:title" content="AI Feed Discovery Standard (AIFDS)" />
-  <meta property="og:description" content="The open standard that makes business data interpretable, verifiable, and trustworthy for AI systems." />
-  <meta property="og:url" content="https://aifds.org/" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:creator" content="@DaveedValencia" />
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Organization",
-        "@id": "https://aifds.org/#org",
-        "name": "AI Feed Discovery Standard",
-        "legalName": "AI Feed Discovery Standard",
-        "url": "https://aifds.org/",
-        "logo": {
-          "@type": "ImageObject",
-          "@id": "https://aifds.org/#logo",
-          "url": "https://aifds.org/logo.svg",
-          "width": 512,
-          "height": 512
-        },
-        "sameAs": [
-          "https://github.com/DaveedValencia",
-          "https://x.com/DaveedValencia",
-          "https://daveedvalencia.com"
-        ],
-        "contactPoint": [
-          {
-            "@type": "ContactPoint",
-            "contactType": "general inquiries",
-            "email": "contact@aifds.org",
-            "areaServed": "Worldwide",
-            "contactOption": "HearingImpairedSupported"
-          }
-        ],
-        "brand": {
-          "@type": "Brand",
-          "name": "AIFDS"
-        },
-        "foundingDate": "2025-01-01",
-        "slogan": "The open standard for AI-ready structured data.",
-        "areaServed": "Worldwide",
-        "knowsAbout": [
-          "AI-ready structured data",
-          "schema.org validation",
-          "structured data governance"
-        ]
-      },
-      {
-        "@type": "WebSite",
-        "@id": "https://aifds.org/#website",
-        "url": "https://aifds.org/",
-        "name": "AI Feed Discovery Standard",
-        "alternateName": "AIFDS",
-        "inLanguage": "en-US",
-        "publisher": {
-          "@id": "https://aifds.org/#org"
-        },
-        "potentialAction": {
-          "@type": "SearchAction",
-          "target": "https://aifds.org/search?q={search_term_string}",
-          "query-input": "required name=search_term_string"
-        },
-        "copyrightHolder": {
-          "@id": "https://aifds.org/#org"
-        },
-        "copyrightYear": 2025
-      },
-      {
-        "@type": "WebPage",
-        "@id": "https://aifds.org/#webpage",
-        "url": "https://aifds.org/",
-        "name": "The open standard for AI-ready structured data.",
-        "description": "AIFDS is the open standard for AI-ready structured data, defining how to validate, score, and repair schema.org so AI systems can trust your site.",
-        "inLanguage": "en-US",
-        "isPartOf": {
-          "@id": "https://aifds.org/#website"
-        },
-        "primaryImageOfPage": {
-          "@id": "https://aifds.org/#logo"
-        },
-        "mainEntityOfPage": {
-          "@id": "https://aifds.org/#org"
-        },
-        "breadcrumb": {
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "item": {
-                "@id": "https://aifds.org/",
-                "name": "Home"
-              }
-            }
-          ]
-        },
-        "datePublished": "2025-01-01T00:00:00Z",
-        "dateModified": "2025-01-15T12:34:00Z",
-        "copyrightHolder": {
-          "@id": "https://aifds.org/#org"
-        },
-        "copyrightYear": 2025
-      }
-    ]
-  }
   </script>
 
   <style>
@@ -163,9 +52,9 @@
     .btn[aria-disabled="true"]:hover { filter: none; }
 
     .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; margin-top: 28px; }
-    .card { grid-column: span 12; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px; }
-    .card h2 { margin: 4px 0 6px; font-size: 22px; }
-    .card p { color: var(--muted); margin: 0; }
+    .card { grid-column: span 12; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; }
+    .card h2 { margin: 4px 0 12px; font-size: 24px; }
+    .card p { color: var(--muted); margin: 0 0 10px; }
     .list { margin: 8px 0 0; padding-left: 18px; color: var(--muted); }
     .muted { color: var(--muted); }
 
@@ -188,137 +77,73 @@
     <header>
       <div class="brand">
         <span>AIFDS</span>
-        <span class="badge">v1 (draft)</span>
+        <span class="badge">0.1 · experimental</span>
       </div>
       <nav>
-        <a href="#mission">Mission</a>
-        <a href="/docs/spec/v1/">Spec</a>
-        <a href="/docs/schemas/">Schemas</a>
+        <a href="/docs/">Docs</a>
+        <a href="/schemas/homepage.schema.json">Schemas</a>
+        <a href="/docs/validator.html">Validator</a>
         <a href="#contact">Contact</a>
       </nav>
     </header>
 
     <section class="hero">
-      <h1>Schemas that help AI truly know your business.</h1>
-      <p>AIFDS is the open-source standard that extends schema.org for the AI era. We publish transparent schemas and documentation so organizations can ship trusted data and become the source AI systems trust by default.</p>
+      <h1>Define the JSON agents actually need.</h1>
+      <p>AIFDS replaces generic schema.org payloads with concise, factual JSON layouts. Start with ecommerce and expand into new industries without rewriting your stack.</p>
       <div class="cta">
-        <a class="btn primary" href="/docs/schemas/">Explore Schemas</a>
-        <a class="btn secondary" href="/docs/spec/v1/">Read the Spec</a>
-        <span class="btn secondary" aria-disabled="true">Validator Coming Soon</span>
+        <a class="btn primary" href="/docs/">Read the docs</a>
+        <a class="btn secondary" href="/schemas/homepage.schema.json">Download homepage schema</a>
       </div>
     </section>
 
-    <section id="mission" class="grid">
+    <section class="grid" id="overview">
       <div class="card col-6">
-        <h2>Open-Source Standard</h2>
-        <p>We publish schemas you can fork, audit, and improve. Each profile extends schema.org for AI-native use cases so structured data stays trustworthy.</p>
-      </div>
-      <div class="card col-6">
-        <h2>Documentation-First</h2>
+        <h2>Why agents need AIFDS</h2>
         <ul class="list">
-          <li>Schemas, guides, and examples you can implement immediately.</li>
-          <li>Clear roadmaps for upcoming profiles and validator capabilities.</li>
-          <li>Everything lives in public so teams stay aligned on best practices.</li>
+          <li>Self-contained facts: ownership, operations, actions, and credibility in one file.</li>
+          <li>Predictable structure that lets LLMs map questions to answers without crawling.</li>
+          <li>Versioned JSON so downstream systems trust freshness signals instantly.</li>
         </ul>
       </div>
       <div class="card col-6">
-        <h2>Guided by Expertise</h2>
-        <p>The project is led by David Valencia, AI Philosopher, partnering with the community to build a transparent trust layer for AI discovery.</p>
-      </div>
-    </section>
-
-    <section id="focus" class="grid">
-      <div class="card col-6">
-        <h2>Current Focus</h2>
+        <h2>Current focus: Ecommerce</h2>
         <ul class="list">
-          <li>Ecommerce homepage profile available now.</li>
-          <li>Collections and product schemas drafting in the open.</li>
-          <li>Validator tool in development — grades Bad / Average / Good / Excellent with no numeric gimmicks.</li>
-        </ul>
-      </div>
-      <div class="card col-6">
-        <h2>What’s Next</h2>
-        <ul class="list">
-          <li>Service-based business profiles follow ecommerce.</li>
-          <li>Additional industries added as adoption grows.</li>
-          <li>Standards will expand beyond websites as AI needs structured truth everywhere.</li>
+          <li><strong>Homepage</strong> JSON template (`site → about → credibility → contact → operations → navigation → highlights → actions`).</li>
+          <li>Collections, PDP, and marketing pages staged as placeholders ready for field definitions.</li>
+          <li>Validator design underway to grade readiness (understands, answers, acts).</li>
         </ul>
       </div>
     </section>
 
-    <section id="validator" class="grid">
+    <section class="grid" id="industries">
       <div class="card col-12">
-        <h2>Validator (Coming Soon)</h2>
-        <p>Run your URL, receive a transparent report—graded Bad, Average, Good, or Excellent. The validator checks schema conformance, detects conflicts, and points you to the documentation that explains every finding.</p>
+        <h2>Industry roadmap</h2>
+        <p>We are sequencing page types by evidence needs. Ecommerce ships first; Services, SaaS, and Media follow using the same modular blocks.</p>
         <ul class="list">
-          <li>No scoring vanity metrics, just clear pass/fail rationale.</li>
-          <li>Exportable reports for teams, partners, and clients.</li>
-          <li>Built to reinforce open standards, not lock you into a platform.</li>
+          <li><strong>Ecommerce:</strong> homepage, collections, product detail, support content.</li>
+          <li><strong>Services:</strong> credentialed staff, coverage zones, booking actions.</li>
+          <li><strong>SaaS:</strong> pricing tiers, integrations, success metrics.</li>
+          <li><strong>Media:</strong> catalog navigation, licensing, distribution partners.</li>
         </ul>
       </div>
     </section>
 
-    <section id="problem" class="grid">
-      <div class="card col-6">
-        <h2>Built for Modern AI</h2>
-        <ul class="list">
-          <li>Clear JSON-LD guidance that reduces guesswork for language models.</li>
-          <li>Trust signals that help AI systems represent organizations accurately.</li>
-          <li>Change logs and versioning so teams stay ahead of emerging requirements.</li>
-        </ul>
-      </div>
-      <div class="card col-6">
-        <h2>Trusted Implementation Path</h2>
-        <ul class="list">
-          <li>Define truthful schemas that bring context, evidence, and freshness.</li>
-          <li>Publish rule severity and examples so anyone can validate their work.</li>
-          <li>Create a trust layer AI can reuse, reducing hallucinations and guesswork.</li>
-        </ul>
-      </div>
-    </section>
-
-    <section id="vision" class="grid">
-      <div class="card col-12">
-        <h2>Vision Beyond Websites</h2>
-        <p>We see an AI-native world built on clean, verified, and interoperable data. Today we’re setting the standard for website structure. Tomorrow we will design the schemas that carry trusted truth into every AI surface—from apps and agents to connected devices—so AIFDS becomes the bedrock standard for intelligent systems.</p>
-      </div>
-    </section>
-
-    <section class="grid">
-      <div class="card col-6">
-        <h2>Why AIFDS Matters</h2>
-        <ul class="list">
-          <li>Gives LLMs a clear, machine-readable snapshot of your business.</li>
-          <li>Reduces engineering overhead by removing guesswork and conflicting payloads.</li>
-          <li>Creates a repeatable trust layer so AI recommendations stay accurate.</li>
-        </ul>
-      </div>
-      <div class="card col-6">
-        <h2>Principles We Uphold</h2>
-        <ul class="list">
-          <li>Open-source by default—schemas, examples, and governance live in public.</li>
-          <li>Verifiable evidence beats marketing claims every time.</li>
-          <li>Community-driven evolution guided by transparent rule changes.</li>
-          <li>Always extend, never replace, the schema.org ecosystem.</li>
-        </ul>
-      </div>
-    </section>
-
-    <section id="get-involved" class="grid">
+    <section class="grid" id="build">
       <div class="card col-8">
-        <h2>Get Involved</h2>
+        <h2>How to build with AIFDS</h2>
         <ul class="list">
-          <li>Adopt the ecommerce schema and share your implementation notes.</li>
-          <li>Help shape upcoming profiles—open issues, propose rules, or submit examples.</li>
-          <li>Test the validator when it launches and contribute feedback to keep it honest.</li>
+          <li>Create the matching schema + example pair under `/schemas` and `/examples`.</li>
+          <li>Publish the JSON next to your site so agents can fetch it via HTTPS.</li>
+          <li>Track `version` and `updated_at` to broadcast change history.</li>
+          <li>Map every call-to-action (`search`, `checkout`, `contact`) to a resolvable URL.</li>
         </ul>
       </div>
       <div class="card col-4" id="contact">
         <h2>Connect</h2>
-        <p class="muted">Follow David Valencia and the AIFDS community as we build the standard AI will rely on.</p>
-        <p><a href="https://github.com/DaveedValencia" rel="noopener" target="_blank">GitHub</a><br />
-        <a href="https://x.com/DaveedValencia" rel="noopener" target="_blank">@DaveedValencia</a><br />
-        <a href="https://daveedvalencia.com" rel="noopener" target="_blank">daveedvalencia.com</a></p>
+        <p class="muted">Questions or want to collaborate on new industries? Reach out.</p>
+        <p><a href="mailto:contact@aifds.org">contact@aifds.org</a><br />
+        <a href="https://github.com/DaveedValencia" rel="noopener" target="_blank">GitHub</a><br />
+        <a href="https://x.com/DaveedValencia" rel="noopener" target="_blank">@DaveedValencia</a></p>
       </div>
     </section>
 
@@ -329,16 +154,15 @@
           <span class="muted">AI Feed Discovery Standard</span>
         </div>
         <div>
-          <span class="muted">Operated by</span> <a href="https://x.com/DaveedValencia" target="_blank">David Valencia</a>
+          <span class="muted">Current release:</span> 0.1 draft (ecommerce focus)
         </div>
         <div>
-          <a href="/docs/spec/v1/">Spec</a> ·
-          <a href="/docs/schemas/">Schemas</a> ·
-          <a href="https://github.com/DaveedValencia" rel="noopener" target="_blank">GitHub</a> ·
-          <a href="https://x.com/DaveedValencia" rel="noopener" target="_blank">@DaveedValencia</a>
+          <a href="/docs/">Docs</a> ·
+          <a href="/schemas/homepage.schema.json">Schemas</a> ·
+          <a href="/docs/validator.html">Validator</a>
         </div>
       </div>
-      <div style="margin-top:10px" class="muted">© <span id="year"></span> AIFDS. All rights reserved.</div>
+      <div style="margin-top:10px" class="muted">© <span id="year"></span> AIFDS. Built for agent-readable truth.</div>
     </footer>
   </div>
 

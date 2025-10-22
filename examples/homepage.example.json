@@ -1,0 +1,303 @@
+{
+  "version": "0.1-draft",
+  "updated_at": "2025-10-22T16:15:00Z",
+  "site": {
+    "id": "https://handsomecalavera.com/",
+    "name": "Handsome Calavera",
+    "language": "en-US",
+    "currency": "USD",
+    "timezone": "America/Chicago",
+    "logo": "https://handsomecalavera.com/cdn/logo.png",
+    "ownership": {
+      "owner_name": "Handsome Calavera LLC",
+      "ownership_structure": "private",
+      "founded_year": 2023,
+      "physical_location": {
+        "street": "7500 Golden Triangle Dr, Suite E15",
+        "city": "Eden Prairie",
+        "region": "MN",
+        "postal_code": "55344",
+        "country_code": "US"
+      }
+    }
+  },
+  "about": {
+    "summary": "Handsome Calavera makes straightforward men’s skincare that fits into daily life.",
+    "target_audience": [
+      "men",
+      "sensitive skin",
+      "oily/combination skin"
+    ],
+    "differentiators": [
+      "fragrance-free core line",
+      "made for men",
+      "high quality ingredients"
+    ],
+    "serves": [
+      "B2C",
+      "DTC"
+    ]
+  },
+  "credibility": {
+    "social": [
+      {
+        "platform": "instagram",
+        "handle": "@handsomecalavera",
+        "url": "https://www.instagram.com/handsomecalavera/"
+      },
+      {
+        "platform": "tiktok",
+        "handle": "@handsomecalavera",
+        "url": "https://www.tiktok.com/@handsomecalavera"
+      },
+      {
+        "platform": "facebook",
+        "handle": "handsomecalavera",
+        "url": "https://www.facebook.com/handsomecalavera/"
+      }
+    ],
+    "directories": [
+      {
+        "name": "Google Business Profile",
+        "url": "https://maps.app.goo.gl/5fiAXF8KTTYiZXCK6"
+      },
+      {
+        "name": "Bing",
+        "url": "https://www.bing.com/maps?cp=44.866896%7E-93.408015&lvl=16.0"
+      }
+    ],
+    "third_party_reviews": [
+      {
+        "name": "Google",
+        "url": "https://www.google.com/maps/place/Handsome+Calavera",
+        "reviews_count": 125,
+        "average_rating": 4.8
+      },
+      {
+        "name": "Bing Places",
+        "url": "https://www.bing.com/maps?cid=EXAMPLE",
+        "reviews_count": 42,
+        "average_rating": 4.7
+      },
+      {
+        "name": "Yelp",
+        "url": "https://yelp.com/biz/handsome-calavera-example",
+        "reviews_count": 58,
+        "average_rating": 4.6
+      }
+    ]
+  },
+  "contact": {
+    "channels": [
+      {
+        "type": "phone",
+        "value": null,
+        "availability": null,
+        "response_time_business_hours": null
+      },
+      {
+        "type": "email",
+        "value": "hello@handsomecalavera.com",
+        "availability": null,
+        "response_time_business_hours": "within_24h"
+      },
+      {
+        "type": "chat",
+        "value": null,
+        "availability": null,
+        "response_time_business_hours": null
+      }
+    ],
+    "hours": [
+      {
+        "day": "mon",
+        "open": "09:00",
+        "close": "17:00"
+      },
+      {
+        "day": "tue",
+        "open": "09:00",
+        "close": "17:00"
+      },
+      {
+        "day": "wed",
+        "open": "09:00",
+        "close": "17:00"
+      },
+      {
+        "day": "thu",
+        "open": "09:00",
+        "close": "17:00"
+      },
+      {
+        "day": "fri",
+        "open": "09:00",
+        "close": "17:00"
+      }
+    ]
+  },
+  "operations": {
+    "service_area": [
+      {
+        "country": "US"
+      }
+    ],
+    "shipping": {
+      "ships_from": [
+        {
+          "country": "US",
+          "region": "MN"
+        }
+      ],
+      "ships_to": [
+        {
+          "country": "US"
+        }
+      ],
+      "restricted_regions": [
+        {
+          "country": "US",
+          "region": "AK"
+        },
+        {
+          "country": "US",
+          "region": "HI"
+        }
+      ],
+      "carriers": [
+        "UPS",
+        "USPS",
+        "FedEx"
+      ],
+      "delivery_window_business_days": [
+        2,
+        5
+      ],
+      "free_shipping": {
+        "threshold": {
+          "amount": 50,
+          "currency": "USD"
+        },
+        "method": "standard"
+      }
+    },
+    "returns": {
+      "window_days": 100,
+      "guarantee": true,
+      "policy_url": "https://handsomecalavera.com/policies/refund-policy"
+    },
+    "purchase_intent": "direct_checkout",
+    "payment_methods": [
+      "visa",
+      "mastercard",
+      "amex",
+      "paypal",
+      "shop-pay"
+    ],
+    "storefront": {
+      "public": true,
+      "shop_on_premise": true,
+      "visit_address_ref": "site.ownership.physical_location",
+      "visit_hours_ref": "contact.hours",
+      "in_person_services": [
+        "purchase",
+        "pickup",
+        "returns"
+      ]
+    }
+  },
+  "navigation": {
+    "categories": [
+      {
+        "name": "Cleansers",
+        "url": "https://handsomecalavera.com/collections/face-lotion-face-shampoo"
+      },
+      {
+        "name": "Moisturizers",
+        "url": "https://handsomecalavera.com/collections/face-lotion-face-shampoo"
+      },
+      {
+        "name": "All",
+        "url": "https://handsomecalavera.com/collections/all"
+      }
+    ],
+    "reference_pages": [
+      {
+        "name": "Contact",
+        "url": "https://handsomecalavera.com/pages/contact"
+      },
+      {
+        "name": "FAQ",
+        "url": "https://handsomecalavera.com/pages/faqs"
+      },
+      {
+        "name": "Blog",
+        "url": "https://handsomecalavera.com/blogs/skincare"
+      }
+    ],
+    "policies": [
+      {
+        "type": "shipping",
+        "url": "https://handsomecalavera.com/policies/shipping-policy"
+      },
+      {
+        "type": "returns",
+        "url": "https://handsomecalavera.com/policies/refund-policy"
+      },
+      {
+        "type": "privacy",
+        "url": "https://handsomecalavera.com/policies/privacy-policy"
+      },
+      {
+        "type": "terms",
+        "url": "https://handsomecalavera.com/policies/terms-of-service"
+      }
+    ]
+  },
+  "highlights": {
+    "hero_products": [
+      {
+        "name": "Calavera Daily Cleanser",
+        "url": "https://handsomecalavera.com/products/calavera-daily-cleanser",
+        "image": "https://handsomecalavera.com/cdn/shop/files/WEB-FACEWASH-MOBILE02.jpg",
+        "price": {
+          "amount": 29.99,
+          "currency": "USD"
+        },
+        "availability": "in_stock",
+        "reviews": 26,
+        "rating": 5
+      },
+      {
+        "name": "Face Lotion - 50ml",
+        "url": "https://handsomecalavera.com/products/4am-facial-moisturizer",
+        "image": "https://handsomecalavera.com/cdn/moisturizer.jpg",
+        "price": {
+          "amount": 29.99,
+          "currency": "USD"
+        },
+        "availability": "in_stock",
+        "reviews": 18,
+        "rating": 4.8
+      }
+    ]
+  },
+  "actions": [
+    {
+      "name": "search",
+      "href": "https://handsomecalavera.com/search"
+    },
+    {
+      "name": "contact",
+      "href": "https://handsomecalavera.com/pages/contact"
+    },
+    {
+      "name": "add_to_cart",
+      "href": "https://handsomecalavera.com/cart/add"
+    },
+    {
+      "name": "checkout",
+      "href": "https://handsomecalavera.com/checkout"
+    }
+  ]
+}

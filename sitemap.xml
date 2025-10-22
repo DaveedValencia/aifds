@@ -4,30 +4,36 @@
     <loc>https://aifds.org/</loc>
   </url>
   <url>
-    <loc>https://aifds.org/docs/spec/v1/</loc>
+    <loc>https://aifds.org/docs/</loc>
   </url>
   <url>
-    <loc>https://aifds.org/docs/index.md</loc>
+    <loc>https://aifds.org/docs/validator.html</loc>
   </url>
   <url>
-    <loc>https://aifds.org/docs/roadmap.md</loc>
+    <loc>https://aifds.org/schemas/homepage.schema.json</loc>
   </url>
   <url>
-    <loc>https://aifds.org/docs/schemas/</loc>
+    <loc>https://aifds.org/schemas/collections.schema.json</loc>
   </url>
   <url>
-    <loc>https://aifds.org/docs/schemas/ecommerce/</loc>
+    <loc>https://aifds.org/schemas/pdp.schema.json</loc>
   </url>
   <url>
-    <loc>https://aifds.org/schemas/ecommerce/homepage.profile.json</loc>
+    <loc>https://aifds.org/schemas/blog.schema.json</loc>
   </url>
   <url>
-    <loc>https://aifds.org/examples/ecommerce/homepage.min.json</loc>
+    <loc>https://aifds.org/schemas/pages.schema.json</loc>
   </url>
   <url>
-    <loc>https://aifds.org/spec/conformance.md</loc>
+    <loc>https://aifds.org/examples/homepage.example.json</loc>
   </url>
   <url>
-    <loc>https://aifds.org/spec/versioning.md</loc>
+    <loc>https://aifds.org/examples/collections.example.json</loc>
+  </url>
+  <url>
+    <loc>https://aifds.org/examples/pdp.example.json</loc>
+  </url>
+  <url>
+    <loc>https://aifds.org/examples/blog.example.json</loc>
   </url>
 </urlset>

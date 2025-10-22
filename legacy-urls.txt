@@ -1,0 +1,9 @@
+https://aifds.org/docs/spec/v1/
+https://aifds.org/docs/schemas/
+https://aifds.org/docs/schemas/ecommerce/
+https://aifds.org/docs/index.md
+https://aifds.org/docs/roadmap.md
+https://aifds.org/spec/conformance.md
+https://aifds.org/spec/versioning.md
+https://aifds.org/schemas/ecommerce/homepage.profile.json
+https://aifds.org/examples/ecommerce/homepage.min.json

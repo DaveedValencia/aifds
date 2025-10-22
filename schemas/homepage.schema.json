@@ -1,0 +1,769 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aifds.org/schemas/homepage.schema.json",
+  "title": "AIFDS Homepage Schema",
+  "description": "Defines the structure for AI-readable homepage context files served by ecommerce publishers.",
+  "type": "object",
+  "required": [
+    "version",
+    "updated_at",
+    "site",
+    "about",
+    "credibility",
+    "contact",
+    "operations",
+    "navigation",
+    "highlights",
+    "actions"
+  ],
+  "properties": {
+    "version": {
+      "type": "string",
+      "description": "Semantic description of the schema revision used by the payload (e.g., 0.1-draft)."
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp indicating when this payload was last refreshed."
+    },
+    "site": {
+      "$ref": "#/$defs/site"
+    },
+    "about": {
+      "$ref": "#/$defs/about"
+    },
+    "credibility": {
+      "$ref": "#/$defs/credibility"
+    },
+    "contact": {
+      "$ref": "#/$defs/contact"
+    },
+    "operations": {
+      "$ref": "#/$defs/operations"
+    },
+    "navigation": {
+      "$ref": "#/$defs/navigation"
+    },
+    "highlights": {
+      "$ref": "#/$defs/highlights"
+    },
+    "actions": {
+      "title": "Action Links",
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/action"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "httpsUrl": {
+      "title": "HTTPS URL",
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://.+$"
+    },
+    "snakeTime": {
+      "title": "Time (HH:MM)",
+      "type": "string",
+      "pattern": "^(?:[01][0-9]|2[0-3]):[0-5][0-9]$"
+    },
+    "countryCode": {
+      "title": "ISO 3166-1 Alpha-2 Country Code",
+      "type": "string",
+      "pattern": "^[A-Z]{2}$"
+    },
+    "languageTag": {
+      "title": "BCP-47 Language Tag",
+      "type": "string",
+      "pattern": "^([A-Za-z]{2,8})(-[A-Za-z0-9]{1,8})*$"
+    },
+    "currencyCode": {
+      "title": "ISO 4217 Currency Code",
+      "type": "string",
+      "pattern": "^[A-Z]{3}$"
+    },
+    "site": {
+      "title": "Site",
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "language",
+        "currency",
+        "timezone",
+        "logo"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/httpsUrl",
+          "description": "Canonical homepage URL for the site."
+        },
+        "name": {
+          "type": "string",
+          "description": "Public-facing site name."
+        },
+        "language": {
+          "$ref": "#/$defs/languageTag",
+          "description": "Primary language used across the experience."
+        },
+        "currency": {
+          "$ref": "#/$defs/currencyCode",
+          "description": "Default transaction currency."
+        },
+        "timezone": {
+          "type": "string",
+          "pattern": "^[A-Za-z_]+\\/[A-Za-z_]+$",
+          "description": "IANA timezone identifier (e.g., America/Chicago)."
+        },
+        "logo": {
+          "$ref": "#/$defs/httpsUrl",
+          "description": "Absolute URL to the primary logo asset."
+        },
+        "ownership": {
+          "$ref": "#/$defs/ownership",
+          "description": "Optional ownership details for entities that want to expose legal structure and location."
+        }
+      },
+      "additionalProperties": false
+    },
+    "ownership": {
+      "title": "Ownership",
+      "type": "object",
+      "properties": {
+        "owner_name": {
+          "type": "string",
+          "description": "Legal entity responsible for the site."
+        },
+        "ownership_structure": {
+          "type": "string",
+          "description": "Ownership description (e.g., private, public, cooperative)."
+        },
+        "founded_year": {
+          "type": "integer",
+          "minimum": 1800,
+          "maximum": 2100,
+          "description": "Year the organization began operating."
+        },
+        "physical_location": {
+          "$ref": "#/$defs/physicalLocation"
+        }
+      },
+      "additionalProperties": false
+    },
+    "physicalLocation": {
+      "title": "Physical Location",
+      "type": "object",
+      "required": [
+        "street",
+        "city",
+        "region",
+        "postal_code",
+        "country_code"
+      ],
+      "properties": {
+        "street": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "region": {
+          "type": "string",
+          "description": "State or provincial abbreviation.",
+          "pattern": "^[A-Za-z0-9\\-]{2,}$"
+        },
+        "postal_code": {
+          "type": "string"
+        },
+        "country_code": {
+          "$ref": "#/$defs/countryCode"
+        }
+      },
+      "additionalProperties": false
+    },
+    "about": {
+      "title": "About",
+      "type": "object",
+      "required": [
+        "summary",
+        "target_audience",
+        "differentiators",
+        "serves"
+      ],
+      "properties": {
+        "summary": {
+          "type": "string",
+          "description": "One sentence describing the business purpose."
+        },
+        "target_audience": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "description": "Primary customer segments."
+        },
+        "differentiators": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "description": "Key factors that separate the business from competitors."
+        },
+        "serves": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "description": "Business models or channels supported (e.g., DTC, B2B)."
+        }
+      },
+      "additionalProperties": false
+    },
+    "credibility": {
+      "title": "Credibility",
+      "type": "object",
+      "required": [
+        "social",
+        "directories",
+        "third_party_reviews"
+      ],
+      "properties": {
+        "social": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/socialProfile"
+          },
+          "minItems": 0
+        },
+        "directories": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/directoryListing"
+          },
+          "minItems": 0
+        },
+        "third_party_reviews": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/reviewSource"
+          },
+          "minItems": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "socialProfile": {
+      "title": "Social Profile",
+      "type": "object",
+      "required": [
+        "platform",
+        "handle",
+        "url"
+      ],
+      "properties": {
+        "platform": {
+          "type": "string"
+        },
+        "handle": {
+          "type": "string"
+        },
+        "url": {
+          "$ref": "#/$defs/httpsUrl"
+        }
+      },
+      "additionalProperties": false
+    },
+    "directoryListing": {
+      "title": "Directory Listing",
+      "type": "object",
+      "required": [
+        "name",
+        "url"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "url": {
+          "$ref": "#/$defs/httpsUrl"
+        }
+      },
+      "additionalProperties": false
+    },
+    "reviewSource": {
+      "title": "Review Source",
+      "type": "object",
+      "required": [
+        "name",
+        "url",
+        "reviews_count",
+        "average_rating"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "url": {
+          "$ref": "#/$defs/httpsUrl"
+        },
+        "reviews_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "average_rating": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 5
+        }
+      },
+      "additionalProperties": false
+    },
+    "contact": {
+      "title": "Contact",
+      "type": "object",
+      "required": [
+        "channels",
+        "hours"
+      ],
+      "properties": {
+        "channels": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/contactChannel"
+          },
+          "minItems": 1
+        },
+        "hours": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/contactHours"
+          },
+          "minItems": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "contactChannel": {
+      "title": "Contact Channel",
+      "type": "object",
+      "required": [
+        "type",
+        "value",
+        "availability"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "Channel type (e.g., phone, email, chat)."
+        },
+        "value": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Primary contact value (phone number, email, URL) or null if unavailable."
+        },
+        "availability": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Availability descriptor (e.g., 24/7, business_hours) or null."
+        },
+        "response_time_business_hours": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Expected response time during business hours."
+        }
+      },
+      "additionalProperties": false
+    },
+    "contactHours": {
+      "title": "Contact Hours",
+      "type": "object",
+      "required": [
+        "day",
+        "open",
+        "close"
+      ],
+      "properties": {
+        "day": {
+          "type": "string",
+          "enum": [
+            "mon",
+            "tue",
+            "wed",
+            "thu",
+            "fri",
+            "sat",
+            "sun"
+          ]
+        },
+        "open": {
+          "$ref": "#/$defs/snakeTime"
+        },
+        "close": {
+          "$ref": "#/$defs/snakeTime"
+        }
+      },
+      "additionalProperties": false
+    },
+    "operations": {
+      "title": "Operations",
+      "type": "object",
+      "required": [
+        "service_area",
+        "shipping",
+        "returns",
+        "purchase_intent",
+        "payment_methods",
+        "storefront"
+      ],
+      "properties": {
+        "service_area": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/serviceArea"
+          },
+          "minItems": 1
+        },
+        "shipping": {
+          "$ref": "#/$defs/shipping"
+        },
+        "returns": {
+          "$ref": "#/$defs/returns"
+        },
+        "purchase_intent": {
+          "type": "string",
+          "description": "Primary intent for shoppers (e.g., direct_checkout, lead_capture)."
+        },
+        "payment_methods": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        "storefront": {
+          "$ref": "#/$defs/storefront"
+        }
+      },
+      "additionalProperties": false
+    },
+    "serviceArea": {
+      "title": "Service Area",
+      "type": "object",
+      "required": [
+        "country"
+      ],
+      "properties": {
+        "country": {
+          "$ref": "#/$defs/countryCode"
+        },
+        "region": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "shipping": {
+      "title": "Shipping",
+      "type": "object",
+      "required": [
+        "ships_from",
+        "ships_to",
+        "restricted_regions",
+        "carriers",
+        "delivery_window_business_days",
+        "free_shipping"
+      ],
+      "properties": {
+        "ships_from": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/serviceArea"
+          },
+          "minItems": 1
+        },
+        "ships_to": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/serviceArea"
+          },
+          "minItems": 1
+        },
+        "restricted_regions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/serviceArea"
+          },
+          "minItems": 0
+        },
+        "carriers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        "delivery_window_business_days": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "minItems": 2,
+          "maxItems": 2,
+          "description": "Minimum and maximum delivery window in business days."
+        },
+        "free_shipping": {
+          "$ref": "#/$defs/freeShipping"
+        }
+      },
+      "additionalProperties": false
+    },
+    "freeShipping": {
+      "title": "Free Shipping",
+      "type": "object",
+      "required": [
+        "threshold",
+        "method"
+      ],
+      "properties": {
+        "threshold": {
+          "$ref": "#/$defs/money"
+        },
+        "method": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "money": {
+      "title": "Money",
+      "type": "object",
+      "required": [
+        "amount",
+        "currency"
+      ],
+      "properties": {
+        "amount": {
+          "type": "number",
+          "minimum": 0
+        },
+        "currency": {
+          "$ref": "#/$defs/currencyCode"
+        }
+      },
+      "additionalProperties": false
+    },
+    "returns": {
+      "title": "Returns",
+      "type": "object",
+      "required": [
+        "window_days",
+        "guarantee",
+        "policy_url"
+      ],
+      "properties": {
+        "window_days": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "guarantee": {
+          "type": "boolean"
+        },
+        "policy_url": {
+          "$ref": "#/$defs/httpsUrl"
+        }
+      },
+      "additionalProperties": false
+    },
+    "storefront": {
+      "title": "Storefront",
+      "type": "object",
+      "required": [
+        "public",
+        "shop_on_premise",
+        "visit_address_ref",
+        "visit_hours_ref",
+        "in_person_services"
+      ],
+      "properties": {
+        "public": {
+          "type": "boolean"
+        },
+        "shop_on_premise": {
+          "type": "boolean"
+        },
+        "visit_address_ref": {
+          "type": "string",
+          "description": "JSON pointer or path referencing the address in this document."
+        },
+        "visit_hours_ref": {
+          "type": "string",
+          "description": "JSON pointer or path referencing contact hours."
+        },
+        "in_person_services": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "navigation": {
+      "title": "Navigation",
+      "type": "object",
+      "required": [
+        "categories",
+        "reference_pages",
+        "policies"
+      ],
+      "properties": {
+        "categories": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/navigationLink"
+          },
+          "minItems": 1
+        },
+        "reference_pages": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/navigationLink"
+          },
+          "minItems": 0
+        },
+        "policies": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/policyLink"
+          },
+          "minItems": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "navigationLink": {
+      "title": "Navigation Link",
+      "type": "object",
+      "required": [
+        "name",
+        "url"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "url": {
+          "$ref": "#/$defs/httpsUrl"
+        }
+      },
+      "additionalProperties": false
+    },
+    "policyLink": {
+      "title": "Policy Link",
+      "type": "object",
+      "required": [
+        "type",
+        "url"
+      ],
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "url": {
+          "$ref": "#/$defs/httpsUrl"
+        }
+      },
+      "additionalProperties": false
+    },
+    "highlights": {
+      "title": "Highlights",
+      "type": "object",
+      "required": [
+        "hero_products"
+      ],
+      "properties": {
+        "hero_products": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/heroProduct"
+          },
+          "minItems": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "heroProduct": {
+      "title": "Hero Product",
+      "type": "object",
+      "required": [
+        "name",
+        "url",
+        "image",
+        "price",
+        "availability",
+        "reviews",
+        "rating"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "url": {
+          "$ref": "#/$defs/httpsUrl"
+        },
+        "image": {
+          "$ref": "#/$defs/httpsUrl"
+        },
+        "price": {
+          "$ref": "#/$defs/money"
+        },
+        "availability": {
+          "type": "string",
+          "description": "Inventory status (e.g., in_stock, out_of_stock)."
+        },
+        "reviews": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "rating": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 5
+        }
+      },
+      "additionalProperties": false
+    },
+    "action": {
+      "title": "Action",
+      "type": "object",
+      "required": [
+        "name",
+        "href"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Action identifier (e.g., search, contact, add_to_cart)."
+        },
+        "href": {
+          "$ref": "#/$defs/httpsUrl",
+          "description": "URL that agents can call to execute the action."
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

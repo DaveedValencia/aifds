@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>AIFDS Docs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #08090f;
+      --text: #f5f6fb;
+      --muted: #9ea3b8;
+      --accent: #6ea8fe;
+      --panel: #10121c;
+      --border: #1d2130;
+      --radius: 14px;
+      --maxw: 900px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    header {
+      padding: 48px 24px 24px;
+      background: linear-gradient(180deg, rgba(24,28,42,0.85) 0%, rgba(12,14,20,0.95) 100%);
+      border-bottom: 1px solid var(--border);
+    }
+    main {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 32px 24px 64px;
+    }
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(32px, 5vw, 46px);
+    }
+    h2 {
+      margin-top: 40px;
+      font-size: 26px;
+    }
+    p { color: var(--muted); }
+    a { color: var(--accent); }
+    ul { color: var(--muted); }
+    .panel {
+      margin-top: 20px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--panel);
+      padding: 20px 24px;
+    }
+    code { background: rgba(22,25,36,0.9); padding: 3px 6px; border-radius: 6px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>AIFDS Documentation</h1>
+    <p>The AI Feed Discovery Standard defines lightweight JSON layouts so agents can understand your business without crawling every page. Start here to explore the file anatomy and roadmap.</p>
+  </header>
+  <main>
+    <section class="panel">
+      <h2>Schema Family</h2>
+      <ul>
+        <li><strong>Ecommerce:</strong> <code>homepage.schema.json</code>, <code>collections.schema.json</code>, <code>pdp.schema.json</code></li>
+        <li><strong>Content:</strong> <code>blog.schema.json</code>, <code>pages.schema.json</code></li>
+        <li><strong>Future Industries:</strong> Services, SaaS, Media (coming soon)</li>
+      </ul>
+      <p>Each schema pairs with a matching example JSON document under <code>/examples</code>. Both files will evolve together as the standard matures.</p>
+    </section>
+
+    <section class="panel">
+      <h2>Design Principles</h2>
+      <ul>
+        <li>Snake_case keys with predictable nesting so agents can traverse the object tree deterministically.</li>
+        <li>Time-stamped documents via <code>version</code> and <code>updated_at</code> to express freshness.</li>
+        <li>Action-forward data: highlight what a user or agent can do (search, checkout, contact) instead of prose.</li>
+        <li>Evidence slots for credibility signals (directories, reviews, ownership) baked into every layout.</li>
+      </ul>
+    </section>
+
+    <section class="panel">
+      <h2>What to Expect Next</h2>
+      <ul>
+        <li>Validation harness that reads AIFDS JSON and scores readiness for LLM consumption.</li>
+        <li>Industry playbooks showing how to adapt the base schema to services, SaaS, and media properties.</li>
+        <li>Guides for publishing AIFDS JSON alongside traditional site content without leaking private data.</li>
+      </ul>
+      <p>Questions or feedback? Email <a href="mailto:contact@aifds.org">contact@aifds.org</a>.</p>
+    </section>
+  </main>
+</body>
+</html>

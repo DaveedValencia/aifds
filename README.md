@@ -1,74 +1,147 @@
-# AIFDS (AI Feed Discovery Standard)
+# AIFDS — AI Feed Discovery Standard
 
-> The open standard for AI-ready structured data.
-
-AIFDS defines openly governed schemas, examples, and validation rules so AI systems can accurately understand organizations. The project extends schema.org for the AI era, publishes everything in public, and avoids shipping proprietary services.
-
----
-
-## Project Snapshot (Q1 2025)
-
-- ✅ Ecommerce homepage profile published (`schemas/ecommerce/homepage.profile.json`)
-- ✅ Schema hub with inline viewers live at `/docs/schemas/`
-- ✅ Homepage refreshed to reflect open-standard positioning and upcoming validator
-- 🚧 Validator app in development (Bad / Average / Good / Excellent grading)
-- 🔜 Collections and product profiles (ecommerce), service-business profiles next
+**Version:** 0.1-draft  
+**Status:** Experimental  
+**Author:** Daveed Valencia  
+**Website:** [https://aifds.org](https://aifds.org)
 
 ---
 
-## Current Scope
+## Purpose
 
-| Surface | Path | Purpose | Status |
-| --- | --- | --- | --- |
-| Homepage | `index.html` | Public narrative, mission, roadmap, CTAs | Updated Jan 2025 |
-| Schema hub | `docs/schemas/` | Profile directory + inline JSON schema/example viewers | Live |
-| Ecommerce homepage schema | `schemas/ecommerce/homepage.profile.json` | Draft 2020-12 JSON Schema extending Organization / WebSite / WebPage | Draft (community feedback welcome) |
-| Example payload | `examples/ecommerce/homepage.min.json` | Minimal passing payload for the homepage profile | Draft |
-| Specification | `docs/spec/v1/index.html` | Governance model, scoring rubric, schema requirements | Draft |
-| Conformance rules | `spec/conformance.md` | Critical/Strong/Info tables per profile | Draft |
-| Versioning policy | `spec/versioning.md` | SemVer guidance + deprecation policy | Draft |
+AIFDS defines **lightweight, factual JSON structures** that make websites **agent-readable** — meaning an AI model or browser can understand who you are, what you offer, and what actions are possible **without crawling or guessing**.
 
----
+Where Schema.org was built for search indexing,  
+**AIFDS is built for reasoning**.
 
-## Active Focus
+Each JSON document describes the minimum facts an AI agent needs to:
 
-1. **Validate the ecommerce homepage profile**  
-   - Gather feedback from implementers.  
-   - Finalise rule severity in `spec/conformance.md`.
-
-2. **Ship validator MVP**  
-   - UI accepts a URL, runs schema validation, displays Bad / Average / Good / Excellent results with rule explanations.
-   - Output should link back to relevant sections in spec + schema hub.
-
-3. **Draft collections & product profiles**  
-   - Mirror the `/schemas/ecommerce` structure.  
-   - Publish minimal passing examples under `/examples/ecommerce`.
-
-4. **Plan service-business profile**  
-   - Capture requirements and evidence needs once ecommerce set is stable.
+- summarize a business or page accurately  
+- answer user questions contextually (e.g., *“Do they ship to Alaska?”*)  
+- infer capabilities (checkout, contact, search)  
+- connect related pages cleanly
 
 ---
 
-## How to Contribute Today
+## Philosophy
 
-- Review the homepage profile schema and open issues with feedback.
-- Add example payloads or validator test cases via PRs to `/examples`.
-- Keep documentation aligned: updates must touch `index.html`, `README.md`, and `docs/spec/v1/index.html` together.
-- Record significant decisions in `prd.md` Section 5 (Outstanding & Upcoming Work).
+1. **Facts, not prose** – everything in the JSON should be machine-deducible.  
+2. **Self-contained truth** – each file holds enough context to stand alone.  
+3. **Simple adoption** – anyone can add AIFDS JSON to a static site or CMS.  
+4. **Agent-aware** – expose what can be done, not how to do it.  
+5. **Open structure** – human-readable, validator-friendly, and versioned.
 
 ---
 
-## Resources
+## Current Phase
 
-- Production site: [https://aifds.org/](https://aifds.org/)
-- Spec draft: [docs/spec/v1/](docs/spec/v1/)
-- Schema hub: [docs/schemas/](docs/schemas/)
-- Roadmap: [docs/roadmap.md](docs/roadmap.md)
-- Conformance: [spec/conformance.md](spec/conformance.md)
-- Versioning: [spec/versioning.md](spec/versioning.md)
+**Phase 1:** Core page types  
+- ✅ `homepage.json` — complete  
+- 🟡 `collections.json` — placeholder  
+- 🟡 `pdp.json` (product detail) — placeholder  
+- 🟡 `blog.json` — placeholder  
+- 🟡 `pages.json` — placeholder
+
+Each file lives under `/schemas/` and describes how a given page type should structure its AI-readable data.
+
+---
+
+## Repository Structure
+
+```
+aifds.org/
+│
+├── index.html                # static landing page
+├── README.md                 # this document
+│
+├── /schemas/                 # JSON Schema definitions (validators)
+│   ├── homepage.schema.json
+│   ├── collections.schema.json       # placeholder
+│   ├── pdp.schema.json               # placeholder
+│   ├── blog.schema.json              # placeholder
+│   └── pages.schema.json             # placeholder
+│
+├── /examples/                # example data files for real sites
+│   ├── homepage.example.json
+│   ├── collections.example.json
+│   ├── pdp.example.json
+│   └── blog.example.json
+│
+└── /docs/                    # optional static docs (HTML)
+    ├── index.html
+    └── validator.html
+```
+
+---
+
+## Schema Format
+
+All schemas follow the [JSON Schema Draft 2020-12](https://json-schema.org/draft/2020-12/schema) specification.
+
+Every schema begins with:
+
+```json
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aifds.org/schemas/<page-type>.schema.json",
+  "title": "AIFDS <Page Type> Schema",
+  "description": "Defines the structure for AI-readable <page-type> context files.",
+  "type": "object",
+  "properties": { ... }
+}
+```
+
+### Core conventions
+
+| Concept | Rule |
+|----------|------|
+| **snake_case** keys | All field names use lowercase snake_case. |
+| **versioned docs** | Every JSON data file includes `"version"` and `"updated_at"`. |
+| **URIs** | All URLs must be absolute and HTTPS. |
+| **Booleans over prose** | Use `true`, `false`, or `null` instead of descriptive text. |
+| **Data first** | Avoid any narrative fields or notes—facts only. |
+
+---
+
+## Example: Homepage
+
+Reference schema: [`schemas/homepage.schema.json`](https://aifds.org/schemas/homepage.schema.json)  
+Example data: [`examples/homepage.example.json`](https://aifds.org/examples/homepage.example.json)
+
+Key sections:
+```
+site → about → credibility → contact → operations → navigation → highlights → actions
+```
+
+Each block is modular so it can be re-used across other page types.
+
+---
+
+## Roadmap
+
+| Stage | Focus | Status |
+|--------|--------|--------|
+| 1 | Homepage spec + validator | ✅ Complete |
+| 2 | Collections + PDP structures | 🚧 In progress |
+| 3 | Blog + Pages schema | 🚧 In progress |
+| 4 | CLI validator + score harness | 🔜 Planned |
+| 5 | Public registry & scoring dashboard | 🔜 Planned |
 
 ---
 
 ## License
 
-MIT License © 2025 Minnesota.ai
+All AIFDS schemas and examples are released under the **CC BY 4.0** license.  
+You’re free to copy, modify, and implement with attribution.
+
+---
+
+## Contributing
+
+AIFDS is an open, evolving standard.  
+Submit ideas, examples, or corrections via GitHub issues or email:  
+**contact@aifds.org**
+
+---
+
+*“The goal isn’t to rank higher. The goal is to be understood.”*
