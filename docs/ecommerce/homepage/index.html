@@ -58,7 +58,7 @@
     <section class="section" aria-labelledby="homepage-fields">
       <div class="section-header">
         <h2 id="homepage-fields">Fields</h2>
-        <p>These fields define the minimum contract agents rely on. Optional items let you add richer storytelling without breaking compatibility.</p>
+        <p>The homepage template now ships with an official schema. Keep these objects and keys intact so agents can parse facts without guesswork.</p>
       </div>
       <div class="table-wrap" role="region" aria-labelledby="homepage-fields">
         <table>
@@ -70,44 +70,44 @@
           </thead>
           <tbody>
             <tr>
-              <td><code>template</code></td>
-              <td>String identifier; always <code>ecommerce_homepage</code>. Required.</td>
-            </tr>
-            <tr>
               <td><code>version</code></td>
-              <td>Semantic version of the document contract. Required.</td>
+              <td>String that matches the contract release (for example <code>0.1-draft</code>). Required.</td>
             </tr>
             <tr>
               <td><code>updated_at</code></td>
-              <td>ISO 8601 timestamp for the last JSON refresh. Required.</td>
+              <td>ISO 8601 timestamp describing when the JSON was last refreshed. Required.</td>
             </tr>
             <tr>
               <td><code>site</code></td>
-              <td>Object containing <code>name</code>, <code>domain</code>, <code>logo</code>, <code>languages</code>, and <code>platform</code> metadata.</td>
+              <td>Canonical site facts: unique <code>id</code> (URL), <code>name</code>, <code>language</code>, <code>currency</code>, <code>timezone</code>, <code>logo</code>, and nested <code>ownership</code> details (owner name, structure, founding year, and <code>physical_location</code>).</td>
             </tr>
             <tr>
               <td><code>about</code></td>
-              <td>Mission, tagline, and brand story; includes <code>highlights</code> for key differentiators.</td>
+              <td>Brand summary including <code>target_audience</code>, <code>differentiators</code>, and markets served via <code>serves</code>.</td>
             </tr>
             <tr>
               <td><code>credibility</code></td>
-              <td>Array of trust signals such as certifications, reviews, awards, and partnerships. Each item contains <code>label</code>, <code>value</code>, and optional <code>url</code>.</td>
+              <td>Structured trust signals grouped into <code>social</code>, <code>directories</code>, and <code>third_party_reviews</code> with handles, URLs, and optional rating data.</td>
+            </tr>
+            <tr>
+              <td><code>contact</code></td>
+              <td>Contact channels (phone, email, chat etc.) with availability metadata plus operating <code>hours</code> by day.</td>
             </tr>
             <tr>
               <td><code>operations</code></td>
-              <td>Shipping, returns, fulfillment windows, and support channels. Include <code>contact</code> details.</td>
+              <td>Commerce logistics—service area, <code>shipping</code> matrix, <code>returns</code> policy, purchase intent, payment methods, and <code>storefront</code> visit details.</td>
             </tr>
             <tr>
               <td><code>navigation</code></td>
-              <td>Primary and secondary nav arrays with <code>label</code> and <code>url</code>, plus featured search shortcuts.</td>
+              <td>Primary discovery links under <code>categories</code>, supporting <code>reference_pages</code>, and policy URLs.</td>
             </tr>
             <tr>
               <td><code>highlights</code></td>
-              <td>Cards for featured categories, campaigns, or promotions with imagery and supporting copy.</td>
+              <td>Featured <code>hero_products</code> with name, URL, imagery, price, availability, and review stats.</td>
             </tr>
             <tr>
               <td><code>actions</code></td>
-              <td>Array of user intents (<code>search</code>, <code>shop</code>, <code>support</code>) with <code>type</code>, <code>label</code>, <code>url</code>, and readiness metadata.</td>
+              <td>Array of high-value intents (for example <code>search</code> or <code>checkout</code>) represented by <code>name</code> and <code>href</code>.</td>
             </tr>
           </tbody>
         </table>
@@ -121,106 +121,159 @@
       </summary>
       <div class="collapsible-content">
         <pre><code>{
-  "template": "ecommerce_homepage",
-  "version": "1.0.0",
-  "updated_at": "2024-02-28T18:30:00Z",
+  "version": "0.1-draft",
+  "updated_at": "2025-10-22T16:15:00Z",
   "site": {
+    "id": "https://handsomecalavera.com/",
     "name": "Handsome Calavera",
-    "domain": "https://www.handsomecalavera.com",
-    "logo": "https://www.handsomecalavera.com/assets/logo-mark.svg",
-    "languages": ["en-US"],
-    "platform": "Custom Shopify storefront"
+    "language": "en-US",
+    "currency": "USD",
+    "timezone": "America/Chicago",
+    "logo": "https://handsomecalavera.com/cdn/logo.png",
+    "ownership": {
+      "owner_name": "Handsome Calavera LLC",
+      "ownership_structure": "private",
+      "founded_year": 2023,
+      "physical_location": {
+        "street": "7500 Golden Triangle Dr, Suite E15",
+        "city": "Eden Prairie",
+        "region": "MN",
+        "postal_code": "55344",
+        "country_code": "US"
+      }
+    }
   },
   "about": {
-    "tagline": "Handmade leather goods for purposeful journeys.",
-    "summary": "Handsome Calavera designs and handcrafts leather carry goods in Austin, TX. We focus on lifetime durability, responsible sourcing, and transparent repairs.",
-    "highlights": [
+    "summary": "Handsome Calavera makes straightforward men’s skincare that fits into daily life.",
+    "target_audience": ["men", "sensitive skin", "oily/combination skin"],
+    "differentiators": [
+      "fragrance-free core line",
+      "made for men",
+      "high quality ingredients"
+    ],
+    "serves": ["B2C", "DTC"]
+  },
+  "credibility": {
+    "social": [
+      {"platform": "instagram", "handle": "@handsomecalavera", "url": "https://www.instagram.com/handsomecalavera/"},
+      {"platform": "tiktok", "handle": "@handsomecalavera", "url": "https://www.tiktok.com/@handsomecalavera"},
+      {"platform": "facebook", "handle": "handsomecalavera", "url": "https://www.facebook.com/handsomecalavera/"}
+    ],
+    "directories": [
+      {"name": "Google Business Profile", "url": "https://maps.app.goo.gl/5fiAXF8KTTYiZXCK6"},
+      {"name": "Bing", "url": "https://www.bing.com/maps?cp=44.866896%7E-93.408015&lvl=16.0"}
+    ],
+    "third_party_reviews": [
       {
-        "title": "Lifetime repair program",
-        "description": "Complimentary repairs on every stitch and rivet."
+        "name": "Google",
+        "url": "https://www.google.com/maps/place/Handsome+Calavera",
+        "reviews_count": 125,
+        "average_rating": 4.8
       },
       {
-        "title": "Vegetable-tanned hides",
-        "description": "Sourced from heritage tanneries in León and Tuscany."
+        "name": "Bing Places",
+        "url": "https://www.bing.com/maps?cid=EXAMPLE",
+        "reviews_count": 42,
+        "average_rating": 4.7
+      },
+      {
+        "name": "Yelp",
+        "url": "https://yelp.com/biz/handsome-calavera-example",
+        "reviews_count": 58,
+        "average_rating": 4.6
       }
     ]
   },
-  "credibility": [
-    {
-      "label": "Customer rating",
-      "value": "4.9 / 5 (1,842 reviews)",
-      "url": "https://www.handsomecalavera.com/reviews"
-    },
-    {
-      "label": "Certified B Corporation",
-      "value": "B Corp ID 22781",
-      "url": "https://www.bcorporation.net/en-us/find-a-b-corp/company/handsome-calavera"
-    }
-  ],
+  "contact": {
+    "channels": [
+      {"type": "phone", "value": null, "availability": null},
+      {"type": "email", "value": "hello@handsomecalavera.com", "response_time_business_hours": "within_24h"},
+      {"type": "chat", "value": null, "availability": null}
+    ],
+    "hours": [
+      {"day": "mon", "open": "09:00", "close": "17:00"},
+      {"day": "tue", "open": "09:00", "close": "17:00"},
+      {"day": "wed", "open": "09:00", "close": "17:00"},
+      {"day": "thu", "open": "09:00", "close": "17:00"},
+      {"day": "fri", "open": "09:00", "close": "17:00"}
+    ]
+  },
   "operations": {
-    "fulfillment_timeframe": "Ships within 48 hours",
-    "warehouses": ["Austin, TX"],
-    "shipping_regions": ["US", "Canada", "EU"],
-    "return_policy": "Free returns within 45 days on unused goods.",
-    "contact": {
-      "email": "support@handsomecalavera.com",
-      "phone": "+1-512-555-0199",
-      "hours": "Mon–Fri 9am–6pm CT"
+    "service_area": [{"country": "US"}],
+    "shipping": {
+      "ships_from": [{"country": "US", "region": "MN"}],
+      "ships_to": [{"country": "US"}],
+      "restricted_regions": [
+        {"country": "US", "region": "AK"},
+        {"country": "US", "region": "HI"}
+      ],
+      "carriers": ["UPS", "USPS", "FedEx"],
+      "delivery_window_business_days": [2, 5],
+      "free_shipping": {
+        "threshold": {"amount": 50.0, "currency": "USD"},
+        "method": "standard"
+      }
+    },
+    "returns": {
+      "window_days": 100,
+      "guarantee": true,
+      "policy_url": "https://handsomecalavera.com/policies/refund-policy"
+    },
+    "purchase_intent": "direct_checkout",
+    "payment_methods": ["visa", "mastercard", "amex", "paypal", "shop-pay"],
+    "storefront": {
+      "public": true,
+      "shop_on_premise": true,
+      "visit_address_ref": "site.ownership.physical_location",
+      "visit_hours_ref": "contact.hours",
+      "in_person_services": ["purchase", "pickup", "returns"]
     }
   },
   "navigation": {
-    "primary": [
-      { "label": "New arrivals", "url": "https://www.handsomecalavera.com/collections/new" },
-      { "label": "Bags", "url": "https://www.handsomecalavera.com/collections/bags" },
-      { "label": "Wallets", "url": "https://www.handsomecalavera.com/collections/wallets" },
-      { "label": "Journal covers", "url": "https://www.handsomecalavera.com/collections/journals" }
+    "categories": [
+      {"name": "Cleansers", "url": "https://handsomecalavera.com/collections/face-lotion-face-shampoo"},
+      {"name": "Moisturizers", "url": "https://handsomecalavera.com/collections/face-lotion-face-shampoo"},
+      {"name": "All", "url": "https://handsomecalavera.com/collections/all"}
     ],
-    "secondary": [
-      { "label": "Story", "url": "https://www.handsomecalavera.com/pages/story" },
-      { "label": "Repairs", "url": "https://www.handsomecalavera.com/pages/repairs" },
-      { "label": "Wholesale", "url": "https://www.handsomecalavera.com/pages/wholesale" }
+    "reference_pages": [
+      {"name": "Contact", "url": "https://handsomecalavera.com/pages/contact"},
+      {"name": "FAQ", "url": "https://handsomecalavera.com/pages/faqs"},
+      {"name": "Blog", "url": "https://handsomecalavera.com/blogs/skincare"}
     ],
-    "quick_search": [
-      { "label": "Passport wallet", "query": "passport wallet" },
-      { "label": "Gift cards", "query": "gift card" }
+    "policies": [
+      {"type": "shipping", "url": "https://handsomecalavera.com/policies/shipping-policy"},
+      {"type": "returns", "url": "https://handsomecalavera.com/policies/refund-policy"},
+      {"type": "privacy", "url": "https://handsomecalavera.com/policies/privacy-policy"},
+      {"type": "terms", "url": "https://handsomecalavera.com/policies/terms-of-service"}
     ]
   },
-  "highlights": [
-    {
-      "title": "Build your everyday carry",
-      "description": "Curated kits for commute, travel, and field work.",
-      "image": "https://www.handsomecalavera.com/assets/highlights/everyday-carry.jpg",
-      "cta": { "label": "Shop EDC kits", "url": "https://www.handsomecalavera.com/collections/edc-kits" }
-    },
-    {
-      "title": "Journal cover studio",
-      "description": "Made-to-order covers sized for Field Notes, Leuchtturm, and Hobonichi planners.",
-      "image": "https://www.handsomecalavera.com/assets/highlights/journal-studio.jpg",
-      "cta": { "label": "Design your cover", "url": "https://www.handsomecalavera.com/pages/journal-studio" }
-    }
-  ],
+  "highlights": {
+    "hero_products": [
+      {
+        "name": "Calavera Daily Cleanser",
+        "url": "https://handsomecalavera.com/products/calavera-daily-cleanser",
+        "image": "https://handsomecalavera.com/cdn/shop/files/WEB-FACEWASH-MOBILE02.jpg",
+        "price": {"value": 29.99, "currency": "USD"},
+        "availability": "in_stock",
+        "reviews": 26,
+        "rating": 5
+      },
+      {
+        "name": "Face Lotion - 50ml",
+        "url": "https://handsomecalavera.com/products/4am-facial-moisturizer",
+        "image": "https://handsomecalavera.com/cdn/moisturizer.jpg",
+        "price": {"value": 29.99, "currency": "USD"},
+        "availability": "in_stock",
+        "reviews": 18,
+        "rating": 4.8
+      }
+    ]
+  },
   "actions": [
-    {
-      "type": "search",
-      "label": "Search the catalog",
-      "url": "https://www.handsomecalavera.com/search",
-      "availability": "online",
-      "notes": "Real-time inventory backed by Shopify Storefront API."
-    },
-    {
-      "type": "purchase",
-      "label": "Start a custom build",
-      "url": "https://www.handsomecalavera.com/pages/custom",
-      "availability": "by-request",
-      "owner": "custom@handsomecalavera.com"
-    },
-    {
-      "type": "support",
-      "label": "Reach support",
-      "url": "https://www.handsomecalavera.com/pages/contact",
-      "availability": "24/7",
-      "channels": ["email", "chat"]
-    }
+    {"name": "search", "href": "https://handsomecalavera.com/search"},
+    {"name": "contact", "href": "https://handsomecalavera.com/pages/contact"},
+    {"name": "add_to_cart", "href": "https://handsomecalavera.com/cart/add"},
+    {"name": "checkout", "href": "https://handsomecalavera.com/checkout"}
   ]
 }</code></pre>
       </div>
@@ -233,61 +286,107 @@
       </summary>
       <div class="collapsible-content">
         <pre><code>{
-  "template": "ecommerce_homepage",
-  "version": "1.0.0",
+  "version": "0.1-draft",
   "updated_at": "YYYY-MM-DDThh:mm:ssZ",
   "site": {
+    "id": "https://www.YOUR-DOMAIN.com/",
     "name": "YOUR-BRAND-NAME",
-    "domain": "https://www.YOUR-DOMAIN.com",
-    "logo": "https://www.YOUR-DOMAIN.com/path-to-logo.svg",
-    "languages": ["en-US"],
-    "platform": "YOUR-ECOMMERCE-PLATFORM"
+    "language": "en-US",
+    "currency": "USD",
+    "timezone": "America/Chicago",
+    "logo": "https://www.YOUR-DOMAIN.com/path-to-logo.png",
+    "ownership": {
+      "owner_name": "Legal entity",
+      "ownership_structure": "private",
+      "founded_year": 2000,
+      "physical_location": {
+        "street": "123 Main Street",
+        "city": "City",
+        "region": "State",
+        "postal_code": "00000",
+        "country_code": "US"
+      }
+    }
   },
   "about": {
-    "tagline": "YOUR-TAGLINE",
-    "summary": "Short paragraph describing your brand mission.",
-    "highlights": [
-      { "title": "Highlight title", "description": "Why it matters." }
+    "summary": "One-sentence description of your brand.",
+    "target_audience": ["primary audience"],
+    "differentiators": ["key differentiator"],
+    "serves": ["B2C", "B2B"]
+  },
+  "credibility": {
+    "social": [
+      {"platform": "instagram", "handle": "@handle", "url": "https://instagram.com/handle"}
+    ],
+    "directories": [
+      {"name": "Google Business Profile", "url": "https://maps.app.goo.gl/example"}
+    ],
+    "third_party_reviews": [
+      {"name": "Google", "url": "https://maps.example", "reviews_count": 0, "average_rating": 0}
     ]
   },
-  "credibility": [
-    { "label": "Proof name", "value": "Proof value", "url": "https://proof-link" }
-  ],
+  "contact": {
+    "channels": [
+      {"type": "email", "value": "support@YOUR-DOMAIN.com", "response_time_business_hours": "within_24h"}
+    ],
+    "hours": [
+      {"day": "mon", "open": "09:00", "close": "17:00"}
+    ]
+  },
   "operations": {
-    "fulfillment_timeframe": "YOUR-SHIPPING-WINDOW",
-    "warehouses": ["PRIMARY-LOCATION"],
-    "shipping_regions": ["LIST", "OF", "REGIONS"],
-    "return_policy": "YOUR-RETURN-POLICY",
-    "contact": {
-      "email": "support@YOUR-DOMAIN.com",
-      "phone": "+1-000-000-0000",
-      "hours": "Support hours"
+    "service_area": [{"country": "US"}],
+    "shipping": {
+      "ships_from": [{"country": "US", "region": "CA"}],
+      "ships_to": [{"country": "US"}],
+      "restricted_regions": [],
+      "carriers": ["UPS"],
+      "delivery_window_business_days": [2, 5],
+      "free_shipping": {
+        "threshold": {"amount": 75, "currency": "USD"},
+        "method": "standard"
+      }
+    },
+    "returns": {
+      "window_days": 30,
+      "guarantee": true,
+      "policy_url": "https://www.YOUR-DOMAIN.com/policies/refund"
+    },
+    "purchase_intent": "direct_checkout",
+    "payment_methods": ["visa", "mastercard"],
+    "storefront": {
+      "public": false,
+      "shop_on_premise": false,
+      "visit_address_ref": "site.ownership.physical_location",
+      "visit_hours_ref": "contact.hours",
+      "in_person_services": []
     }
   },
   "navigation": {
-    "primary": [
-      { "label": "Nav item", "url": "https://www.YOUR-DOMAIN.com/path" }
+    "categories": [
+      {"name": "Primary collection", "url": "https://www.YOUR-DOMAIN.com/collections/primary"}
     ],
-    "secondary": [],
-    "quick_search": [
-      { "label": "Search label", "query": "search term" }
+    "reference_pages": [
+      {"name": "Contact", "url": "https://www.YOUR-DOMAIN.com/pages/contact"}
+    ],
+    "policies": [
+      {"type": "returns", "url": "https://www.YOUR-DOMAIN.com/policies/refund"}
     ]
   },
-  "highlights": [
-    {
-      "title": "Feature name",
-      "description": "What the visitor should know.",
-      "image": "https://www.YOUR-DOMAIN.com/path-to-image.jpg",
-      "cta": { "label": "CTA label", "url": "https://www.YOUR-DOMAIN.com/path" }
-    }
-  ],
+  "highlights": {
+    "hero_products": [
+      {
+        "name": "Hero product",
+        "url": "https://www.YOUR-DOMAIN.com/products/hero",
+        "image": "https://www.YOUR-DOMAIN.com/path-to-image.jpg",
+        "price": {"value": 0, "currency": "USD"},
+        "availability": "in_stock",
+        "reviews": 0,
+        "rating": 0
+      }
+    ]
+  },
   "actions": [
-    {
-      "type": "search",
-      "label": "Primary action label",
-      "url": "https://www.YOUR-DOMAIN.com/path",
-      "availability": "online"
-    }
+    {"name": "search", "href": "https://www.YOUR-DOMAIN.com/search"}
   ]
 }</code></pre>
       </div>
